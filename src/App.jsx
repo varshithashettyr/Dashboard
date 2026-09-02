@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import {
-  Menu,
   Layers3,
   Database,
   ArrowLeftRight,
@@ -16,8 +15,7 @@ import {
   functionalityData,
 } from "./data/workflowData";
 
-import FunctionalityContent
-  from "./components/FunctionalityContent";
+import FunctionalityContent from "./components/FunctionalityContent";
 
 import "./App.css";
 
@@ -27,15 +25,12 @@ import "./App.css";
 ========================================================= */
 
 function FunctionalityIcon({ id }) {
-
   const iconProps = {
-    size: 20,
+    size: 22,
     strokeWidth: 1.8,
   };
 
-
   switch (id) {
-
     case "working-queue":
       return <Layers3 {...iconProps} />;
 
@@ -67,31 +62,148 @@ function FunctionalityIcon({ id }) {
 
 
 /* =========================================================
+   TEAM NAVIGATION
+========================================================= */
+
+function TeamNav() {
+  return (
+    <div className="team-nav">
+
+      {teams.map((team, index) => (
+        <div
+          key={team}
+          className={`team-item ${
+            index === 0 ? "selected" : ""
+          }`}
+        >
+          {team}
+        </div>
+      ))}
+
+    </div>
+  );
+}
+
+
+/* =========================================================
+   FUNCTIONALITY NAVIGATION
+========================================================= */
+
+function FunctionalityNav({
+  selectedFunctionality,
+  onSelect,
+}) {
+
+  /*
+    These are the exact labels required
+    for the functionality navigation.
+  */
+
+  const functionalityLabels = {
+    "working-queue":
+      "Working Queue",
+
+    "service-sub-service":
+      "Service/Sub-Service",
+
+    "master":
+      "Master",
+
+    "task-qc-master-transfer":
+      "Task/QC Master/Transfer",
+
+    "client-onboarding":
+      "Client Onboarding",
+
+    "employee-onboarding":
+      "Employee Onboarding",
+
+    "permission":
+      "Permission",
+
+    "report":
+      "Report",
+  };
+
+
+  return (
+    <nav className="functionality-nav">
+
+      <div className="functionality-list">
+
+        {functionalityData.map(
+          (functionality) => {
+
+            const label =
+              functionalityLabels[
+                functionality.id
+              ] || functionality.name;
+
+            return (
+              <button
+                key={functionality.id}
+                type="button"
+                className={`functionality-item ${
+                  selectedFunctionality ===
+                  functionality.id
+                    ? "active"
+                    : ""
+                }`}
+                onClick={() =>
+                  onSelect(
+                    functionality.id
+                  )
+                }
+              >
+
+                <span className="functionality-icon">
+                  <FunctionalityIcon
+                    id={functionality.id}
+                  />
+                </span>
+
+                <span className="functionality-name">
+                  {label}
+                </span>
+
+              </button>
+            );
+          }
+        )}
+
+      </div>
+
+    </nav>
+  );
+}
+
+
+/* =========================================================
    APP
 ========================================================= */
 
 function App() {
 
-  const [selectedTeam, setSelectedTeam] =
-    useState("N");
-
-  const [selectedFunctionality, setSelectedFunctionality] =
-    useState("working-queue");
+  const [
+    selectedFunctionality,
+    setSelectedFunctionality,
+  ] = useState(
+    "client-onboarding"
+  );
 
 
   const activeFunctionality =
     functionalityData.find(
       (item) =>
-        item.id === selectedFunctionality
+        item.id ===
+        selectedFunctionality
     ) || functionalityData[0];
 
 
   return (
-
     <div className="app">
 
       <div className="dashboard">
-
 
         {/* =================================================
             HEADER
@@ -99,28 +211,22 @@ function App() {
 
         <header className="header">
 
-          <div className="header-left">
+          {/* B LOGO */}
 
-            <button
-              className="menu-button"
-              type="button"
-              aria-label="Menu"
-            >
-              <Menu size={25} />
-            </button>
-
-
-            <div
-              className="brand-logo"
-              aria-label="Brickwork"
-            >
-              B
-            </div>
-
+          <div
+            className="brand-logo"
+            aria-label="Brickwork"
+          >
+            B
           </div>
 
 
-          {/* RIGHT USER AREA */}
+          {/* TEAM ROW */}
+
+          <TeamNav />
+
+
+          {/* ADMIN USER */}
 
           <div className="header-user">
 
@@ -129,11 +235,9 @@ function App() {
             </div>
 
             <div className="user-info">
-
               <span>
                 Admin User
               </span>
-
             </div>
 
           </div>
@@ -142,110 +246,52 @@ function App() {
 
 
         {/* =================================================
-            DASHBOARD BODY
+            BODY
         ================================================= */}
 
         <div className="dashboard-body">
 
-
           {/* =================================================
-              LEFT SIDEBAR
+              EMPTY LEFT SIDEBAR
+
+              Sidebar remains visible.
+              There is intentionally no content inside.
           ================================================= */}
 
-          <aside className="functionality-sidebar">
-
-            {/* <div className="sidebar-heading">
-              N Functionality
-            </div> */}
-
-
-            <div className="functionality-list">
-
-              {functionalityData.map(
-                (functionality) => (
-
-                  <button
-                    key={functionality.id}
-                    type="button"
-                    className={`functionality-item ${
-                      selectedFunctionality ===
-                      functionality.id
-                        ? "active"
-                        : ""
-                    }`}
-                    onClick={() =>
-                      setSelectedFunctionality(
-                        functionality.id
-                      )
-                    }
-                  >
-
-                    <span className="functionality-icon">
-                      <FunctionalityIcon
-                        id={functionality.id}
-                      />
-                    </span>
-
-
-                    <span className="functionality-name">
-                      {functionality.name}
-                    </span>
-
-                  </button>
-
-                )
-              )}
-
-            </div>
-
-          </aside>
+          <aside
+            className="empty-sidebar"
+            aria-label="Empty sidebar"
+          />
 
 
           {/* =================================================
-              RIGHT SIDE
+              MAIN CONTENT
           ================================================= */}
 
-          <div className="dashboard-main">
+          <main className="dashboard-main">
 
+            {/* FUNCTIONALITY ROW */}
 
-            {/* =================================================
-                TEAM NAVIGATION
-            ================================================= */}
-
-            <nav className="team-nav">
-
-              {teams.map((team) => (
-
-                <button
-                  key={team}
-                  type="button"
-                  className={`team-item ${
-                    selectedTeam === team
-                      ? "selected"
-                      : ""
-                  }`}
-                  onClick={() =>
-                    setSelectedTeam(team)
-                  }
-                >
-                  {team}
-                </button>
-
-              ))}
-
-            </nav>
-
-
-            {/* =================================================
-                CONTENT
-            ================================================= */}
-
-            <FunctionalityContent
-              team={selectedTeam}
-              functionality={activeFunctionality}
+            <FunctionalityNav
+              selectedFunctionality={
+                selectedFunctionality
+              }
+              onSelect={
+                setSelectedFunctionality
+              }
             />
 
-          </div>
+
+            {/* CONTENT */}
+
+            <FunctionalityContent
+              team="N"
+              functionality={
+                activeFunctionality
+              }
+            />
+
+          </main>
 
         </div>
 

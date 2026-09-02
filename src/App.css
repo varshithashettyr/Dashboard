@@ -15,6 +15,8 @@ body,
 }
 
 body {
+  margin: 0;
+
   font-family:
     Arial,
     Helvetica,
@@ -55,18 +57,56 @@ button {
 
 
 /* =========================================================
+   DASHBOARD BODY
+========================================================= */
+
+.dashboard-body {
+  display: grid;
+
+  grid-template-columns:
+    88px
+    minmax(0, 1fr);
+
+  min-height:
+    calc(100vh - 90px);
+}
+
+
+/* =========================================================
+   EMPTY LEFT SIDEBAR
+========================================================= */
+
+.empty-sidebar {
+  width: 88px;
+
+  min-height:
+    calc(100vh - 90px);
+
+  background: #240566;
+
+  border-right:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
    HEADER
 ========================================================= */
 
 .header {
   width: 100%;
-  height: 58px;
+
+  height: 90px;
 
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  padding: 0 18px;
+  align-items: center;
+
+  position: relative;
+
+  padding:
+    0 34px 0 100px;
 
   background: #240566;
 
@@ -75,11 +115,112 @@ button {
 
 
 /* =========================================================
-   HEADER LEFT
+   B LOGO
 ========================================================= */
 
-.header-left {
+.brand-logo {
+  width: 64px;
+  height: 64px;
+
+  flex: 0 0 auto;
+
   display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.13);
+
+  color: #ffffff;
+
+  font-size: 30px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   TEAM NAVIGATION
+========================================================= */
+
+.team-nav {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+
+/* =========================================================
+   TEAM ITEM
+========================================================= */
+
+.team-item {
+  width: 58px;
+
+  height: 56px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.65);
+
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  cursor: default;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   SELECTED TEAM
+========================================================= */
+
+.team-item.selected {
+  background: #3d1bc0;
+
+  border-color: #3d1bc0;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   ADMIN USER
+========================================================= */
+
+.header-user {
+  margin-left: auto;
+
+  display: flex;
+
   align-items: center;
 
   gap: 10px;
@@ -87,254 +228,172 @@ button {
 
 
 /* =========================================================
-   HAMBURGER
+   USER AVATAR
 ========================================================= */
 
-.menu-button {
-  width: 32px;
-  height: 32px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  border: none;
-
-  background: transparent;
-
-  color: #ffffff;
-
-  cursor: pointer;
-}
-
-
-/* =========================================================
-   B LOGO
-========================================================= */
-
-.brand-logo {
+.user-avatar {
   width: 36px;
   height: 36px;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
 
-  border-radius: 8px;
-
-  background: rgba(255, 255, 255, 0.12);
-
-  color: #ffffff;
-
-  font-size: 19px;
-  font-weight: 800;
-}
-
-
-/* =========================================================
-   USER
-========================================================= */
-
-.header-user {
-  display: flex;
-  align-items: center;
-
-  gap: 9px;
-}
-
-.user-avatar {
-  width: 34px;
-  height: 34px;
-
-  display: flex;
   align-items: center;
   justify-content: center;
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.14);
+  background:
+    rgba(255, 255, 255, 0.14);
 
   color: #ffffff;
 
   font-size: 11px;
+
   font-weight: 700;
 }
+
+
+/* =========================================================
+   USER NAME
+========================================================= */
 
 .user-info span {
   color: #ffffff;
 
-  font-size: 12px;
+  font-size: 13px;
 
   font-weight: 600;
 }
 
 
 /* =========================================================
-   DASHBOARD BODY
+   FUNCTIONALITY NAVIGATION
 ========================================================= */
 
-.dashboard-body {
+.functionality-nav {
   width: 100%;
-
-  min-height: calc(100vh - 58px);
-
-  display: grid;
-
-  grid-template-columns:
-    220px
-    minmax(0, 1fr);
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 18px;
+  background: #ffffff;
+  border-bottom: 1px solid #e7e8ef;
+  box-shadow: 0 2px 8px rgba(30, 35, 70, 0.04);
 }
 
 
 /* =========================================================
-   SIDEBAR
-========================================================= */
-
-.functionality-sidebar {
-  width: 220px;
-
-  min-height: calc(100vh - 58px);
-
-  padding: 32px 14px 20px;
-
-  background: #0d0933;
-
-  border-right:
-    1px solid #19154a;
-}
-
-
-/* =========================================================
-   SIDEBAR TITLE
-========================================================= */
-
-.sidebar-heading {
-  padding:
-    0 10px 18px;
-
-  color: #ffffff;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   SIDEBAR LIST
+   FUNCTIONALITY LIST
 ========================================================= */
 
 .functionality-list {
+  width: 100%;
+  max-width: none;
   display: flex;
-
-  flex-direction: column;
-
-  gap: 3px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  min-width: 0;
 }
 
 
 /* =========================================================
-   SIDEBAR ITEM
+   FUNCTIONALITY ITEM
 ========================================================= */
 
 .functionality-item {
-  width: 100%;
-
-  min-height: 46px;
-
+  min-width: 0;
+  flex: 1 1 0;
+  min-height: 42px;
   display: flex;
   align-items: center;
-
-  gap: 12px;
-
-  padding:
-    8px 10px;
-
-  border:
-    1px solid transparent;
-
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 5px;
+  border: 1px solid transparent;
   border-radius: 7px;
-
   background: transparent;
-
-  color: #ffffff;
-
-  text-align: left;
-
+  color: #21106f;
+  text-align: center;
   cursor: pointer;
-
+  white-space: nowrap;
+  overflow: hidden;
   transition:
     background 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 
 /* =========================================================
-   SIDEBAR HOVER
+   FUNCTIONALITY HOVER
 ========================================================= */
 
 .functionality-item:hover {
-  background: #24115e;
+  background: #f5f2ff;
 }
 
 
 /* =========================================================
-   SIDEBAR ACTIVE
+   ACTIVE FUNCTIONALITY
 ========================================================= */
 
 .functionality-item.active {
   background: #3d1aa8;
 
-  border-color: #4d2bc0;
+  border-color: #3d1aa8;
+
+  color: #ffffff;
 
   box-shadow:
     0 3px 8px
-    rgba(20, 5, 90, 0.3);
+    rgba(20, 5, 90, 0.18);
 }
 
 
 /* =========================================================
-   SIDEBAR ICON
+   FUNCTIONALITY ICON
 ========================================================= */
 
 .functionality-icon {
-  width: 24px;
-  min-width: 24px;
+  width: 22px;
+
+  min-width: 22px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  color: #ffffff;
+  color: currentColor;
 }
 
 
 /* =========================================================
-   SIDEBAR NAME
+   FUNCTIONALITY TEXT
 ========================================================= */
 
 .functionality-name {
-  min-width: 0;
-
-  color: #ffffff;
+  color: currentColor;
 
   font-size: 12px;
 
-  font-weight: 600;
+  font-weight: 700;
 
-  line-height: 1.25;
+  line-height: 1.2;
+
+  white-space: nowrap;
 }
 
 
 /* =========================================================
-   MAIN AREA
+   MAIN
 ========================================================= */
 
 .dashboard-main {
+  width: 100%;
+
   min-width: 0;
 
   background: #f7f8fc;
@@ -342,83 +401,7 @@ button {
 
 
 /* =========================================================
-   TEAM NAV
-========================================================= */
-
-.team-nav {
-  width: 100%;
-
-  height: 68px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 14px;
-
-  padding:
-    12px 20px;
-
-  background: #ffffff;
-
-  border-bottom:
-    1px solid #e7e8ef;
-
-  box-shadow:
-    0 2px 8px
-    rgba(30, 35, 70, 0.04);
-}
-
-
-/* =========================================================
-   TEAM BUTTON
-========================================================= */
-
-.team-item {
-  width: 64px;
-  height: 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border:
-    1px solid #c9c3ed;
-
-  border-radius: 6px;
-
-  background: #ffffff;
-
-  color: #28116e;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-
-/* =========================================================
-   TEAM SELECTED
-========================================================= */
-
-.team-item.selected {
-  background: #3212a3;
-
-  border-color: #3212a3;
-
-  color: #ffffff;
-}
-
-
-/* =========================================================
-   MAIN CONTENT
+   CONTENT AREA
 ========================================================= */
 
 .functionality-content {
@@ -427,29 +410,29 @@ button {
   min-width: 0;
 
   padding:
-    20px 28px 30px;
+    28px 30px 40px;
 }
 
 
 /* =========================================================
-   NORMAL MODULE SECTION
+   MODULE SECTION
 ========================================================= */
 
 .modules-section {
   width: 100%;
 
   padding:
-    20px 22px 22px;
+    26px 28px 28px;
 
   background: #ffffff;
 
   border:
     1px solid #e3e5ed;
 
-  border-radius: 10px;
+  border-radius: 12px;
 
   box-shadow:
-    0 2px 10px
+    0 2px 12px
     rgba(30, 40, 80, 0.06);
 }
 
@@ -459,28 +442,30 @@ button {
 ========================================================= */
 
 .section-heading {
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
+
 
 .modules-title {
   margin: 0;
 
   color: #21106f;
 
-  font-size: 18px;
+  font-size: 24px;
 
   font-weight: 800;
 
   line-height: 1.2;
 }
 
+
 .modules-subtitle {
   margin:
-    5px 0 0;
+    6px 0 0;
 
   color: #7b839b;
 
-  font-size: 12px;
+  font-size: 14px;
 
   line-height: 1.4;
 }
@@ -496,9 +481,12 @@ button {
   display: grid;
 
   grid-template-columns:
-    repeat(5, minmax(0, 1fr));
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
 
-  gap: 12px;
+  gap: 18px;
 }
 
 
@@ -510,9 +498,10 @@ button {
   position: relative;
 
   width: 100%;
+
   min-width: 0;
 
-  height: 128px;
+  height: 210px;
 
   display: flex;
 
@@ -521,12 +510,12 @@ button {
   align-items: center;
   justify-content: center;
 
-  padding: 14px;
+  padding: 20px;
 
   border:
     1px solid #e3e5ed;
 
-  border-radius: 8px;
+  border-radius: 10px;
 
   background: #ffffff;
 
@@ -546,11 +535,12 @@ button {
 
 
 /* =========================================================
-   MODULE HOVER
+   MODULE CARD HOVER
 ========================================================= */
 
 .module-card:hover {
-  transform: translateY(-1px);
+  transform:
+    translateY(-1px);
 
   border-color: #b9afe4;
 
@@ -567,12 +557,12 @@ button {
 .module-number {
   position: absolute;
 
-  top: 11px;
-  left: 13px;
+  top: 16px;
+  left: 17px;
 
   color: #3212a3;
 
-  font-size: 12px;
+  font-size: 14px;
 
   font-weight: 800;
 }
@@ -583,14 +573,15 @@ button {
 ========================================================= */
 
 .module-icon {
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 9px;
+  margin-bottom: 12px;
 
   border-radius: 50%;
 
@@ -609,11 +600,11 @@ button {
 
   color: #21106f;
 
-  font-size: 12px;
+  font-size: 14px;
 
   font-weight: 700;
 
-  line-height: 1.25;
+  line-height: 1.3;
 
   text-align: center;
 }
@@ -626,8 +617,8 @@ button {
 .module-arrow {
   position: absolute;
 
-  right: 10px;
-  bottom: 10px;
+  right: 15px;
+  bottom: 14px;
 
   display: flex;
 
@@ -643,6 +634,7 @@ button {
   min-height: 65px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -680,13 +672,10 @@ button {
 }
 
 
-/* =========================================================
-   MASTER HEADER
-========================================================= */
-
 .master-section-header {
   margin-bottom: 16px;
 }
+
 
 .master-section-header h2 {
   margin: 0;
@@ -699,6 +688,7 @@ button {
 
   text-transform: uppercase;
 }
+
 
 .master-section-header p {
   margin:
@@ -720,7 +710,10 @@ button {
   display: grid;
 
   grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
 
   gap: 10px;
 }
@@ -758,16 +751,8 @@ button {
   text-align: left;
 
   cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
 }
 
-
-/* =========================================================
-   MASTER HOVER
-========================================================= */
 
 .master-field:hover {
   background: #faf9ff;
@@ -775,10 +760,6 @@ button {
   border-color: #aaa0df;
 }
 
-
-/* =========================================================
-   MASTER NUMBER
-========================================================= */
 
 .master-field-number {
   flex: 0 0 auto;
@@ -790,10 +771,6 @@ button {
   font-weight: 800;
 }
 
-
-/* =========================================================
-   MASTER TEXT
-========================================================= */
 
 .master-field-content {
   flex: 1;
@@ -810,10 +787,6 @@ button {
 }
 
 
-/* =========================================================
-   MASTER ACTION
-========================================================= */
-
 .master-field-action {
   flex: 0 0 auto;
 
@@ -826,7 +799,7 @@ button {
 
 
 /* =========================================================
-   ADDRESS SECTION
+   ADDRESS
 ========================================================= */
 
 .address-section {
@@ -850,10 +823,6 @@ button {
 }
 
 
-/* =========================================================
-   ADDRESS HEADER
-========================================================= */
-
 .address-header h2 {
   margin: 0;
 
@@ -866,6 +835,7 @@ button {
   text-transform: uppercase;
 }
 
+
 .address-header p {
   margin:
     5px 0 14px;
@@ -876,10 +846,6 @@ button {
 }
 
 
-/* =========================================================
-   ADDRESS FIELD
-========================================================= */
-
 .address-field {
   width: 100%;
 
@@ -888,7 +854,6 @@ button {
   display: flex;
 
   align-items: center;
-
   justify-content: space-between;
 
   padding:
@@ -910,19 +875,16 @@ button {
   cursor: pointer;
 }
 
+
 .address-field:hover {
   background: #faf9ff;
 
   border-color: #aaa0df;
 }
 
-.address-field svg {
-  color: #3212a3;
-}
-
 
 /* =========================================================
-   WORKFLOW STAGES
+   WORKFLOW
 ========================================================= */
 
 .workflow-stages {
@@ -945,6 +907,7 @@ button {
     rgba(30, 40, 80, 0.05);
 }
 
+
 .workflow-stages h3,
 .active-tasks h3 {
   margin:
@@ -959,7 +922,7 @@ button {
 
 
 /* =========================================================
-   STAGES ROW
+   STAGES
 ========================================================= */
 
 .stages-row {
@@ -974,6 +937,7 @@ button {
   gap: 8px;
 }
 
+
 .stage-wrapper {
   flex: 1;
 
@@ -985,6 +949,7 @@ button {
 
   gap: 7px;
 }
+
 
 .stage-card {
   flex: 1;
@@ -1014,6 +979,7 @@ button {
     rgba(30, 40, 80, 0.04);
 }
 
+
 .stage-dot {
   width: 12px;
   height: 12px;
@@ -1023,21 +989,26 @@ button {
   border-radius: 50%;
 }
 
+
 .stage-blue {
   background: #2ea7e0;
 }
+
 
 .stage-purple {
   background: #8d58d6;
 }
 
+
 .stage-yellow {
   background: #f5b800;
 }
 
+
 .stage-green {
   background: #36b45d;
 }
+
 
 .stage-number {
   display: block;
@@ -1046,6 +1017,7 @@ button {
 
   font-size: 11px;
 }
+
 
 .stage-card strong {
   display: block;
@@ -1056,6 +1028,7 @@ button {
 
   font-size: 11px;
 }
+
 
 .stage-arrow {
   flex: 0 0 auto;
@@ -1099,6 +1072,7 @@ button {
   overflow-x: auto;
 }
 
+
 table {
   width: 100%;
 
@@ -1107,9 +1081,11 @@ table {
   font-size: 11px;
 }
 
+
 thead {
   background: #f0edff;
 }
+
 
 th {
   padding:
@@ -1126,6 +1102,7 @@ th {
   white-space: nowrap;
 }
 
+
 td {
   padding:
     10px 12px;
@@ -1137,6 +1114,7 @@ td {
 
   white-space: nowrap;
 }
+
 
 tbody tr:hover {
   background: #faf9ff;
@@ -1162,6 +1140,7 @@ tbody tr:hover {
   font-weight: 700;
 }
 
+
 .priority.high {
   color: #e53935;
 
@@ -1171,6 +1150,7 @@ tbody tr:hover {
     1px solid #ffc9c7;
 }
 
+
 .priority.medium {
   color: #e88900;
 
@@ -1179,6 +1159,7 @@ tbody tr:hover {
   border:
     1px solid #ffdfaa;
 }
+
 
 .priority.low {
   color: #168b45;
@@ -1209,6 +1190,7 @@ tbody tr:hover {
   font-weight: 700;
 }
 
+
 .status.progress {
   color: #3157b8;
 
@@ -1217,6 +1199,7 @@ tbody tr:hover {
   border:
     1px solid #d1dcff;
 }
+
 
 .status.pending {
   color: #d98600;
@@ -1229,7 +1212,7 @@ tbody tr:hover {
 
 
 /* =========================================================
-   ACTION BUTTON
+   ACTION
 ========================================================= */
 
 .action-button {
@@ -1249,7 +1232,7 @@ tbody tr:hover {
 
 
 /* =========================================================
-   VIEW ALL BUTTON
+   VIEW ALL
 ========================================================= */
 
 .view-all-button {
@@ -1277,117 +1260,203 @@ tbody tr:hover {
   cursor: pointer;
 }
 
+
 .view-all-button:hover {
   background: #f5f2ff;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE - 1200px
 ========================================================= */
 
 @media (max-width: 1200px) {
 
-  .dashboard-body {
-    grid-template-columns:
-      200px
-      minmax(0, 1fr);
-  }
-
-  .functionality-sidebar {
-    width: 200px;
-  }
-
-  .functionality-content {
+  .header {
     padding:
-      18px 20px 25px;
+      0 18px;
+  }
+
+  .team-nav {
+    gap: 8px;
+  }
+
+  .team-item {
+    width: 58px;
+  }
+
+  .functionality-list {
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 4px;
+  }
+
+  .functionality-nav {
+    height: auto;
+
+    min-height: 72px;
+  }
+
+  .functionality-item {
+    padding:
+      7px 10px;
   }
 
   .modules-row {
     grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
   }
 
   .master-grid {
     grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
   }
-
 }
 
+
+/* =========================================================
+   RESPONSIVE - 900px
+========================================================= */
 
 @media (max-width: 900px) {
 
   .dashboard-body {
     grid-template-columns:
-      1fr;
+      0
+      minmax(0, 1fr);
   }
 
-  .functionality-sidebar {
-    width: 100%;
+  .empty-sidebar {
+    display: none;
+  }
 
-    min-height: auto;
+  .header {
+    height: auto;
+
+    min-height: 70px;
 
     padding:
-      14px;
-  }
-
-  .functionality-list {
-    display: grid;
-
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      12px 16px;
   }
 
   .team-nav {
+    position: static;
+
+    transform: none;
+
+    margin:
+      0 auto;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .header-user {
+    display: none;
+  }
+
+  .functionality-nav {
+    height: auto;
+
     justify-content: flex-start;
 
     overflow-x: auto;
+
+    padding:
+      8px 12px;
+  }
+
+  .functionality-list {
+    width: max-content;
+
+    max-width: none;
+
+    justify-content: flex-start;
+
+    flex-wrap: nowrap;
+  }
+
+  .functionality-item {
+    flex: 0 0 auto;
+  }
+
+  .functionality-content {
+    padding:
+      20px;
   }
 
   .modules-row {
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
   }
 
   .master-grid {
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
   }
-
 }
 
+
+/* =========================================================
+   RESPONSIVE - 600px
+========================================================= */
 
 @media (max-width: 600px) {
 
   .header {
-    height: 54px;
+    flex-wrap: wrap;
 
-    padding:
-      0 12px;
+    gap: 10px;
   }
 
   .brand-logo {
-    width: 32px;
-    height: 32px;
+    width: 34px;
 
-    font-size: 17px;
+    height: 34px;
+
+    font-size: 18px;
   }
 
-  .functionality-list {
-    grid-template-columns:
-      1fr;
+  .team-nav {
+    width: 100%;
+
+    order: 3;
+
+    gap: 6px;
+  }
+
+  .team-item {
+    width: 52px;
+
+    height: 32px;
+
+    font-size: 12px;
+  }
+
+  .functionality-content {
+    padding:
+      14px;
   }
 
   .modules-row,
   .master-grid {
     grid-template-columns:
       1fr;
-  }
-
-  .functionality-content {
-    padding:
-      14px;
   }
 
   .modules-section,
@@ -1397,6 +1466,18 @@ tbody tr:hover {
   .active-tasks {
     padding:
       15px;
+  }
+
+  .modules-title {
+    font-size: 20px;
+  }
+
+  .modules-subtitle {
+    font-size: 12px;
+  }
+
+  .module-card {
+    height: 180px;
   }
 
   .stages-row {
@@ -1412,5 +1493,1207 @@ tbody tr:hover {
   .stage-arrow {
     display: none;
   }
+}
 
+/* =========================================================
+   FINAL LAYOUT FIX
+   ========================================================= */
+
+.dashboard-body {
+  grid-template-columns: 88px minmax(0, 1fr);
+}
+
+.empty-sidebar {
+  width: 88px;
+  min-width: 88px;
+  min-height: calc(100vh - 90px);
+  background: #240566;
+}
+
+/* Keep the 8 functionality items on one line on desktop/tablet */
+.functionality-nav {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.functionality-list {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.functionality-item {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.functionality-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.functionality-icon {
+  width: 20px;
+  min-width: 20px;
+}
+
+/* Make the main content and card grid stay inside the available width */
+.dashboard-main,
+.functionality-content,
+.modules-section,
+.modules-row,
+.master-section,
+.master-grid,
+.address-section,
+.workflow-stages,
+.active-tasks {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.modules-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.master-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* At smaller widths the navigation can scroll instead of cutting items */
+@media (max-width: 900px) {
+  .dashboard-body {
+    grid-template-columns: 0 minmax(0, 1fr);
+  }
+
+  .empty-sidebar {
+    display: none;
+  }
+
+  .functionality-nav {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  .functionality-list {
+    width: max-content;
+    flex-wrap: nowrap;
+  }
+
+  .functionality-item {
+    flex: 0 0 auto;
+    min-width: max-content;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .functionality-list {
+    width: max-content;
+  }
+
+  .functionality-item {
+    min-width: max-content;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   REFERENCE VISUALIZATION STYLE
+   Based on the supplied HR dashboard reference:
+   compact enterprise spacing, nested white panels,
+   clear section hierarchy, and dense but readable content.
+   ========================================================= */
+
+/* Page/content canvas */
+.dashboard-main {
+  min-width: 0;
+  overflow: hidden;
+  background: #f3f5fa;
+}
+
+.functionality-content {
+  width: 100%;
+  min-width: 0;
+  padding: 20px 24px 32px;
+}
+
+/* Main white content container */
+.modules-section,
+.master-section,
+.address-section,
+.workflow-stages,
+.active-tasks {
+  width: 100%;
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #e2e5ed;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(31, 39, 72, 0.06);
+}
+
+/* Section heading */
+.section-heading {
+  margin-bottom: 18px;
+}
+
+.modules-title {
+  margin: 0;
+  color: #24106f;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
+
+.modules-subtitle {
+  margin: 5px 0 0;
+  color: #7b849d;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Compact dashboard module grid */
+.modules-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.module-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 170px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e0e3eb;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #24106f;
+
+  box-shadow: 0 2px 7px rgba(31, 39, 72, 0.045);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.module-card:hover {
+  transform: translateY(-1px);
+  border-color: #d5cef4;
+  box-shadow: 0 5px 14px rgba(49, 27, 145, 0.09);
+}
+
+/* Module number */
+.module-number {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #3212a3;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* Module icon circle */
+.module-icon {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #f0edff;
+  color: #4a28bb;
+}
+
+/* Module label */
+.module-name {
+  max-width: 90%;
+  color: #21106f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* Module arrow */
+.module-arrow {
+  position: absolute;
+  right: 15px;
+  bottom: 13px;
+  color: #3d1aa8;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* =========================================================
+   MASTER / FORM VISUALIZATION
+   ========================================================= */
+
+.master-section {
+  padding: 22px 22px 24px;
+}
+
+.master-section-header {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #eceef4;
+}
+
+.master-section-header h2 {
+  margin: 0;
+  color: #24106f;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.master-section-header p {
+  margin: 4px 0 0;
+  color: #7b849d;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.master-grid {
+  width: 100%;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.master-field {
+  min-width: 0;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+
+  border: 1px solid #dfe2ea;
+  border-radius: 9px;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(31, 39, 72, 0.025);
+}
+
+.master-field-number {
+  flex: 0 0 auto;
+  color: #3212a3;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.master-field-content {
+  min-width: 0;
+  color: #1f2a49;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* =========================================================
+   ADDRESS SECTION
+   ========================================================= */
+
+.address-section {
+  padding: 20px 22px 22px;
+}
+
+.address-header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eceef4;
+}
+
+.address-header h2 {
+  margin: 0;
+  color: #24106f;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.address-header p {
+  margin: 4px 0 0;
+  color: #7b849d;
+  font-size: 12px;
+}
+
+.address-field {
+  min-width: 0;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid #dfe2ea;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #1f2a49;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   WORKFLOW STAGES
+   ========================================================= */
+
+.workflow-stages {
+  padding: 18px 20px;
+}
+
+.workflow-stages h3 {
+  margin: 0 0 14px;
+  color: #24106f;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.stages-row {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.stage-wrapper {
+  min-width: 0;
+  flex: 1 1 0;
+}
+
+.stage-card {
+  min-height: 66px;
+  padding: 10px 12px;
+  border: 1px solid #e0e3eb;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.stage-number {
+  color: #7b849d;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.stage-name {
+  margin-top: 5px;
+  color: #24106f;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.stage-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  color: #8a90a5;
+  font-size: 17px;
+}
+
+/* =========================================================
+   ACTIVE TASKS / TABLE
+   ========================================================= */
+
+.active-tasks {
+  padding: 18px 20px 20px;
+  overflow: hidden;
+}
+
+.active-tasks h3 {
+  margin: 0 0 14px;
+  color: #24106f;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.tasks-table-wrapper,
+.table-wrapper {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid #e1e4ec;
+  border-radius: 9px;
+}
+
+.tasks-table,
+.active-tasks table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.tasks-table th,
+.active-tasks th {
+  padding: 10px 11px;
+  background: #f0eff8;
+  color: #39248a;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tasks-table td,
+.active-tasks td {
+  padding: 10px 11px;
+  border-top: 1px solid #e8eaf0;
+  color: #303544;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tasks-table tbody tr:hover,
+.active-tasks tbody tr:hover {
+  background: #fafaff;
+}
+
+/* =========================================================
+   RESPONSIVE REFERENCE STYLE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .functionality-content {
+    padding: 18px 20px 28px;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .functionality-content {
+    padding: 16px;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .modules-title {
+    font-size: 20px;
+  }
+
+  .stages-row {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .stage-wrapper {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .functionality-content {
+    padding: 12px;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modules-section,
+  .master-section,
+  .address-section,
+  .workflow-stages,
+  .active-tasks {
+    border-radius: 10px;
+  }
+
+  .module-card {
+    height: 160px;
+  }
+}
+
+
+/* =========================================================
+   FUNCTIONALITY NAV - CLARITY / BALANCE FIX
+   Keep all 8 items visible and make labels easier to read.
+   ========================================================= */
+
+.functionality-nav {
+  width: 100%;
+  min-width: 0;
+  height: 76px;
+  padding: 6px 26px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.functionality-list {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns:
+    minmax(135px, 1fr)
+    minmax(185px, 1.35fr)
+    minmax(105px, 0.8fr)
+    minmax(185px, 1.4fr)
+    minmax(165px, 1.2fr)
+    minmax(180px, 1.3fr)
+    minmax(120px, 0.85fr)
+    minmax(135px, 1fr);
+  align-items: stretch;
+  gap: 5px;
+}
+
+.functionality-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border-radius: 7px;
+  white-space: nowrap;
+}
+
+.functionality-icon {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.functionality-name {
+  min-width: 0;
+  overflow: visible;
+  text-overflow: unset;
+  white-space: nowrap;
+
+  color: currentColor;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Long labels should never be cut */
+.functionality-item:nth-child(4) .functionality-name {
+  font-size: 12.5px;
+}
+
+/* Keep the active Report button visually balanced */
+.functionality-item.active {
+  min-height: 48px;
+}
+
+/* =========================================================
+   TABLET - allow horizontal navigation instead of clipping
+   ========================================================= */
+
+@media (max-width: 1250px) {
+  .functionality-nav {
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+  }
+
+  .functionality-list {
+    width: max-content;
+    min-width: 1180px;
+    display: flex;
+    gap: 5px;
+  }
+
+  .functionality-item {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: max-content;
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
+
+@media (max-width: 900px) {
+  .functionality-nav {
+    height: 68px;
+    padding: 6px 12px;
+  }
+
+  .functionality-list {
+    min-width: max-content;
+  }
+
+  .functionality-name {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   FUNCTIONALITY NAV - COMPACT SIZE
+   Keep the same layout, only reduce the visual scale.
+   ========================================================= */
+
+.functionality-nav {
+  height: 68px;
+  padding: 5px 18px;
+}
+
+.functionality-list {
+  gap: 2px;
+}
+
+.functionality-item {
+  min-height: 42px;
+  padding: 6px 6px;
+  gap: 5px;
+  border-radius: 6px;
+}
+
+.functionality-icon {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+}
+
+.functionality-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.functionality-name {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.functionality-item:nth-child(4) .functionality-name {
+  font-size: 11px;
+}
+
+/* Keep the active button compact too */
+.functionality-item.active {
+  min-height: 42px;
+}
+
+/* Desktop: slightly tighter proportional widths */
+@media (min-width: 1251px) {
+  .functionality-list {
+    grid-template-columns:
+      minmax(120px, 1fr)
+      minmax(165px, 1.25fr)
+      minmax(90px, 0.75fr)
+      minmax(165px, 1.25fr)
+      minmax(145px, 1.1fr)
+      minmax(160px, 1.2fr)
+      minmax(105px, 0.8fr)
+      minmax(105px, 0.85fr);
+  }
+}
+
+
+/* =========================================================
+   HEADER / TEAM NAV - COMPACT SIZE
+   Reduce the header scale without changing its structure.
+   ========================================================= */
+
+.header {
+  height: 72px;
+  padding: 0 24px 0 88px;
+}
+
+/* B logo */
+.brand-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 9px;
+  font-size: 25px;
+}
+
+/* Team navigation */
+.team-nav {
+  gap: 8px;
+}
+
+.team-item {
+  width: 52px;
+  height: 48px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Selected team */
+.team-item.selected {
+  border-radius: 6px;
+}
+
+/* Admin user */
+.header-user {
+  gap: 9px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 10px;
+}
+
+.user-info span {
+  font-size: 12px;
+}
+
+/* Keep the header compact at tablet sizes */
+@media (max-width: 1200px) {
+  .header {
+    height: 68px;
+    padding: 0 18px 0 78px;
+  }
+
+  .brand-logo {
+    width: 48px;
+    height: 48px;
+    font-size: 23px;
+  }
+
+  .team-nav {
+    gap: 6px;
+  }
+
+  .team-item {
+    width: 48px;
+    height: 44px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    min-height: 64px;
+    padding: 8px 14px;
+  }
+
+  .brand-logo {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+
+  .team-item {
+    width: 44px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   EXTRA COMPACT - HEADER + FUNCTIONALITY BAR
+   Reduce both further while preserving the exact structure.
+   ========================================================= */
+
+/* Top header */
+.header {
+  height: 60px;
+  padding: 0 20px 0 76px;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  font-size: 22px;
+}
+
+.team-nav {
+  gap: 5px;
+}
+
+.team-item {
+  width: 44px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Admin */
+.header-user {
+  gap: 7px;
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  font-size: 9px;
+}
+
+.user-info span {
+  font-size: 11px;
+}
+
+/* Functionality bar */
+.functionality-nav {
+  height: 58px;
+  padding: 4px 14px;
+}
+
+.functionality-list {
+  gap: 1px;
+}
+
+.functionality-item {
+  min-height: 36px;
+  padding: 5px 5px;
+  gap: 4px;
+  border-radius: 5px;
+}
+
+.functionality-icon {
+  width: 17px;
+  min-width: 17px;
+  height: 17px;
+}
+
+.functionality-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.functionality-name,
+.functionality-item:nth-child(4) .functionality-name {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   EXTRA COMPACT - TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .header {
+    height: 58px;
+    padding: 0 16px 0 68px;
+  }
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+    font-size: 21px;
+  }
+
+  .team-nav {
+    gap: 4px;
+  }
+
+  .team-item {
+    width: 42px;
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .functionality-nav {
+    height: 54px;
+    padding: 3px 10px;
+  }
+
+  .functionality-item {
+    min-height: 34px;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    min-height: 58px;
+    padding: 7px 12px;
+  }
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .team-item {
+    width: 40px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .functionality-nav {
+    height: 52px;
+  }
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR + LOGO RELOCATION
+   Compact sidebar; B logo lives inside the sidebar.
+   ========================================================= */
+
+/* Make the left rail compact */
+.dashboard-body {
+  grid-template-columns: 76px minmax(0, 1fr);
+}
+
+.empty-sidebar {
+  width: 76px;
+  min-width: 76px;
+  min-height: calc(100vh - 60px);
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  background: #240566;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Put the B logo inside the left sidebar */
+.empty-sidebar::before {
+  content: "B";
+
+  width: 44px;
+  height: 44px;
+  margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.13);
+
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* Remove the original B from the top header */
+.header .brand-logo {
+  display: none;
+}
+
+/* Header no longer reserves space for the removed logo */
+.header {
+  padding-left: 20px;
+}
+
+/* Keep the team row centered in the complete header */
+.team-nav {
+  left: 50%;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .dashboard-body {
+    grid-template-columns: 70px minmax(0, 1fr);
+  }
+
+  .empty-sidebar {
+    width: 70px;
+    min-width: 70px;
+  }
+
+  .empty-sidebar::before {
+    width: 40px;
+    height: 40px;
+    margin-top: 9px;
+    font-size: 20px;
+  }
+
+  .header {
+    padding-left: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-body {
+    grid-template-columns: 0 minmax(0, 1fr);
+  }
+
+  .empty-sidebar {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   EXTRA COMPACT WORKING QUEUE / MODULES
+   Reduce the complete content block without changing
+   the overall dashboard structure.
+   ========================================================= */
+
+.functionality-content {
+  padding: 14px 18px 24px;
+}
+
+.modules-section {
+  padding: 18px 20px 20px;
+  border-radius: 10px;
+}
+
+.section-heading {
+  margin-bottom: 14px;
+}
+
+.modules-title {
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.modules-subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.modules-row {
+  gap: 12px;
+}
+
+.module-card {
+  height: 130px;
+  padding: 12px;
+  border-radius: 9px;
+}
+
+.module-number {
+  top: 11px;
+  left: 12px;
+  font-size: 12px;
+}
+
+.module-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 8px;
+}
+
+.module-name {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.module-arrow {
+  right: 11px;
+  bottom: 10px;
+  font-size: 17px;
+}
+
+/* Keep the same compact scale for the other content sections */
+.master-section {
+  padding: 16px 18px 18px;
+}
+
+.address-section {
+  margin-top: 12px;
+  padding: 16px 18px 18px;
+}
+
+.workflow-stages {
+  margin-top: 8px;
+  padding: 14px 18px;
+}
+
+.active-tasks {
+  padding: 14px 18px;
+}
+
+@media (max-width: 1200px) {
+  .functionality-content {
+    padding: 12px 16px 20px;
+  }
+
+  .modules-section {
+    padding: 16px 18px 18px;
+  }
+
+  .modules-row {
+    gap: 10px;
+  }
+
+  .module-card {
+    height: 125px;
+  }
+}
+
+@media (max-width: 900px) {
+  .functionality-content {
+    padding: 12px 14px 18px;
+  }
+
+  .modules-section,
+  .master-section,
+  .address-section,
+  .workflow-stages,
+  .active-tasks {
+    padding: 14px;
+  }
+
+  .module-card {
+    height: 125px;
+  }
+}
+
+@media (max-width: 600px) {
+  .functionality-content {
+    padding: 10px;
+  }
+
+  .modules-section,
+  .master-section,
+  .address-section,
+  .workflow-stages,
+  .active-tasks {
+    padding: 12px;
+  }
+
+  .modules-title {
+    font-size: 18px;
+  }
+
+  .modules-subtitle {
+    font-size: 11px;
+  }
+
+  .module-card {
+    height: 120px;
+  }
+
+  .module-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+  }
+
+  .module-name {
+    font-size: 11px;
+  }
 }

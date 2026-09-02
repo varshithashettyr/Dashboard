@@ -3,16 +3,12 @@ import {
   ChevronDown,
   Layers3,
   ClipboardList,
-  Database,
   ArrowLeftRight,
   UserPlus,
   Users,
   ShieldCheck,
   BarChart3,
-  FileText,
-  Settings,
 } from "lucide-react";
-
 
 /* =========================================================
    MAIN FUNCTIONALITY CONTENT
@@ -48,7 +44,6 @@ function FunctionalityContent({
             </p>
 
           </div>
-
 
           <div className="master-grid">
 
@@ -88,7 +83,6 @@ function FunctionalityContent({
               </p>
 
             </div>
-
 
             <button
               className="address-field"
@@ -169,9 +163,7 @@ function FunctionalityContent({
       ================================================= */}
 
       {functionality.id === "working-queue" && (
-
         <WorkflowStages />
-
       )}
 
 
@@ -180,9 +172,7 @@ function FunctionalityContent({
       ================================================= */}
 
       {functionality.id === "working-queue" && (
-
         <ActiveTasks />
-
       )}
 
     </main>
@@ -201,7 +191,6 @@ function MasterField({
 
   const isDropdown =
     module.type === "dropdown";
-
 
   return (
     <button
@@ -312,6 +301,7 @@ function ModuleCard({
 function WorkflowStages() {
 
   const stages = [
+
     {
       number: "1",
       name: "Capture",
@@ -341,6 +331,7 @@ function WorkflowStages() {
       name: "Complete",
       color: "stage-purple",
     },
+
   ];
 
 
@@ -409,6 +400,7 @@ function WorkflowStages() {
 function ActiveTasks() {
 
   const tasks = [
+
     {
       id: "N-2025-001",
       name: "Document Verification",
@@ -444,6 +436,7 @@ function ActiveTasks() {
       status: "Pending",
       date: "31-Aug-2026",
     },
+
   ];
 
 
@@ -521,12 +514,14 @@ function ActiveTasks() {
                 </td>
 
                 <td>
+
                   <button
                     className="action-button"
                     type="button"
                   >
                     ⋮
                   </button>
+
                 </td>
 
               </tr>
