@@ -117,13 +117,13 @@ function FunctionalityContent({
 
         <div className="section-heading">
 
-          <h2 className="modules-title">
+          {/* <h2 className="modules-title">
             {functionality.name}
-          </h2>
+          </h2> */}
 
-          <p className="modules-subtitle">
+          {/* <p className="modules-subtitle">
             Manage tasks and workflow activities
-          </p>
+          </p> */}
 
         </div>
 

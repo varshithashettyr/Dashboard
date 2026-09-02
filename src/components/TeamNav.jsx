@@ -1,19 +1,23 @@
-import { teams } from "../data/workflowData";
-
-function TeamNav() {
+function TeamNav({
+  teams,
+  selectedTeam,
+  onTeamChange,
+}) {
   return (
-    <div className="team-nav">
-
+    <nav className="team-nav">
       {teams.map((team) => (
-        <div
+        <button
           key={team}
-          className="team-item"
+          type="button"
+          className={`team-item ${
+            selectedTeam === team ? "selected" : ""
+          }`}
+          onClick={() => onTeamChange(team)}
         >
           {team}
-        </div>
+        </button>
       ))}
-
-    </div>
+    </nav>
   );
 }
 

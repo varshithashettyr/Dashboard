@@ -2697,3 +2697,23 @@ tbody tr:hover {
     font-size: 11px;
   }
 }
+
+/* =========================================================
+   FINAL TEAM NAV POSITION
+   Move N / P / Z / ZA / C / GMI / PB to the left.
+   Everything else remains unchanged.
+   ========================================================= */
+
+.team-nav {
+  left: 92px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  .team-nav {
+    left: auto;
+    top: auto;
+    transform: none;
+  }
+}

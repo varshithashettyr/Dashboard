@@ -65,19 +65,27 @@ function FunctionalityIcon({ id }) {
    TEAM NAVIGATION
 ========================================================= */
 
-function TeamNav() {
+function TeamNav({
+  selectedTeam,
+  onTeamChange,
+}) {
   return (
     <div className="team-nav">
 
-      {teams.map((team, index) => (
-        <div
+      {teams.map((team) => (
+        <button
           key={team}
+          type="button"
           className={`team-item ${
-            index === 0 ? "selected" : ""
+            selectedTeam === team
+              ? "selected"
+              : ""
           }`}
+          onClick={() => onTeamChange(team)}
+          aria-pressed={selectedTeam === team}
         >
           {team}
-        </div>
+        </button>
       ))}
 
     </div>
@@ -184,6 +192,23 @@ function FunctionalityNav({
 
 function App() {
 
+  /* =======================================================
+     SELECTED TEAM
+     
+     N is selected initially.
+     Clicking P, Z, ZA, C, GMI or PB changes it.
+  ======================================================= */
+
+  const [
+    selectedTeam,
+    setSelectedTeam,
+  ] = useState("N");
+
+
+  /* =======================================================
+     SELECTED FUNCTIONALITY
+  ======================================================= */
+
   const [
     selectedFunctionality,
     setSelectedFunctionality,
@@ -191,6 +216,10 @@ function App() {
     "client-onboarding"
   );
 
+
+  /* =======================================================
+     ACTIVE FUNCTIONALITY
+  ======================================================= */
 
   const activeFunctionality =
     functionalityData.find(
@@ -223,7 +252,10 @@ function App() {
 
           {/* TEAM ROW */}
 
-          <TeamNav />
+          <TeamNav
+            selectedTeam={selectedTeam}
+            onTeamChange={setSelectedTeam}
+          />
 
 
           {/* ADMIN USER */}
@@ -285,7 +317,7 @@ function App() {
             {/* CONTENT */}
 
             <FunctionalityContent
-              team="N"
+              team={selectedTeam}
               functionality={
                 activeFunctionality
               }
