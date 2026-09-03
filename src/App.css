@@ -2717,3 +2717,970 @@ tbody tr:hover {
     transform: none;
   }
 }
+
+
+/* =========================================================
+   FINAL FUNCTIONALITY NAVIGATION
+   ========================================================= */
+
+.functionality-nav {
+  width: 100%;
+  min-width: 0;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 4px 8px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e7e8ef;
+  box-shadow: 0 2px 8px rgba(30, 35, 70, 0.04);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   FUNCTIONALITY LIST
+   ========================================================= */
+
+.functionality-list {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(150px, 1fr)
+    minmax(200px, 1.35fr)
+    minmax(120px, 0.8fr)
+    minmax(200px, 1.4fr)
+    minmax(180px, 1.2fr)
+    minmax(195px, 1.3fr)
+    minmax(135px, 0.85fr)
+    minmax(150px, 1fr);
+
+  align-items: stretch;
+
+  gap: 5px;
+}
+
+
+/* =========================================================
+   FUNCTIONALITY ITEM
+   ========================================================= */
+
+.functionality-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 5px 8px;
+
+  border: 1px solid transparent;
+  border-radius: 6px;
+
+  background: transparent;
+  color: #21106f;
+
+  text-align: center;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* =========================================================
+   FUNCTIONALITY HOVER
+   ========================================================= */
+
+.functionality-item:hover {
+  background: #f5f2ff;
+}
+
+
+/* =========================================================
+   ACTIVE FUNCTIONALITY
+   ========================================================= */
+
+.functionality-item.active {
+  background: #3d1aa8;
+
+  border-color: #3d1aa8;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 3px 8px rgba(20, 5, 90, 0.18);
+}
+
+
+/* =========================================================
+   FUNCTIONALITY ICON
+   ========================================================= */
+
+.functionality-icon {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: currentColor;
+}
+
+.functionality-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* =========================================================
+   FUNCTIONALITY TEXT
+   ========================================================= */
+
+.functionality-name {
+  min-width: 0;
+
+  color: currentColor;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  line-height: 1.15;
+
+  white-space: nowrap;
+
+  overflow: visible;
+  text-overflow: unset;
+}
+
+
+/* =========================================================
+   LONG LABEL
+   ========================================================= */
+
+.functionality-item:nth-child(4) .functionality-name {
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+  .functionality-nav {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 4px 8px;
+  }
+
+  .functionality-list {
+    width: max-content;
+    min-width: 1180px;
+
+    display: flex;
+
+    gap: 5px;
+  }
+
+  .functionality-item {
+    flex: 0 0 auto;
+
+    width: auto;
+    min-width: max-content;
+
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .functionality-nav {
+    height: 54px;
+
+    padding: 4px 8px;
+
+    overflow-x: auto;
+  }
+
+  .functionality-list {
+    width: max-content;
+    min-width: max-content;
+
+    display: flex;
+
+    gap: 5px;
+  }
+
+  .functionality-item {
+    flex: 0 0 auto;
+
+    min-width: max-content;
+
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .functionality-name {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .functionality-nav {
+    height: 50px;
+
+    padding: 3px 6px;
+  }
+
+  .functionality-list {
+    width: max-content;
+  }
+
+  .functionality-item {
+    min-width: max-content;
+
+    min-height: 34px;
+
+    padding: 4px 8px;
+
+    gap: 4px;
+  }
+
+  .functionality-icon {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+  }
+
+  .functionality-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .functionality-name {
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   FINAL APPROVED MODULE STYLE
+   Applies to ALL module cards using the existing
+   .module-card / .module-name structure.
+
+   IMPORTANT:
+   Existing approved content is NOT changed.
+   Existing number/icon/arrow elements are only hidden.
+   ========================================================= */
+
+.module-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 16px;
+
+  border: 1px solid #e3e5ed;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #21106f;
+
+  cursor: pointer;
+
+  box-shadow: 0 2px 7px rgba(31, 39, 72, 0.045);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.module-card:hover {
+  transform: translateY(-1px);
+  border-color: #d0c7f0;
+  background: #fcfbff;
+  box-shadow: 0 4px 12px rgba(49, 27, 145, 0.08);
+}
+
+/* Keep approved content, hide only presentation-only elements */
+.module-card .module-number,
+.module-card .module-icon,
+.module-card .module-arrow {
+  display: none;
+}
+
+.module-card .module-name {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+
+  color: #21106f;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  line-height: 1.2;
+  text-align: center;
+
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+/* Active module */
+.module-card.active {
+  border-color: #3d1aa8;
+  background: #f5f2ff;
+  box-shadow: 0 3px 10px rgba(61, 26, 168, 0.10);
+}
+
+/* Module grid */
+.modules-row {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+/* Main module container */
+.modules-section {
+  width: 100%;
+  min-width: 0;
+
+  padding: 18px 20px 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e5ed;
+  border-radius: 10px;
+
+  box-shadow: 0 2px 10px rgba(31, 39, 72, 0.06);
+}
+
+/* Main content spacing */
+.functionality-content {
+  width: 100%;
+  min-width: 0;
+
+  padding: 14px 18px 24px;
+}
+
+/* Heading */
+.section-heading {
+  margin-bottom: 14px;
+}
+
+.modules-title {
+  margin: 0;
+
+  color: #24106f;
+
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.modules-subtitle {
+  margin: 4px 0 0;
+
+  color: #7b849d;
+
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+/* Keep other dashboard sections compact */
+.master-section,
+.address-section,
+.workflow-stages,
+.active-tasks {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Master grid */
+.master-grid {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .functionality-content {
+    padding: 12px 16px 20px;
+  }
+
+  .modules-section {
+    padding: 16px 18px 18px;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .modules-row {
+    gap: 10px;
+  }
+
+  .module-card {
+    height: 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .functionality-content {
+    padding: 12px 14px 18px;
+  }
+
+  .modules-section,
+  .master-section,
+  .address-section,
+  .workflow-stages,
+  .active-tasks {
+    padding: 14px;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .module-card {
+    height: 58px;
+  }
+
+  .module-card .module-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .functionality-content {
+    padding: 10px;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modules-section,
+  .master-section,
+  .address-section,
+  .workflow-stages,
+  .active-tasks {
+    padding: 12px;
+  }
+
+  .modules-title {
+    font-size: 18px;
+  }
+
+  .modules-subtitle {
+    font-size: 11px;
+  }
+
+  .module-card {
+    height: 54px;
+    padding: 8px 12px;
+  }
+
+  .module-card .module-name {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   FINAL WIDTH SAFETY
+   ========================================================= */
+
+.dashboard-main,
+.functionality-content,
+.modules-section,
+.modules-row,
+.master-section,
+.master-grid,
+.address-section,
+.workflow-stages,
+.active-tasks {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* =========================================================
+   FINAL COMPACT DASHBOARD OVERRIDE
+   Applies consistently to ALL functionality module cards.
+   Approved content/labels are NOT changed.
+   ========================================================= */
+
+/* Main functionality area */
+.functionality-content {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding: 10px 14px 16px !important;
+}
+
+/* Module section: tighter dashboard spacing */
+.modules-section {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding: 12px 14px 14px !important;
+  margin: 0 !important;
+}
+
+.section-heading {
+  margin-bottom: 10px !important;
+}
+
+.modules-title {
+  margin: 0 !important;
+  font-size: 18px !important;
+  line-height: 1.15 !important;
+}
+
+.modules-subtitle {
+  margin: 3px 0 0 !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+
+/* ALL MODULE CARDS: five compact cards on one desktop row */
+.modules-row {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  grid-auto-rows: 58px !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+  overflow: hidden !important;
+}
+
+.module-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  max-height: 58px !important;
+  padding: 8px 12px !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 1px solid #e1e4ec !important;
+  border-radius: 9px !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 7px rgba(31, 39, 72, 0.05) !important;
+
+  color: #21106f !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+}
+
+.module-card:hover {
+  transform: translateY(-1px) !important;
+  border-color: #d1c8ee !important;
+  background: #fcfbff !important;
+  box-shadow: 0 4px 10px rgba(49, 27, 145, 0.08) !important;
+}
+
+/* Keep the dashboard card clean and compact */
+.module-card .module-number,
+.module-card .module-icon,
+.module-card .module-arrow {
+  display: none !important;
+}
+
+.module-card .module-name {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #21106f !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.module-card.active {
+  border-color: #3d1aa8 !important;
+  background: #f5f2ff !important;
+  box-shadow: 0 3px 9px rgba(61, 26, 168, 0.09) !important;
+}
+
+/* =========================================================
+   MASTER SECTION — same compact visual language
+   ========================================================= */
+.master-section,
+.address-section,
+.workflow-stages,
+.active-tasks {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin-top: 10px !important;
+}
+
+.master-grid {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.master-field {
+  min-width: 0 !important;
+  height: 54px !important;
+  min-height: 54px !important;
+  padding: 7px 10px !important;
+  border-radius: 9px !important;
+}
+
+.master-field-content {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+/* =========================================================
+   WORKFLOW STAGES — compact horizontal dashboard strip
+   ========================================================= */
+.workflow-stages {
+  padding: 10px 12px !important;
+}
+
+.workflow-stages h3,
+.active-tasks h3 {
+  margin: 0 0 8px !important;
+  font-size: 16px !important;
+  line-height: 1.15 !important;
+}
+
+.stages-row {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  overflow: hidden !important;
+}
+
+.stage-wrapper {
+  min-width: 0 !important;
+  flex: 1 1 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+.stage-card {
+  min-width: 0 !important;
+  width: 100% !important;
+  min-height: 48px !important;
+  padding: 6px 8px !important;
+  border-radius: 8px !important;
+}
+
+.stage-card strong,
+.stage-number {
+  white-space: nowrap !important;
+}
+
+.stage-arrow {
+  flex: 0 0 auto !important;
+}
+
+/* =========================================================
+   ACTIVE TASKS — tighter table section
+   ========================================================= */
+.active-tasks {
+  padding: 10px 12px !important;
+}
+
+.table-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+.active-tasks table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.active-tasks th,
+.active-tasks td {
+  padding: 7px 8px !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+
+.view-all-button {
+  margin-top: 8px !important;
+  padding: 6px 12px !important;
+  font-size: 11px !important;
+}
+
+/* =========================================================
+   RESPONSIVE — preserve compactness without breaking mobile
+   ========================================================= */
+@media (max-width: 1200px) {
+  .modules-row,
+  .master-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .module-card {
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
+  }
+
+  .module-card .module-name {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .modules-row,
+  .master-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .modules-section,
+  .master-section,
+  .address-section,
+  .workflow-stages,
+  .active-tasks {
+    padding: 10px !important;
+  }
+
+  .module-card {
+    height: 54px !important;
+    min-height: 54px !important;
+    max-height: 54px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .functionality-content {
+    padding: 8px !important;
+  }
+
+  .modules-row,
+  .master-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .module-card {
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
+    padding: 7px 9px !important;
+  }
+
+  .module-card .module-name {
+    font-size: 11px !important;
+  }
+
+  .stages-row {
+    overflow-x: auto !important;
+  }
+
+  .stage-wrapper {
+    min-width: 150px !important;
+    flex: 0 0 150px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .modules-row,
+  .master-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =========================================================
+   FINAL NAVIGATION FIX — NEVER CUT FUNCTIONALITY LABELS
+   ========================================================= */
+
+.functionality-nav {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 58px !important;
+  padding: 4px 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  box-sizing: border-box !important;
+}
+
+.functionality-list {
+  width: max-content !important;
+  min-width: max-content !important;
+  max-width: none !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  flex: 0 0 auto !important;
+}
+
+.functionality-item {
+  width: auto !important;
+  min-width: max-content !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;
+  min-height: 46px !important;
+  height: 46px !important;
+  padding: 6px 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+.functionality-icon {
+  flex: 0 0 20px !important;
+  width: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+}
+
+.functionality-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  flex: 0 0 auto !important;
+}
+
+.functionality-name,
+.functionality-item:nth-child(4) .functionality-name {
+  width: auto !important;
+  min-width: max-content !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;
+  display: inline-block !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+}
+
+/* Slightly smaller text only when the viewport genuinely needs it.
+   Labels still remain completely visible. */
+@media (max-width: 1450px) {
+  .functionality-item {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    gap: 6px !important;
+  }
+
+  .functionality-name,
+  .functionality-item:nth-child(4) .functionality-name {
+    font-size: 12px !important;
+  }
+
+  .functionality-icon {
+    flex-basis: 18px !important;
+    width: 18px !important;
+    min-width: 18px !important;
+    height: 18px !important;
+  }
+
+  .functionality-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* On smaller screens, allow horizontal scrolling instead of cutting text. */
+@media (max-width: 1100px) {
+  .functionality-nav {
+    justify-content: flex-start !important;
+  }
+
+  .functionality-list {
+    justify-content: flex-start !important;
+  }
+}

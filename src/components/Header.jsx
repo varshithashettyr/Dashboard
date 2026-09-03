@@ -9,6 +9,8 @@ function Header() {
         <button
           className="menu-button"
           type="button"
+          height={60}
+          width={28}
           aria-label="Menu"
         >
           <Menu size={28} />
