@@ -1,0 +1,453 @@
+/* =========================================
+   TASK ALLOCATION CONTAINER
+========================================= */
+
+.task-allocation-container {
+  width: 100%;
+  box-sizing: border-box;
+
+  margin-top: 10px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.tar-form {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 8px 14px 12px;
+
+  background: #ffffff;
+}
+
+
+/* =========================================
+   ROW
+========================================= */
+
+.tar-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  column-gap: 14px;
+
+  width: 100%;
+
+  margin-bottom: 5px;
+}
+
+
+/* =========================================
+   FIELD
+========================================= */
+
+.tar-field {
+  display: grid;
+
+  grid-template-columns:
+    120px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  min-width: 0;
+}
+
+
+.tar-field > label {
+  padding-right: 7px;
+
+  color: #111111;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+
+.tar-field > label span {
+  color: #ff0000;
+
+  margin-left: 2px;
+}
+
+
+/* =========================================
+   INPUTS / SELECTS
+========================================= */
+
+.tar-field input,
+.tar-field select {
+  width: 100%;
+
+  height: 25px;
+
+  box-sizing: border-box;
+
+  padding: 2px 6px;
+
+  border: 1px solid #80604d;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  outline: none;
+}
+
+
+.tar-field input:focus,
+.tar-field select:focus {
+  border-color: #337ab7;
+}
+
+
+/* =========================================
+   EMPTY FIELD
+========================================= */
+
+.tar-empty-field {
+  min-width: 0;
+}
+
+
+/* =========================================
+   RADIO BUTTONS
+========================================= */
+
+.tar-radio-group {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  min-height: 25px;
+}
+
+
+.tar-radio {
+  display: inline-flex !important;
+
+  align-items: center;
+
+  gap: 2px;
+
+  padding: 0 !important;
+
+  white-space: nowrap;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px !important;
+
+  font-weight: 400 !important;
+}
+
+
+.tar-radio input {
+  width: 16px !important;
+  height: 16px !important;
+
+  margin: 0;
+
+  padding: 0;
+
+  border: none !important;
+
+  accent-color: #337ab7;
+}
+
+
+.tar-radio span {
+  color: #111111;
+}
+
+
+/* =========================================
+   DATE HINT
+========================================= */
+
+.tar-date-hint {
+  margin-left: 120px;
+
+  margin-top: 1px;
+
+  margin-bottom: 8px;
+
+  color: #00a8e8;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   NUMBER INPUT
+========================================= */
+
+.tar-field input[type="number"] {
+  width: 104px;
+
+  height: 32px;
+
+  font-size: 10px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   SUBJECT
+========================================= */
+
+.tar-subject-row {
+  display: grid;
+
+  grid-template-columns:
+    120px
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  width: 100%;
+
+  margin-top: 7px;
+}
+
+
+.tar-subject-row > label {
+  padding-right: 7px;
+
+  padding-top: 5px;
+
+  color: #111111;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+
+.tar-subject-row > label span {
+  color: #ff0000;
+
+  margin-left: 2px;
+}
+
+
+.tar-subject-row textarea {
+  width: 100%;
+
+  height: 55px;
+
+  box-sizing: border-box;
+
+  padding: 5px 6px;
+
+  border: 1px solid #80604d;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  resize: vertical;
+
+  outline: none;
+}
+
+
+.tar-subject-row textarea:focus {
+  border-color: #337ab7;
+}
+
+
+/* =========================================
+   NOTE
+========================================= */
+
+.tar-note {
+  margin-top: 13px;
+
+  color: #ff0000;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 400;
+}
+
+
+.tar-note strong {
+  font-weight: 400;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.tar-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 14px;
+
+  padding-right: 2px;
+}
+
+
+.tar-actions button {
+  height: 34px;
+
+  min-width: 58px;
+
+  padding: 0 13px;
+
+  border: 1px solid #2e6da4;
+
+  border-radius: 3px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   ADD
+========================================= */
+
+.tar-add-button {
+  background: #337ab7;
+}
+
+
+.tar-add-button:hover {
+  background: #286090;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+.tar-reset-button {
+  background: #337ab7;
+}
+
+
+.tar-reset-button:hover {
+  background: #286090;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .tar-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tar-empty-field {
+    display: none;
+  }
+
+  .tar-field {
+    margin-bottom: 5px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .tar-form {
+    padding: 8px 10px 15px;
+  }
+
+  .tar-field {
+    grid-template-columns:
+      105px
+      minmax(0, 1fr);
+  }
+
+  .tar-subject-row {
+    grid-template-columns:
+      105px
+      minmax(0, 1fr);
+  }
+
+  .tar-date-hint {
+    margin-left: 105px;
+  }
+
+  .tar-field > label,
+  .tar-subject-row > label {
+    font-size: 10px;
+  }
+
+  .tar-radio {
+    font-size: 10px !important;
+  }
+
+  .tar-note {
+    font-size: 10px;
+  }
+
+}

@@ -1,127 +1,127 @@
-/* =========================================
+/* =========================================================
    WORKING QUEUE CONTAINER
-========================================= */
+========================================================= */
 
 .working-queue-container {
   width: 100%;
   box-sizing: border-box;
 
-  padding: 0 10px 20px;
+  padding: 6px 10px 18px;
 
-  background: #f7f7f7;
+  background: #ffffff;
 
-  color: #111;
+  color: #111111;
 
   font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 12px;
+  font-size: 10px;
 }
 
 
-/* =========================================
-   IMPORTANT UPDATE
-========================================= */
+/* =========================================================
+   IMPORTANT UPDATE MESSAGE
+========================================================= */
 
 .wq-important-message {
   width: 100%;
 
-  height: 45px;
-
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  gap: 7px;
+  gap: 5px;
 
-  box-sizing: border-box;
+  margin-bottom: 8px;
 
-  overflow: hidden;
+  color: #20a875;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 18px;
 
   white-space: nowrap;
 
-  color: #28a875;
+  overflow: hidden;
 
-  font-size: 18px;
+  text-overflow: ellipsis;
 }
 
+.wq-important-message strong {
+  font-weight: 700;
+}
 
 .wq-check-icon {
-  width: 23px;
-  height: 23px;
+  width: 21px;
+  height: 21px;
 
   display: inline-flex;
 
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   border-radius: 50%;
 
-  background: #2fc19b;
+  background: #2fc49b;
 
   color: #ffffff;
 
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 14px;
+
+  font-weight: 700;
 }
 
 
-/* =========================================
+/* =========================================================
    MAIN LAYOUT
-========================================= */
+========================================================= */
 
 .wq-main-layout {
+  width: 100%;
+
   display: grid;
 
   grid-template-columns:
     minmax(0, 1fr)
-    300px;
+    290px;
 
   gap: 18px;
 
-  align-items: start;
+  box-sizing: border-box;
 }
 
 
-/* =========================================
-   DASHBOARD PANEL
-========================================= */
+/* =========================================================
+   LEFT DASHBOARD PANEL
+========================================================= */
 
 .wq-dashboard-panel {
   min-width: 0;
 
-  border: 1px solid #d9d9d9;
-
-  background: #f8f8f8;
-
-  padding: 0 20px 28px;
-
   box-sizing: border-box;
+
+  border: 1px solid #d8d8d8;
+
+  background: #ffffff;
+
+  padding: 6px 10px 14px;
 }
 
 
-/* =========================================
-   OVERVIEW PANEL
-========================================= */
-
-.wq-overview-panel {
-  width: 100%;
-
-  box-sizing: border-box;
-
-  background: #f8f8f8;
-
-  border: 0;
-
-  padding: 0;
-}
-
-
-/* =========================================
-   BLUE PANEL TITLE
-========================================= */
+/* =========================================================
+   PANEL TITLE
+========================================================= */
 
 .wq-panel-title {
-  height: 44px;
+  width: calc(100% - 24px);
+
+  height: 34px;
 
   display: flex;
 
@@ -129,231 +129,305 @@
 
   justify-content: center;
 
+  margin: 0 12px 14px;
+
   box-sizing: border-box;
 
-  margin-top: -1px;
-
-  border-radius: 18px;
+  border-radius: 15px;
 
   background: #0068b5;
 
-  border: 5px solid #d8d8d8;
-
   color: #ffffff;
 
-  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 18px;
 
   font-weight: 400;
 
-  line-height: 1;
+  line-height: 34px;
 
-  text-align: center;
+  box-shadow: 0 0 0 6px #dddddd;
 }
 
 
-/* =========================================
+/* =========================================================
    FORM AREA
-========================================= */
+========================================================= */
 
 .wq-form-area {
+  width: 100%;
+
   display: grid;
 
   grid-template-columns:
     minmax(0, 1fr)
     minmax(0, 1fr);
 
-  column-gap: 4px;
+  column-gap: 10px;
 
-  row-gap: 4px;
+  row-gap: 5px;
 
-  padding-top: 22px;
+  box-sizing: border-box;
+
+  padding: 4px 18px 0;
 }
 
 
-/* =========================================
+/* =========================================================
    NORMAL FIELD
-========================================= */
+========================================================= */
 
 .wq-field {
+  min-width: 0;
+
   display: grid;
 
   grid-template-columns:
-    165px
+    105px
     minmax(0, 1fr);
 
   align-items: center;
 
-  min-width: 0;
+  box-sizing: border-box;
+
+  min-height: 27px;
 }
 
 
-.wq-field label {
-  padding-right: 5px;
+/* =========================================================
+   LABEL
+========================================================= */
+
+.wq-field label,
+.wq-full-field label {
+  padding-right: 7px;
 
   color: #111111;
 
-  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
 
   font-weight: 400;
 
+  line-height: 20px;
+
   white-space: nowrap;
+
+  text-align: left;
 }
 
 
-.wq-field input,
-.wq-field select {
+/* =========================================================
+   INPUT
+========================================================= */
+
+.wq-field input {
   width: 100%;
 
-  height: 26px;
+  height: 27px;
 
   box-sizing: border-box;
 
-  padding: 2px 8px;
+  padding: 3px 7px;
 
-  border: 1px solid #9a806e;
+  border: 1px solid #9b7866;
 
   border-radius: 6px;
 
   background: #ffffff;
 
+  color: #222222;
+
   font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 14px;
-
-  color: #222222;
+  font-size: 11px;
 
   outline: none;
 }
 
+.wq-field input:focus {
+  border-color: #0068b5;
+}
 
-.wq-field input:focus,
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.wq-field select {
+  width: 100%;
+
+  height: 27px;
+
+  box-sizing: border-box;
+
+  padding: 2px 7px;
+
+  border: 1px solid #9b7866;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+
+  outline: none;
+}
+
 .wq-field select:focus {
   border-color: #0068b5;
-
-  box-shadow: 0 0 0 1px rgba(0, 104, 181, 0.15);
 }
 
 
-/* =========================================
-   REQUIRED
-========================================= */
-
-.wq-required {
-  color: #ff0000;
-
-  margin-left: 2px;
-}
-
-
-/* =========================================
+/* =========================================================
    FULL WIDTH FIELD
-========================================= */
+========================================================= */
 
 .wq-full-field {
   grid-column: 1 / 3;
 
+  min-width: 0;
+
   display: grid;
 
   grid-template-columns:
-    165px
+    105px
     minmax(0, 1fr);
 
   align-items: center;
 
-  min-width: 0;
+  box-sizing: border-box;
+
+  min-height: 30px;
 }
 
 
-.wq-full-field label {
-  padding-right: 5px;
-
-  color: #111111;
-
-  font-size: 18px;
-
-  white-space: nowrap;
-}
-
+/* =========================================================
+   TEXTAREA
+========================================================= */
 
 .wq-full-field textarea {
   width: 100%;
 
   height: 29px;
 
+  min-height: 29px;
+
   box-sizing: border-box;
 
-  padding: 2px 7px;
+  padding: 4px 7px;
 
-  border: 1px solid #9a806e;
+  border: 1px solid #9b7866;
 
   border-radius: 6px;
 
   background: #ffffff;
 
+  color: #222222;
+
   font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 14px;
+  font-size: 11px;
 
-  color: #222222;
+  line-height: 15px;
 
   resize: vertical;
 
   outline: none;
 }
 
-
 .wq-full-field textarea:focus {
   border-color: #0068b5;
 }
 
 
-/* =========================================
-   COMMENTS
-========================================= */
+/* =========================================================
+   SUBJECT FIELD
+========================================================= */
 
-.wq-comments-field {
-  margin-top: 0;
+.wq-form-area > .wq-full-field:nth-of-type(5) textarea {
+  height: 43px;
+
+  min-height: 43px;
 }
 
 
-/* =========================================
+/* =========================================================
+   COMMENTS FIELD
+========================================================= */
+
+.wq-comments-field textarea {
+  height: 29px;
+
+  min-height: 29px;
+}
+
+
+/* =========================================================
+   REQUIRED STAR
+========================================================= */
+
+.wq-required {
+  color: #ff0000;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
    WARNING
-========================================= */
+========================================================= */
 
 .wq-warning {
   grid-column: 1 / 3;
 
-  margin-left: 170px;
+  margin-left: 105px;
 
-  margin-top: -1px;
+  margin-top: -2px;
 
   color: #ff0000;
 
-  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 400;
 
   line-height: 18px;
 }
 
 
-/* =========================================
-   NEW TASK BUTTON
-========================================= */
+/* =========================================================
+   NEW TASK BUTTON WRAPPER
+========================================================= */
 
 .wq-new-task-wrapper {
   grid-column: 1 / 3;
 
-  margin-top: 9px;
-
-  padding-left: 0;
+  margin-top: 8px;
 }
 
 
+/* =========================================================
+   NEW TASK BUTTON
+========================================================= */
+
 .wq-new-task-button {
-  height: 45px;
+  height: 40px;
 
-  padding: 0 16px;
+  min-width: 135px;
 
-  border: none;
+  padding: 0 15px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #337ab7;
 
   border-radius: 3px;
 
@@ -363,22 +437,51 @@
 
   font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 15px;
+  font-size: 14px;
 
   font-weight: 600;
 
   cursor: pointer;
 }
 
-
 .wq-new-task-button:hover {
   background: #286090;
 }
 
 
-/* =========================================
+/* =========================================================
+   RIGHT OVERVIEW PANEL
+========================================================= */
+
+.wq-overview-panel {
+  width: 100%;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   OVERVIEW TITLE
+========================================================= */
+
+.wq-overview-panel .wq-panel-title {
+  width: calc(100% - 12px);
+
+  margin-left: 6px;
+
+  margin-right: 6px;
+
+  margin-bottom: 9px;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
    OVERVIEW TABLE
-========================================= */
+========================================================= */
 
 .wq-overview-table {
   width: 100%;
@@ -387,14 +490,18 @@
 
   table-layout: fixed;
 
-  margin-top: 8px;
+  font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 13px;
+  font-size: 10px;
 }
 
 
+/* =========================================================
+   OVERVIEW HEADER
+========================================================= */
+
 .wq-overview-table th {
-  height: 27px;
+  height: 23px;
 
   padding: 3px 4px;
 
@@ -406,129 +513,144 @@
 
   border-right: 1px solid #ffffff;
 
-  font-size: 14px;
+  border-bottom: 1px solid #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
 
   font-weight: 600;
 
   text-align: center;
+
+  white-space: nowrap;
 }
-
-
-.wq-overview-table th:last-child {
-  border-right: none;
-}
-
 
 .wq-overview-table th:nth-child(1) {
   width: 43%;
-
-  text-align: left;
 }
-
 
 .wq-overview-table th:nth-child(2) {
   width: 29%;
 }
-
 
 .wq-overview-table th:nth-child(3) {
   width: 28%;
 }
 
 
+/* =========================================================
+   OVERVIEW DATA
+========================================================= */
+
 .wq-overview-table td {
-  height: 22px;
+  height: 21px;
 
   padding: 2px 4px;
 
-  border: 1px solid #ffffff;
+  box-sizing: border-box;
+
+  border-right: 1px solid #ffffff;
+
+  border-bottom: 1px solid #ffffff;
 
   color: #111111;
 
-  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  line-height: 15px;
 
   text-align: center;
-}
 
+  white-space: nowrap;
+}
 
 .wq-overview-table td:first-child {
   text-align: left;
 }
 
 
-/* =========================================
+/* =========================================================
    OVERVIEW ROW COLORS
-========================================= */
+========================================================= */
 
-.overview-normal td {
+.overview-normal {
   background: #ffffff;
 }
 
-
-.overview-light td {
-  background: #d5f59a;
+.overview-light {
+  background: #d7f5a8;
 }
 
+.overview-blue {
+  background: #0068b5;
 
-.overview-blue td {
-  background: #0073c6;
+  color: #ffffff;
+}
+
+.overview-cyan {
+  background: #20bce8;
+}
+
+.overview-green {
+  background: #82eea1;
+}
+
+.overview-total {
+  background: #008000;
 
   color: #ffffff;
 
   font-weight: 600;
 }
 
-
-.overview-cyan td {
-  background: #19bce8;
-
-  color: #ffffff;
-}
-
-
-.overview-green td {
-  background: #7df08e;
-}
-
-
+.overview-blue td,
 .overview-total td {
-  background: #008000;
-
   color: #ffffff;
-
-  font-weight: 700;
 }
 
 
-/* =========================================
-   STATUS TABS
-========================================= */
+/* =========================================================
+   STATUS TABS CONTAINER
+========================================================= */
 
 .wq-tabs-container {
+  width: 100%;
+
   display: flex;
 
   align-items: flex-end;
 
   gap: 3px;
 
-  width: 100%;
+  margin-top: 52px;
 
-  margin-top: 85px;
+  padding: 0;
 
-  padding-bottom: 0;
+  box-sizing: border-box;
 
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: 1px solid #dddddd;
 
   overflow-x: auto;
+
+  scrollbar-width: thin;
 }
 
 
+/* =========================================================
+   STATUS TAB
+========================================================= */
+
 .wq-tab {
-  height: 40px;
+  height: 39px;
 
   flex: 0 0 auto;
 
-  padding: 0 14px;
+  padding: 0 13px;
+
+  box-sizing: border-box;
 
   border: 1px solid #ffffff;
 
@@ -540,113 +662,138 @@
 
   font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 15px;
+  font-size: 11px;
 
-  font-weight: 400;
+  font-weight: 600;
 
   white-space: nowrap;
 
   cursor: pointer;
 }
 
-
 .wq-tab:hover {
   background: #005a9d;
 }
 
 
+/* =========================================================
+   ACTIVE TAB
+========================================================= */
+
 .wq-tab.active {
   background: #ffffff;
 
-  color: #666666;
+  color: #555555;
 
-  border: 1px solid #d8d8d8;
+  border: 1px solid #dddddd;
 
-  border-bottom: 0;
-
-  border-radius: 6px 6px 0 0;
+  border-bottom-color: #ffffff;
 }
 
 
-/* =========================================
-   SEARCH
-========================================= */
+/* =========================================================
+   SEARCH AREA
+========================================================= */
 
 .wq-search-area {
+  width: 100%;
+
   display: flex;
 
   justify-content: flex-end;
 
   align-items: center;
 
-  gap: 5px;
+  box-sizing: border-box;
 
-  margin-top: 18px;
+  margin-top: 8px;
 
-  padding-right: 6px;
+  margin-bottom: 5px;
 }
 
 
-.wq-search-input {
-  width: 365px;
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
 
-  height: 28px;
+.wq-search-input {
+  width: 180px;
+
+  height: 27px;
 
   box-sizing: border-box;
 
   padding: 3px 7px;
 
-  border: 1px solid #9a806e;
+  border: 1px solid #9b7866;
 
-  border-radius: 6px;
+  border-right: none;
+
+  border-radius: 5px 0 0 5px;
 
   background: #ffffff;
 
+  color: #333333;
+
   font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 14px;
+  font-size: 10px;
 
   outline: none;
 }
-
 
 .wq-search-input:focus {
   border-color: #0068b5;
 }
 
 
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
+
 .wq-search-button {
-  width: 44px;
+  width: 35px;
 
-  height: 30px;
+  height: 27px;
 
-  border: none;
+  display: flex;
 
-  border-radius: 3px;
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  border: 1px solid #337ab7;
+
+  border-radius: 0 3px 3px 0;
 
   background: #337ab7;
 
   color: #ffffff;
 
-  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
 
   cursor: pointer;
 }
-
 
 .wq-search-button:hover {
   background: #286090;
 }
 
 
-/* =========================================
+/* =========================================================
    RECORD AREA
-========================================= */
+========================================================= */
 
 .wq-record-area {
   width: 100%;
 
-  min-height: 30px;
+  height: 30px;
 
   display: flex;
 
@@ -656,46 +803,62 @@
 
   box-sizing: border-box;
 
-  margin-top: 5px;
-
   border: 1px solid #999999;
 
-  background: #fafafa;
+  background: #ffffff;
 
   color: #ff0000;
 
-  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 400;
 }
 
 
-/* =========================================
+/* =========================================================
    RESPONSIVE
-========================================= */
+========================================================= */
 
 @media (max-width: 1200px) {
 
   .wq-main-layout {
-    grid-template-columns: minmax(0, 1fr) 270px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      260px;
 
     gap: 12px;
   }
 
+  .wq-form-area {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   .wq-field {
-    grid-template-columns: 120px minmax(0, 1fr);
+    grid-template-columns:
+      90px
+      minmax(0, 1fr);
   }
 
   .wq-full-field {
-    grid-template-columns: 120px minmax(0, 1fr);
+    grid-template-columns:
+      90px
+      minmax(0, 1fr);
   }
 
   .wq-warning {
-    margin-left: 125px;
+    margin-left: 90px;
   }
-
 }
 
 
-@media (max-width: 900px) {
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
 
   .wq-main-layout {
     grid-template-columns: 1fr;
@@ -706,48 +869,67 @@
   }
 
   .wq-tabs-container {
-    margin-top: 30px;
+    margin-top: 25px;
   }
-
 }
 
 
+/* =========================================================
+   SMALL SCREEN
+========================================================= */
+
 @media (max-width: 650px) {
+
+  .working-queue-container {
+    padding: 5px;
+  }
+
+  .wq-important-message {
+    font-size: 11px;
+  }
+
+  .wq-panel-title {
+    width: calc(100% - 16px);
+
+    margin-left: 8px;
+    margin-right: 8px;
+
+    font-size: 16px;
+  }
 
   .wq-form-area {
     grid-template-columns: 1fr;
+
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
   .wq-field,
   .wq-full-field {
-    grid-column: 1 / 2;
+    grid-column: 1;
 
     grid-template-columns:
-      100px
+      90px
       minmax(0, 1fr);
   }
 
   .wq-warning {
-    grid-column: 1 / 2;
+    grid-column: 1;
 
-    margin-left: 105px;
+    margin-left: 90px;
   }
 
   .wq-new-task-wrapper {
-    grid-column: 1 / 2;
-  }
-
-  .wq-panel-title {
-    font-size: 19px;
-  }
-
-  .wq-field label,
-  .wq-full-field label {
-    font-size: 14px;
+    grid-column: 1;
   }
 
   .wq-search-input {
-    width: 250px;
+    flex: 1;
+
+    width: auto;
   }
 
+  .wq-overview-panel {
+    max-width: 100%;
+  }
 }

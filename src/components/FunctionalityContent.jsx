@@ -14,6 +14,7 @@ import {
 
 import QCForm from "./QCForm";
 import WorkingQueue from "./WorkingQueue";
+import TaskAllocation from "./TaskAllocation";
 
 
 /* =========================================================
@@ -171,6 +172,15 @@ function FunctionalityContent({ team, functionality }) {
 
 
         {/* =================================================
+            TASK ALLOCATION
+        ================================================= */}
+
+        {selectedModule === "Task Allocation" && (
+          <TaskAllocation />
+        )}
+
+
+        {/* =================================================
             QC FORM
         ================================================= */}
 
@@ -188,6 +198,7 @@ function FunctionalityContent({ team, functionality }) {
 
         {selectedModule &&
           selectedModule !== "Working Queue" &&
+          selectedModule !== "Task Allocation" &&
           selectedModule !== "For QC" &&
           selectedModule !== "QC Form" && (
 
