@@ -1,0 +1,756 @@
+/* =========================================
+   QC FORM CONTAINER
+========================================= */
+
+.qc-form-container {
+  width: 100%;
+  margin-top: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #111;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.qc-form-title {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 0;
+  box-sizing: border-box;
+
+  background: #fff;
+  border-bottom: 1px solid #d5d5d5;
+
+  font-size: 12px;
+  font-weight: 400;
+  color: #222;
+}
+
+
+/* =========================================
+   TOP AREA
+========================================= */
+
+.qc-top-area {
+  display: grid;
+  grid-template-columns: minmax(620px, 1.9fr) minmax(400px, 1fr);
+  gap: 20px;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 5px 0 8px;
+}
+
+
+/* =========================================
+   LEFT TASK DETAILS
+========================================= */
+
+.qc-task-details {
+  min-width: 0;
+}
+
+
+.qc-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    minmax(0, 1.45fr);
+
+  column-gap: 10px;
+  row-gap: 3px;
+
+  width: 100%;
+}
+
+
+/* =========================================
+   INPUT FIELD
+========================================= */
+
+.qc-input-field {
+  display: grid;
+
+  grid-template-columns: 78px minmax(0, 1fr);
+
+  min-width: 0;
+
+  align-items: center;
+}
+
+
+.qc-input-field label {
+  padding-right: 5px;
+
+  text-align: right;
+
+  white-space: nowrap;
+
+  font-size: 10px;
+  font-weight: 600;
+  color: #111;
+}
+
+
+.qc-input-field input {
+  width: 100%;
+  height: 18px;
+
+  box-sizing: border-box;
+
+  padding: 1px 5px;
+
+  border: 1px solid #c5c5c5;
+  border-radius: 0;
+
+  background: #f3f3f3;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #333;
+
+  outline: none;
+}
+
+
+.qc-input-field input:focus {
+  background: #fff;
+  border-color: #4d8fc5;
+}
+
+
+/* =========================================
+   L3 FIELD
+========================================= */
+
+.l3-field {
+  grid-column: 2 / 4;
+}
+
+
+/* =========================================
+   SUBJECT FIELD
+========================================= */
+
+.subject-field {
+  grid-column: 1 / 4;
+}
+
+
+/* =========================================
+   LONG TEXT FIELDS
+========================================= */
+
+.qc-long-field {
+  display: grid;
+
+  grid-template-columns: 112px minmax(0, 1fr);
+
+  align-items: center;
+
+  width: 100%;
+
+  margin-top: 3px;
+}
+
+
+.qc-long-field label {
+  padding-right: 5px;
+
+  text-align: right;
+
+  white-space: nowrap;
+
+  font-size: 10px;
+  font-weight: 600;
+  color: #111;
+}
+
+
+.qc-long-field textarea {
+  width: 100%;
+  height: 20px;
+  min-height: 20px;
+
+  box-sizing: border-box;
+
+  padding: 2px 5px;
+
+  border: 1px solid #c5c5c5;
+  border-radius: 0;
+
+  background: #f3f3f3;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #333;
+
+  resize: vertical;
+
+  outline: none;
+}
+
+
+.qc-long-field textarea:focus {
+  background: #fff;
+  border-color: #4d8fc5;
+}
+
+
+/* =========================================
+   TAT REASON
+========================================= */
+
+.qc-inline-field {
+  display: grid;
+
+  grid-template-columns: 112px 340px;
+
+  align-items: center;
+
+  margin-top: 3px;
+}
+
+
+.qc-inline-field label {
+  padding-right: 5px;
+
+  text-align: right;
+
+  white-space: nowrap;
+
+  font-size: 10px;
+  font-weight: 600;
+  color: #111;
+}
+
+
+.qc-inline-field select {
+  width: 100%;
+  height: 22px;
+
+  box-sizing: border-box;
+
+  padding: 0 5px;
+
+  border: 1px solid #bdbdbd;
+  border-radius: 0;
+
+  background: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #333;
+
+  outline: none;
+}
+
+
+.qc-inline-field select:focus {
+  border-color: #4d8fc5;
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.qc-right-area {
+  width: 100%;
+  min-width: 0;
+}
+
+
+/* =========================================
+   TOP RIGHT TIMELINE TABLE
+========================================= */
+
+.qc-small-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  margin: 0 0 18px;
+}
+
+
+.qc-small-table th {
+  height: 20px;
+
+  padding: 2px 5px;
+
+  box-sizing: border-box;
+
+  background: #0068b5;
+  color: #fff;
+
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.qc-small-table th:last-child {
+  border-right: none;
+}
+
+
+.qc-small-table td {
+  height: 23px;
+
+  padding: 1px 4px;
+
+  box-sizing: border-box;
+
+  background: #f5f5f5;
+
+  border: 1px solid #222;
+
+  font-size: 10px;
+
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.qc-small-table th:nth-child(1) {
+  width: 25%;
+}
+
+
+.qc-small-table th:nth-child(2) {
+  width: 27%;
+}
+
+
+.qc-small-table th:nth-child(3) {
+  width: 21%;
+}
+
+
+.qc-small-table th:nth-child(4) {
+  width: 20%;
+}
+
+
+.qc-small-table input {
+  width: 100%;
+  height: 20px;
+
+  box-sizing: border-box;
+
+  padding: 1px 4px;
+
+  border: none;
+
+  background: transparent;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+  text-align: center;
+
+  outline: none;
+}
+
+
+.qc-small-table input:focus {
+  background: #fff;
+}
+
+
+/* =========================================
+   VIEW BUTTON
+========================================= */
+
+.qc-view-button {
+  height: 19px;
+
+  min-width: 38px;
+
+  padding: 0 7px;
+
+  border: none;
+  border-radius: 2px;
+
+  background: #55b5e5;
+  color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+
+.qc-view-button:hover {
+  background: #3fa4d5;
+}
+
+
+/* =========================================
+   RATING DEFINITION TABLE
+========================================= */
+
+.qc-rating-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+
+.qc-rating-table th {
+  height: 20px;
+
+  padding: 2px 5px;
+
+  background: #0068b5;
+  color: #fff;
+
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+
+.qc-rating-table th:first-child {
+  width: 82px;
+
+  text-align: center;
+}
+
+
+.qc-rating-table th:last-child {
+  border-right: none;
+}
+
+
+.qc-rating-table td {
+  height: 20px;
+
+  padding: 2px 5px;
+
+  background: #f5f5f5;
+
+  border: 1px solid #222;
+
+  font-size: 10px;
+
+  color: #111;
+}
+
+
+.qc-rating-table td:first-child {
+  width: 82px;
+
+  font-weight: 400;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   QC QUESTIONS WRAPPER
+========================================= */
+
+.qc-questions-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+/* =========================================
+   QC QUESTIONS TABLE
+========================================= */
+
+.qc-questions-table {
+  width: 100%;
+
+  min-width: 1050px;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+
+.qc-questions-table th {
+  height: 20px;
+
+  padding: 2px 5px;
+
+  box-sizing: border-box;
+
+  background: #0068b5;
+  color: #fff;
+
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-align: left;
+  vertical-align: middle;
+}
+
+
+.qc-questions-table th:last-child {
+  border-right: none;
+}
+
+
+.qc-questions-table td {
+  height: 28px;
+
+  padding: 2px 5px;
+
+  box-sizing: border-box;
+
+  background: #f7f7f7;
+
+  border: 1px solid #222;
+
+  font-size: 10px;
+  color: #111;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================
+   COLUMN WIDTHS
+========================================= */
+
+.qc-questions-table .sl-column {
+  width: 55px;
+
+  text-align: center;
+}
+
+
+.qc-questions-table .category-column {
+  width: 255px;
+}
+
+
+.qc-questions-table .question-column {
+  width: auto;
+}
+
+
+.qc-questions-table .rating-column {
+  width: 95px;
+}
+
+
+.qc-questions-table .comments-column {
+  width: 260px;
+}
+
+
+/* =========================================
+   SL NUMBER
+========================================= */
+
+.center-cell {
+  text-align: center;
+}
+
+
+/* =========================================
+   RATING SELECT
+========================================= */
+
+.question-rating {
+  width: 100%;
+  height: 26px;
+
+  box-sizing: border-box;
+
+  padding: 0 4px;
+
+  border: 1px solid #c7c7c7;
+  border-radius: 0;
+
+  background: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+  color: #333;
+
+  outline: none;
+}
+
+
+.question-rating:focus {
+  border-color: #4d8fc5;
+}
+
+
+/* =========================================
+   QUESTION COMMENTS
+========================================= */
+
+.question-comment {
+  width: 100%;
+  height: 26px;
+
+  box-sizing: border-box;
+
+  padding: 2px 4px;
+
+  border: 1px solid #c7c7c7;
+  border-radius: 0;
+
+  background: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+  color: #333;
+
+  resize: none;
+
+  outline: none;
+}
+
+
+.question-comment:focus {
+  border-color: #4d8fc5;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.qc-actions {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 3px 0 8px;
+}
+
+
+.qc-actions button {
+  min-width: 42px;
+  height: 21px;
+
+  padding: 0 9px;
+
+  border-radius: 2px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   HOLD
+========================================= */
+
+.qc-hold-button {
+  background: #fff;
+
+  border: 1px solid #999;
+
+  color: #333;
+}
+
+
+.qc-hold-button:hover {
+  background: #eeeeee;
+}
+
+
+/* =========================================
+   COMPLETE
+========================================= */
+
+.qc-complete-button {
+  background: #0068b5;
+
+  border: 1px solid #0068b5;
+
+  color: #fff;
+}
+
+
+.qc-complete-button:hover {
+  background: #005a9d;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+  .qc-top-area {
+    grid-template-columns: 1fr;
+  }
+
+  .qc-right-area {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 750px) {
+
+  .qc-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qc-input-field {
+    grid-column: auto !important;
+  }
+
+  .qc-input-field {
+    grid-template-columns: 100px minmax(0, 1fr);
+  }
+
+  .qc-inline-field {
+    grid-template-columns: 100px minmax(0, 1fr);
+  }
+
+  .qc-long-field {
+    grid-template-columns: 100px minmax(0, 1fr);
+  }
+
+}

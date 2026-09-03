@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   ChevronRight,
   ChevronDown,
@@ -10,14 +12,24 @@ import {
   BarChart3,
 } from "lucide-react";
 
+import QCForm from "./QCForm";
+
+
 /* =========================================================
    MAIN FUNCTIONALITY CONTENT
 ========================================================= */
 
-function FunctionalityContent({
-  team,
-  functionality,
-}) {
+function FunctionalityContent({ team, functionality }) {
+  const [selectedModule, setSelectedModule] = useState(null);
+
+  /* =======================================================
+     SAFETY CHECK
+  ======================================================= */
+
+  if (!functionality) {
+    return null;
+  }
+
 
   /* =======================================================
      MASTER PAGE
@@ -26,10 +38,6 @@ function FunctionalityContent({
   if (functionality.id === "master") {
     return (
       <main className="functionality-content">
-
-        {/* =================================================
-            MASTER CONFIGURATION
-        ================================================= */}
 
         <section className="master-section">
 
@@ -45,31 +53,25 @@ function FunctionalityContent({
 
           </div>
 
+
           <div className="master-grid">
 
-            {functionality.modules.map(
-              (module, index) => (
-
-                <MasterField
-                  key={`${module.name}-${index}`}
-                  module={module}
-                  index={index}
-                />
-
-              )
-            )}
+            {functionality.modules?.map((module, index) => (
+              <MasterField
+                key={`${module.name}-${index}`}
+                module={module}
+                index={index}
+              />
+            ))}
 
           </div>
 
         </section>
 
 
-        {/* =================================================
-            ADDRESS
-        ================================================= */}
+        {/* ADDRESS */}
 
         {functionality.address && (
-
           <section className="address-section">
 
             <div className="address-header">
@@ -83,6 +85,7 @@ function FunctionalityContent({
               </p>
 
             </div>
+
 
             <button
               className="address-field"
@@ -98,7 +101,6 @@ function FunctionalityContent({
             </button>
 
           </section>
-
         )}
 
       </main>
@@ -115,35 +117,36 @@ function FunctionalityContent({
 
       <section className="modules-section">
 
-        <div className="section-heading">
 
-          {/* <h2 className="modules-title">
-            {functionality.name}
-          </h2> */}
+        {/* =================================================
+            MODULE CARDS
+        ================================================= */}
 
-          {/* <p className="modules-subtitle">
-            Manage tasks and workflow activities
-          </p> */}
-
-        </div>
-
-
-        {functionality.modules.length > 0 ? (
+        {functionality.modules?.length > 0 ? (
 
           <div className="modules-row">
 
-            {functionality.modules.map(
-              (module, index) => (
+            {functionality.modules.map((module, index) => {
 
+              const isSelected =
+                selectedModule === module;
+
+              return (
                 <ModuleCard
                   key={`${module}-${index}`}
                   name={module}
                   index={index}
                   functionalityId={functionality.id}
+                  selected={isSelected}
+                  onClick={() => {
+                    setSelectedModule(
+                      isSelected ? null : module
+                    );
+                  }}
                 />
+              );
 
-              )
-            )}
+            })}
 
           </div>
 
@@ -154,6 +157,60 @@ function FunctionalityContent({
           </div>
 
         )}
+
+
+        {/* =================================================
+            QC FORM
+        ================================================= */}
+
+        {(selectedModule === "For QC" ||
+          selectedModule === "QC Form") && (
+
+          <QCForm />
+
+        )}
+
+
+        {/* =================================================
+            OTHER MODULES
+        ================================================= */}
+
+        {selectedModule &&
+          selectedModule !== "For QC" &&
+          selectedModule !== "QC Form" && (
+
+            <div className="selected-module-content">
+
+              <div className="selected-module-header">
+
+                <div>
+
+                  <span className="selected-module-label">
+                    Selected Module
+                  </span>
+
+                  <h3>
+                    {selectedModule}
+                  </h3>
+
+                </div>
+
+                <ChevronDown size={18} />
+
+              </div>
+
+
+              <div className="selected-module-placeholder">
+
+                <p>
+                  {selectedModule} content will be displayed here.
+                </p>
+
+              </div>
+
+            </div>
+
+          )}
 
       </section>
 
@@ -166,11 +223,7 @@ function FunctionalityContent({
    MASTER FIELD
 ========================================================= */
 
-function MasterField({
-  module,
-  index,
-}) {
-
+function MasterField({ module, index }) {
   const isDropdown =
     module.type === "dropdown";
 
@@ -213,6 +266,8 @@ function ModuleCard({
   name,
   index,
   functionalityId,
+  selected,
+  onClick,
 }) {
 
   const getIcon = () => {
@@ -248,8 +303,12 @@ function ModuleCard({
 
   return (
     <button
-      className="module-card"
+      className={`module-card ${
+        selected ? "active" : ""
+      }`}
       type="button"
+      onClick={onClick}
+      aria-pressed={selected}
     >
 
       <span className="module-number">
@@ -272,6 +331,43 @@ function ModuleCard({
       </span>
 
     </button>
+  );
+}
+
+
+/* =========================================================
+   DATABASE ICON
+========================================================= */
+
+function DatabaseIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+
+      <ellipse
+        cx="12"
+        cy="5"
+        rx="8"
+        ry="3"
+      />
+
+      <path
+        d="M4 5v7c0 1.66 3.58 3 8 3s8-1.34 8-3V5"
+      />
+
+      <path
+        d="M4 12v7c0 1.66 3.58 3 8 3s8-1.34 8-3v-7"
+      />
+
+    </svg>
   );
 }
 
