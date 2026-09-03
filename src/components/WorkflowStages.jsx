@@ -15,7 +15,7 @@ export const functionalities = [
     description:
       "Manage and monitor all active tasks and workflow items.",
     modules: [
-      { name: "For QC" },
+      { name: "QC Form" },
       { name: "Task Allocation" },
       { name: "QA Form" },
       { name: "Query" },

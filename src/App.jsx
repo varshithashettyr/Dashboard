@@ -213,7 +213,7 @@ function App() {
     selectedFunctionality,
     setSelectedFunctionality,
   ] = useState(
-    "client-onboarding"
+    "working-queue"
   );
 
 

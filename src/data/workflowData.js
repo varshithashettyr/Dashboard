@@ -14,7 +14,7 @@ export const functionalityData = [
     name: "Working Queue",
 
     modules: [
-      "For QC",
+      "QC Form",
       "Task Allocation",
       "QA Form",
       "Query",
