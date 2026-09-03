@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import QCForm from "./QCForm";
+import WorkingQueue from "./WorkingQueue";
 
 
 /* =========================================================
@@ -21,6 +22,7 @@ import QCForm from "./QCForm";
 
 function FunctionalityContent({ team, functionality }) {
   const [selectedModule, setSelectedModule] = useState(null);
+
 
   /* =======================================================
      SAFETY CHECK
@@ -160,6 +162,15 @@ function FunctionalityContent({ team, functionality }) {
 
 
         {/* =================================================
+            WORKING QUEUE
+        ================================================= */}
+
+        {selectedModule === "Working Queue" && (
+          <WorkingQueue />
+        )}
+
+
+        {/* =================================================
             QC FORM
         ================================================= */}
 
@@ -176,6 +187,7 @@ function FunctionalityContent({ team, functionality }) {
         ================================================= */}
 
         {selectedModule &&
+          selectedModule !== "Working Queue" &&
           selectedModule !== "For QC" &&
           selectedModule !== "QC Form" && (
 
@@ -224,6 +236,7 @@ function FunctionalityContent({ team, functionality }) {
 ========================================================= */
 
 function MasterField({ module, index }) {
+
   const isDropdown =
     module.type === "dropdown";
 
@@ -297,6 +310,7 @@ function ModuleCard({
 
       default:
         return <Layers3 size={23} />;
+
     }
   };
 
@@ -340,6 +354,7 @@ function ModuleCard({
 ========================================================= */
 
 function DatabaseIcon() {
+
   return (
     <svg
       width="20"

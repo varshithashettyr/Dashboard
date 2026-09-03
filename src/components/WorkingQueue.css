@@ -1,0 +1,753 @@
+/* =========================================
+   WORKING QUEUE CONTAINER
+========================================= */
+
+.working-queue-container {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 0 10px 20px;
+
+  background: #f7f7f7;
+
+  color: #111;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   IMPORTANT UPDATE
+========================================= */
+
+.wq-important-message {
+  width: 100%;
+
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  color: #28a875;
+
+  font-size: 18px;
+}
+
+
+.wq-check-icon {
+  width: 23px;
+  height: 23px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #2fc19b;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+.wq-main-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    300px;
+
+  gap: 18px;
+
+  align-items: start;
+}
+
+
+/* =========================================
+   DASHBOARD PANEL
+========================================= */
+
+.wq-dashboard-panel {
+  min-width: 0;
+
+  border: 1px solid #d9d9d9;
+
+  background: #f8f8f8;
+
+  padding: 0 20px 28px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   OVERVIEW PANEL
+========================================= */
+
+.wq-overview-panel {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  background: #f8f8f8;
+
+  border: 0;
+
+  padding: 0;
+}
+
+
+/* =========================================
+   BLUE PANEL TITLE
+========================================= */
+
+.wq-panel-title {
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  margin-top: -1px;
+
+  border-radius: 18px;
+
+  background: #0068b5;
+
+  border: 5px solid #d8d8d8;
+
+  color: #ffffff;
+
+  font-size: 24px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   FORM AREA
+========================================= */
+
+.wq-form-area {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  column-gap: 4px;
+
+  row-gap: 4px;
+
+  padding-top: 22px;
+}
+
+
+/* =========================================
+   NORMAL FIELD
+========================================= */
+
+.wq-field {
+  display: grid;
+
+  grid-template-columns:
+    165px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  min-width: 0;
+}
+
+
+.wq-field label {
+  padding-right: 5px;
+
+  color: #111111;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+
+.wq-field input,
+.wq-field select {
+  width: 100%;
+
+  height: 26px;
+
+  box-sizing: border-box;
+
+  padding: 2px 8px;
+
+  border: 1px solid #9a806e;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  color: #222222;
+
+  outline: none;
+}
+
+
+.wq-field input:focus,
+.wq-field select:focus {
+  border-color: #0068b5;
+
+  box-shadow: 0 0 0 1px rgba(0, 104, 181, 0.15);
+}
+
+
+/* =========================================
+   REQUIRED
+========================================= */
+
+.wq-required {
+  color: #ff0000;
+
+  margin-left: 2px;
+}
+
+
+/* =========================================
+   FULL WIDTH FIELD
+========================================= */
+
+.wq-full-field {
+  grid-column: 1 / 3;
+
+  display: grid;
+
+  grid-template-columns:
+    165px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  min-width: 0;
+}
+
+
+.wq-full-field label {
+  padding-right: 5px;
+
+  color: #111111;
+
+  font-size: 18px;
+
+  white-space: nowrap;
+}
+
+
+.wq-full-field textarea {
+  width: 100%;
+
+  height: 29px;
+
+  box-sizing: border-box;
+
+  padding: 2px 7px;
+
+  border: 1px solid #9a806e;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  color: #222222;
+
+  resize: vertical;
+
+  outline: none;
+}
+
+
+.wq-full-field textarea:focus {
+  border-color: #0068b5;
+}
+
+
+/* =========================================
+   COMMENTS
+========================================= */
+
+.wq-comments-field {
+  margin-top: 0;
+}
+
+
+/* =========================================
+   WARNING
+========================================= */
+
+.wq-warning {
+  grid-column: 1 / 3;
+
+  margin-left: 170px;
+
+  margin-top: -1px;
+
+  color: #ff0000;
+
+  font-size: 14px;
+
+  line-height: 18px;
+}
+
+
+/* =========================================
+   NEW TASK BUTTON
+========================================= */
+
+.wq-new-task-wrapper {
+  grid-column: 1 / 3;
+
+  margin-top: 9px;
+
+  padding-left: 0;
+}
+
+
+.wq-new-task-button {
+  height: 45px;
+
+  padding: 0 16px;
+
+  border: none;
+
+  border-radius: 3px;
+
+  background: #337ab7;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.wq-new-task-button:hover {
+  background: #286090;
+}
+
+
+/* =========================================
+   OVERVIEW TABLE
+========================================= */
+
+.wq-overview-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  margin-top: 8px;
+
+  font-size: 13px;
+}
+
+
+.wq-overview-table th {
+  height: 27px;
+
+  padding: 3px 4px;
+
+  box-sizing: border-box;
+
+  background: #0068b5;
+
+  color: #ffffff;
+
+  border-right: 1px solid #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+.wq-overview-table th:last-child {
+  border-right: none;
+}
+
+
+.wq-overview-table th:nth-child(1) {
+  width: 43%;
+
+  text-align: left;
+}
+
+
+.wq-overview-table th:nth-child(2) {
+  width: 29%;
+}
+
+
+.wq-overview-table th:nth-child(3) {
+  width: 28%;
+}
+
+
+.wq-overview-table td {
+  height: 22px;
+
+  padding: 2px 4px;
+
+  border: 1px solid #ffffff;
+
+  color: #111111;
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+
+.wq-overview-table td:first-child {
+  text-align: left;
+}
+
+
+/* =========================================
+   OVERVIEW ROW COLORS
+========================================= */
+
+.overview-normal td {
+  background: #ffffff;
+}
+
+
+.overview-light td {
+  background: #d5f59a;
+}
+
+
+.overview-blue td {
+  background: #0073c6;
+
+  color: #ffffff;
+
+  font-weight: 600;
+}
+
+
+.overview-cyan td {
+  background: #19bce8;
+
+  color: #ffffff;
+}
+
+
+.overview-green td {
+  background: #7df08e;
+}
+
+
+.overview-total td {
+  background: #008000;
+
+  color: #ffffff;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   STATUS TABS
+========================================= */
+
+.wq-tabs-container {
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 3px;
+
+  width: 100%;
+
+  margin-top: 85px;
+
+  padding-bottom: 0;
+
+  border-bottom: 1px solid #d8d8d8;
+
+  overflow-x: auto;
+}
+
+
+.wq-tab {
+  height: 40px;
+
+  flex: 0 0 auto;
+
+  padding: 0 14px;
+
+  border: 1px solid #ffffff;
+
+  border-radius: 0;
+
+  background: #0068b5;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+
+.wq-tab:hover {
+  background: #005a9d;
+}
+
+
+.wq-tab.active {
+  background: #ffffff;
+
+  color: #666666;
+
+  border: 1px solid #d8d8d8;
+
+  border-bottom: 0;
+
+  border-radius: 6px 6px 0 0;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.wq-search-area {
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 18px;
+
+  padding-right: 6px;
+}
+
+
+.wq-search-input {
+  width: 365px;
+
+  height: 28px;
+
+  box-sizing: border-box;
+
+  padding: 3px 7px;
+
+  border: 1px solid #9a806e;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+
+.wq-search-input:focus {
+  border-color: #0068b5;
+}
+
+
+.wq-search-button {
+  width: 44px;
+
+  height: 30px;
+
+  border: none;
+
+  border-radius: 3px;
+
+  background: #337ab7;
+
+  color: #ffffff;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+
+.wq-search-button:hover {
+  background: #286090;
+}
+
+
+/* =========================================
+   RECORD AREA
+========================================= */
+
+.wq-record-area {
+  width: 100%;
+
+  min-height: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  margin-top: 5px;
+
+  border: 1px solid #999999;
+
+  background: #fafafa;
+
+  color: #ff0000;
+
+  font-size: 16px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1200px) {
+
+  .wq-main-layout {
+    grid-template-columns: minmax(0, 1fr) 270px;
+
+    gap: 12px;
+  }
+
+  .wq-field {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+
+  .wq-full-field {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+
+  .wq-warning {
+    margin-left: 125px;
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  .wq-main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wq-overview-panel {
+    max-width: 420px;
+  }
+
+  .wq-tabs-container {
+    margin-top: 30px;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .wq-form-area {
+    grid-template-columns: 1fr;
+  }
+
+  .wq-field,
+  .wq-full-field {
+    grid-column: 1 / 2;
+
+    grid-template-columns:
+      100px
+      minmax(0, 1fr);
+  }
+
+  .wq-warning {
+    grid-column: 1 / 2;
+
+    margin-left: 105px;
+  }
+
+  .wq-new-task-wrapper {
+    grid-column: 1 / 2;
+  }
+
+  .wq-panel-title {
+    font-size: 19px;
+  }
+
+  .wq-field label,
+  .wq-full-field label {
+    font-size: 14px;
+  }
+
+  .wq-search-input {
+    width: 250px;
+  }
+
+}
