@@ -1,11 +1,11 @@
 export const teams = [
+  "C",
+  "G",
   "N",
   "P",
+  "PB",
   "Z",
   "ZA",
-  "C",
-  "GMI",
-  "PB",
 ];
 
 export const functionalityData = [
