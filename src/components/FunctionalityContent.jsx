@@ -16,7 +16,7 @@ import QCForm from "./QCForm";
 import QCView from "./QCView";
 import WorkingQueue from "./WorkingQueue";
 import TaskAllocation from "./TaskAllocation";
-import QCTransfer from "./QCTransfer";
+import MenuAssign from "./MenuAssign";
 
 
 /* =========================================================
@@ -28,7 +28,7 @@ function FunctionalityContent({ team, functionality }) {
 
 
   /* =======================================================
-     RESET SELECTED MODULE WHEN MAIN FUNCTIONALITY CHANGES
+     RESET SELECTED MODULE WHEN FUNCTIONALITY CHANGES
   ======================================================= */
 
   useEffect(() => {
@@ -42,6 +42,26 @@ function FunctionalityContent({ team, functionality }) {
 
   if (!functionality) {
     return null;
+  }
+
+
+  /* =======================================================
+     PERMISSION
+     
+     Permission directly displays the complete 
+     Menu Assign content.
+     
+     No module card is displayed.
+  ======================================================= */
+
+  if (functionality.id === "permission") {
+    return (
+      <main className="functionality-content">
+
+        <MenuAssign />
+
+      </main>
+    );
   }
 
 
@@ -71,13 +91,11 @@ function FunctionalityContent({ team, functionality }) {
           <div className="master-grid">
 
             {functionality.modules?.map((module, index) => (
-
               <MasterField
                 key={`${module.name}-${index}`}
                 module={module}
                 index={index}
               />
-
             ))}
 
           </div>
@@ -90,7 +108,6 @@ function FunctionalityContent({ team, functionality }) {
         ================================================= */}
 
         {functionality.address && (
-
           <section className="address-section">
 
             <div className="address-header">
@@ -120,7 +137,6 @@ function FunctionalityContent({ team, functionality }) {
             </button>
 
           </section>
-
         )}
 
       </main>
@@ -151,27 +167,21 @@ function FunctionalityContent({ team, functionality }) {
               const isSelected =
                 selectedModule === module;
 
-
               return (
-
                 <ModuleCard
-                  key={`${functionality.id}-${module}-${index}`}
+                  key={`${module}-${index}`}
                   name={module}
                   index={index}
                   functionalityId={functionality.id}
                   selected={isSelected}
-
                   onClick={() => {
 
                     setSelectedModule(
-                      isSelected
-                        ? null
-                        : module
+                      isSelected ? null : module
                     );
 
                   }}
                 />
-
               );
 
             })}
@@ -188,120 +198,87 @@ function FunctionalityContent({ team, functionality }) {
 
 
         {/* =================================================
-            SELECTED MODULE CONTENT
+            WORKING QUEUE
         ================================================= */}
 
-        {selectedModule && (
-
-          <div
-            key={`${functionality.id}-${selectedModule}`}
-            className="module-content-wrapper"
-          >
+        {selectedModule === "Working Queue" && (
+          <WorkingQueue />
+        )}
 
 
-            {/* =============================================
-                WORKING QUEUE
-            ============================================= */}
+        {/* =================================================
+            TASK ALLOCATION
+        ================================================= */}
 
-            {selectedModule === "Working Queue" && (
-
-              <WorkingQueue />
-
-            )}
+        {selectedModule === "Task Allocation" && (
+          <TaskAllocation />
+        )}
 
 
-            {/* =============================================
-                TASK ALLOCATION
-            ============================================= */}
+        {/* =================================================
+            QC FORM
+        ================================================= */}
 
-            {selectedModule === "Task Allocation" && (
+        {(selectedModule === "For QC" ||
+          selectedModule === "QC Form") && (
 
-              <TaskAllocation />
+          <QCForm />
 
-            )}
-
-
-            {/* =============================================
-                QC FORM
-            ============================================= */}
-
-            {(selectedModule === "QC Form" ||
-              selectedModule === "For QC") && (
-
-              <QCForm />
-
-            )}
+        )}
 
 
-            {/* =============================================
-                QC VIEW
-            ============================================= */}
+        {/* =================================================
+            QC VIEW
+        ================================================= */}
 
-            {selectedModule === "QC View" && (
-
-              <QCView />
-
-            )}
+        {selectedModule === "QC View" && (
+          <QCView />
+        )}
 
 
-            {/* =============================================
-                QC TRANSFER
-            ============================================= */}
+        {/* =================================================
+            OTHER MODULES
+        ================================================= */}
 
-            {selectedModule === "QC Transfer" && (
+        {selectedModule &&
+          selectedModule !== "Working Queue" &&
+          selectedModule !== "Task Allocation" &&
+          selectedModule !== "For QC" &&
+          selectedModule !== "QC Form" &&
+          selectedModule !== "QC View" && (
 
-              <QCTransfer />
+            <div className="selected-module-content">
 
-            )}
+              <div className="selected-module-header">
 
+                <div>
 
-            {/* =============================================
-                OTHER MODULES
-            ============================================= */}
+                  <span className="selected-module-label">
+                    Selected Module
+                  </span>
 
-            {selectedModule !== "Working Queue" &&
-              selectedModule !== "Task Allocation" &&
-              selectedModule !== "QC Form" &&
-              selectedModule !== "For QC" &&
-              selectedModule !== "QC View" &&
-              selectedModule !== "QC Transfer" && (
-
-                <div className="selected-module-content">
-
-                  <div className="selected-module-header">
-
-                    <div>
-
-                      <span className="selected-module-label">
-                        Selected Module
-                      </span>
-
-                      <h3>
-                        {selectedModule}
-                      </h3>
-
-                    </div>
-
-                    <ChevronDown size={18} />
-
-                  </div>
-
-
-                  <div className="selected-module-placeholder">
-
-                    <p>
-                      {selectedModule} content will be displayed here.
-                    </p>
-
-                  </div>
+                  <h3>
+                    {selectedModule}
+                  </h3>
 
                 </div>
 
-              )}
+                <ChevronDown size={18} />
 
-          </div>
+              </div>
 
-        )}
+
+              <div className="selected-module-placeholder">
+
+                <p>
+                  {selectedModule} content will be displayed here.
+                </p>
+
+              </div>
+
+            </div>
+
+          )}
 
       </section>
 
@@ -314,52 +291,38 @@ function FunctionalityContent({ team, functionality }) {
    MASTER FIELD
 ========================================================= */
 
-function MasterField({
-  module,
-  index,
-}) {
+function MasterField({ module, index }) {
 
   const isDropdown =
     module.type === "dropdown";
 
-
   return (
-
     <button
       className="master-field"
       type="button"
     >
 
       <span className="master-field-number">
-
         {String(index + 1).padStart(2, "0")}
-
       </span>
 
 
       <span className="master-field-content">
-
         {module.name}
-
       </span>
 
 
       <span className="master-field-action">
 
         {isDropdown ? (
-
           <ChevronDown size={17} />
-
         ) : (
-
           <ChevronRight size={17} />
-
         )}
 
       </span>
 
     </button>
-
   );
 }
 
@@ -376,160 +339,68 @@ function ModuleCard({
   onClick,
 }) {
 
-
-  /* =======================================================
-     GET ICON BASED ON MAIN FUNCTIONALITY
-  ======================================================= */
-
   const getIcon = () => {
 
     switch (functionalityId) {
 
-
-      /* -----------------------------------------------
-         WORKING QUEUE
-      ----------------------------------------------- */
-
       case "working-queue":
-
-        return (
-          <ClipboardList size={23} />
-        );
-
-
-      /* -----------------------------------------------
-         SERVICE / SUB-SERVICE
-      ----------------------------------------------- */
+        return <ClipboardList size={23} />;
 
       case "service-sub-service":
-
-        return (
-          <Layers3 size={23} />
-        );
-
-
-      /* -----------------------------------------------
-         TASK / QC MASTER / TRANSFER
-      ----------------------------------------------- */
+        return <Layers3 size={23} />;
 
       case "task-qc-master-transfer":
-
-        return (
-          <ArrowLeftRight size={23} />
-        );
-
-
-      /* -----------------------------------------------
-         CLIENT ONBOARDING
-      ----------------------------------------------- */
+        return <ArrowLeftRight size={23} />;
 
       case "client-onboarding":
-
-        return (
-          <UserPlus size={23} />
-        );
-
-
-      /* -----------------------------------------------
-         EMPLOYEE ONBOARDING
-      ----------------------------------------------- */
+        return <UserPlus size={23} />;
 
       case "employee-onboarding":
-
-        return (
-          <Users size={23} />
-        );
-
-
-      /* -----------------------------------------------
-         PERMISSION
-      ----------------------------------------------- */
+        return <Users size={23} />;
 
       case "permission":
-
-        return (
-          <ShieldCheck size={23} />
-        );
-
-
-      /* -----------------------------------------------
-         REPORT
-      ----------------------------------------------- */
+        return <ShieldCheck size={23} />;
 
       case "report":
-
-        return (
-          <BarChart3 size={23} />
-        );
-
-
-      /* -----------------------------------------------
-         DEFAULT
-      ----------------------------------------------- */
+        return <BarChart3 size={23} />;
 
       default:
-
-        return (
-          <Layers3 size={23} />
-        );
+        return <Layers3 size={23} />;
 
     }
-
   };
 
 
   return (
-
     <button
       className={`module-card ${
         selected ? "active" : ""
       }`}
-
       type="button"
-
       onClick={onClick}
-
       aria-pressed={selected}
     >
 
-
-      {/* MODULE NUMBER */}
-
       <span className="module-number">
-
         {String(index + 1).padStart(2, "0")}
-
       </span>
 
-
-      {/* MODULE ICON */}
 
       <span className="module-icon">
-
         {getIcon()}
-
       </span>
 
-
-      {/* MODULE NAME */}
 
       <span className="module-name">
-
         {name}
-
       </span>
 
 
-      {/* MODULE ARROW */}
-
       <span className="module-arrow">
-
         <ChevronRight size={17} />
-
       </span>
 
     </button>
-
   );
 }
 
@@ -541,7 +412,6 @@ function ModuleCard({
 function DatabaseIcon() {
 
   return (
-
     <svg
       width="20"
       height="20"
@@ -560,18 +430,15 @@ function DatabaseIcon() {
         ry="3"
       />
 
-
       <path
         d="M4 5v7c0 1.66 3.58 3 8 3s8-1.34 8-3V5"
       />
-
 
       <path
         d="M4 12v7c0 1.66 3.58 3 8 3s8-1.34 8-3v-7"
       />
 
     </svg>
-
   );
 }
 

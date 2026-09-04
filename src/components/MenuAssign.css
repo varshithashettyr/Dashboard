@@ -1,0 +1,103 @@
+.menu-assign {
+  font-family: Arial, sans-serif;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.menu-assign-title {
+  font-size: 16px;
+  color: #333;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 15px;
+}
+
+.menu-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.menu-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-filter-group label {
+  font-size: 14px;
+  color: #333;
+}
+
+.menu-filter-group select {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  min-width: 160px;
+  height: 30px;
+  outline: none;
+}
+
+.menu-submit-btn {
+  background-color: #2b78c4;
+  color: #fff;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  height: 30px;
+}
+
+.menu-submit-btn:hover {
+  background-color: #205e9b;
+}
+
+.menu-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.menu-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.menu-table th {
+  background-color: #0056b3;
+  color: #fff;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  border-right: 1px solid #004494;
+}
+
+.menu-table th:last-child {
+  border-right: none;
+}
+
+.menu-table td {
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 13px;
+}
+
+.sl-column {
+  width: 8%;
+  text-align: center;
+}
+
+.main-menu-column {
+  width: 42%;
+}
+
+.sub-menu-column {
+  width: 42%;
+}
+
+.checkbox-column {
+  width: 8%;
+  text-align: center;
+}
