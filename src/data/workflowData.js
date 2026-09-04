@@ -170,9 +170,24 @@ export const functionalityData = [
   },
 
   {
-    id: "report",
-    name: "Report",
 
-    modules: [],
-  },
-];
+  id: "report",
+  name: "Report",
+
+  modules: [
+    "Allocation Report",
+    "Feedback Report",
+    "Login Report",
+    "Pending cases",
+    "QA Status Report",
+    "QC Pending",
+    "QC Score",
+    "Query Report",
+    "Status Report",
+    "Task Consolidated Report",
+    "TAT Report",
+    "Update Time",
+    "Utilization Report",
+  ],
+}
+]
