@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import QCForm from "./QCForm";
+import QCView from "./QCView";
 import WorkingQueue from "./WorkingQueue";
 import TaskAllocation from "./TaskAllocation";
 
@@ -23,7 +24,6 @@ import TaskAllocation from "./TaskAllocation";
 
 function FunctionalityContent({ team, functionality }) {
   const [selectedModule, setSelectedModule] = useState(null);
-
 
   /* =======================================================
      SAFETY CHECK
@@ -72,7 +72,9 @@ function FunctionalityContent({ team, functionality }) {
         </section>
 
 
-        {/* ADDRESS */}
+        {/* =================================================
+            ADDRESS
+        ================================================= */}
 
         {functionality.address && (
           <section className="address-section">
@@ -142,9 +144,11 @@ function FunctionalityContent({ team, functionality }) {
                   functionalityId={functionality.id}
                   selected={isSelected}
                   onClick={() => {
+
                     setSelectedModule(
                       isSelected ? null : module
                     );
+
                   }}
                 />
               );
@@ -193,6 +197,15 @@ function FunctionalityContent({ team, functionality }) {
 
 
         {/* =================================================
+            QC VIEW
+        ================================================= */}
+
+        {selectedModule === "QC View" && (
+          <QCView />
+        )}
+
+
+        {/* =================================================
             OTHER MODULES
         ================================================= */}
 
@@ -200,7 +213,8 @@ function FunctionalityContent({ team, functionality }) {
           selectedModule !== "Working Queue" &&
           selectedModule !== "Task Allocation" &&
           selectedModule !== "For QC" &&
-          selectedModule !== "QC Form" && (
+          selectedModule !== "QC Form" &&
+          selectedModule !== "QC View" && (
 
             <div className="selected-module-content">
 

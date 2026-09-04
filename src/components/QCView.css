@@ -1,0 +1,420 @@
+/* =========================================================
+   QC VIEW
+   Styled to match the existing deployed QC View
+========================================================= */
+
+.qc-view {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 0 10px 20px 10px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #000;
+}
+
+
+/* =========================================================
+   FILTER ROW
+========================================================= */
+
+.qc-filter-section {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 28px;
+
+    margin-top: 35px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   EACH FILTER
+========================================================= */
+
+.qc-field {
+  display: flex;
+  flex-direction: column;
+
+  width: 222px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.qc-field label {
+  margin-bottom: 5px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 18px;
+
+  color: #000;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.qc-field select {
+  width: 222px;
+  height: 51px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid #cfcfcf;
+
+  border-radius: 0;
+
+  background-color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  color: #444;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   DATE INPUT
+========================================================= */
+
+.qc-field input {
+  width: 222px;
+  height: 51px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid #cfcfcf;
+
+  border-radius: 0;
+
+  background-color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  color: #444;
+
+  outline: none;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.qc-field select:focus,
+.qc-field input:focus {
+  border-color: #999;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.qc-submit {
+  width: 100px;
+  height: 50px;
+
+  flex-shrink: 0;
+
+  margin-bottom: 1px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  background-color: #337ab7;
+
+  color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   SUBMIT HOVER
+========================================================= */
+
+.qc-submit:hover {
+  background-color: #286090;
+}
+
+
+/* =========================================================
+   TOTAL + SEARCH
+========================================================= */
+
+.qc-summary-section {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.qc-total {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  color: green;
+
+  line-height: 20px;
+}
+
+
+/* =========================================================
+   SEARCH CONTAINER
+========================================================= */
+
+.qc-search {
+  display: flex;
+
+  align-items: center;
+
+  height: 50px;
+}
+
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
+
+.qc-search input {
+  width: 225px;
+  height: 50px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid #ccc;
+
+  border-right: none;
+
+  border-radius: 0;
+
+  background-color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  color: #333;
+
+  outline: none;
+}
+
+
+/* =========================================================
+   SEARCH PLACEHOLDER
+========================================================= */
+
+.qc-search input::placeholder {
+  color: #888;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   SEARCH INPUT FOCUS
+========================================================= */
+
+.qc-search input:focus {
+  border-color: #aaa;
+}
+
+
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
+
+.qc-search button {
+  width: 60px;
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ccc;
+
+  border-radius: 0;
+
+  background-color: #fff;
+
+  color: #123d66;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   SEARCH BUTTON HOVER
+========================================================= */
+
+.qc-search button:hover {
+  background-color: #f5f5f5;
+}
+
+
+/* =========================================================
+   RESULT AREA
+========================================================= */
+
+.qc-result {
+  width: 100%;
+
+  margin-top: 14px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   NO RECORDS
+========================================================= */
+
+.qc-no-records {
+  width: 100%;
+
+  min-height: 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  box-sizing: border-box;
+
+  padding: 6px 8px;
+
+  border: 1px solid #222;
+
+  background-color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 20px;
+
+  color: #111;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .qc-filter-section {
+    gap: 18px;
+  }
+
+  .qc-field,
+  .qc-field select,
+  .qc-field input {
+    width: 200px;
+  }
+
+}
+
+
+@media (max-width: 1000px) {
+
+  .qc-filter-section {
+    gap: 12px;
+  }
+
+  .qc-field,
+  .qc-field select,
+  .qc-field input {
+    width: 180px;
+  }
+
+  .qc-submit {
+    width: 90px;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .qc-filter-section {
+    flex-wrap: wrap;
+  }
+
+  .qc-field,
+  .qc-field select,
+  .qc-field input {
+    width: 200px;
+  }
+
+  .qc-summary-section {
+    flex-wrap: wrap;
+
+    gap: 15px;
+  }
+
+  .qc-search {
+    margin-left: auto;
+  }
+
+}
