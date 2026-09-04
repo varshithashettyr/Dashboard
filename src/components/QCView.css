@@ -1,6 +1,5 @@
 /* =========================================================
    QC VIEW
-   Styled to match the existing deployed QC View
 ========================================================= */
 
 .qc-view {
@@ -8,6 +7,9 @@
   box-sizing: border-box;
 
   padding: 0 10px 20px 10px;
+
+  /* Space between modules and QC View content */
+  margin-top: 25px;
 
   font-family: Arial, Helvetica, sans-serif;
 
@@ -23,11 +25,9 @@
   width: 100%;
 
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 
   gap: 28px;
-
-    margin-top: 35px;
 
   box-sizing: border-box;
 }
@@ -98,16 +98,39 @@
 
 
 /* =========================================================
+   DATE FIELD
+========================================================= */
+
+.qc-date-field {
+  position: relative;
+}
+
+
+/* =========================================================
+   DATE INPUT WRAPPER
+========================================================= */
+
+.qc-date-input-wrapper {
+  width: 222px;
+  height: 51px;
+
+  position: relative;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
    DATE INPUT
 ========================================================= */
 
-.qc-field input {
+.qc-date-input-wrapper input {
   width: 222px;
   height: 51px;
 
   box-sizing: border-box;
 
-  padding: 0 12px;
+  padding: 0 42px 0 12px;
 
   border: 1px solid #cfcfcf;
 
@@ -124,16 +147,291 @@
   color: #444;
 
   outline: none;
+
+  cursor: pointer;
 }
 
 
 /* =========================================================
-   FOCUS
+   DATE INPUT FOCUS
 ========================================================= */
 
-.qc-field select:focus,
-.qc-field input:focus {
+.qc-date-input-wrapper input:focus {
   border-color: #999;
+}
+
+
+/* =========================================================
+   CALENDAR ICON
+========================================================= */
+
+.qc-calendar-icon {
+  position: absolute;
+
+  right: 0;
+  top: 0;
+
+  width: 42px;
+  height: 51px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background: transparent;
+
+  color: #222;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+
+.qc-calendar-icon:hover {
+  color: #000;
+}
+
+
+/* =========================================================
+   CUSTOM CALENDAR
+
+   IMPORTANT:
+   NO absolute positioning here.
+
+   Because the calendar remains in normal document flow,
+   opening it increases the height of the filter row.
+   Therefore Total/Search/Results move down instead of
+   being overlapped.
+========================================================= */
+
+.qc-calendar {
+  width: 254px;
+
+  box-sizing: border-box;
+
+  margin-top: 4px;
+
+  padding: 8px;
+
+  background: #fff;
+
+  border: 1px solid #cfcfcf;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  z-index: 20;
+}
+
+
+/* =========================================================
+   CALENDAR HEADER
+========================================================= */
+
+.qc-calendar-header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   MONTH TITLE
+========================================================= */
+
+.qc-calendar-month {
+  flex: 1;
+
+  text-align: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: #111;
+}
+
+
+/* =========================================================
+   CALENDAR NAV BUTTON
+========================================================= */
+
+.qc-calendar-nav {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ccc;
+
+  background: #fff;
+
+  color: #111;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+
+.qc-calendar-nav:hover {
+  background-color: #f3f3f3;
+}
+
+
+/* =========================================================
+   WEEK DAYS
+========================================================= */
+
+.qc-calendar-weekdays {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  margin-bottom: 2px;
+}
+
+
+.qc-calendar-weekday {
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: #222;
+}
+
+
+/* =========================================================
+   CALENDAR DAYS
+========================================================= */
+
+.qc-calendar-days {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+}
+
+
+/* =========================================================
+   INDIVIDUAL DAY
+========================================================= */
+
+.qc-calendar-day {
+  width: 100%;
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid transparent;
+
+  background: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  color: #111;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+
+.qc-calendar-day:hover {
+  background-color: #f0f0f0;
+
+  border-color: #bbb;
+}
+
+
+/* =========================================================
+   PREVIOUS / NEXT MONTH DAYS
+========================================================= */
+
+.qc-calendar-day.muted {
+  color: #999;
+}
+
+
+/* =========================================================
+   SELECTED DATE
+========================================================= */
+
+.qc-calendar-day.selected {
+  background-color: #e8e8e8;
+
+  border: 1px solid #222;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CALENDAR FOOTER
+========================================================= */
+
+.qc-calendar-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-top: 1px solid #eee;
+
+  margin-top: 5px;
+
+  padding: 7px 3px 2px 3px;
+}
+
+
+.qc-calendar-footer button {
+  border: none;
+
+  background: transparent;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  color: #0066cc;
+
+  cursor: pointer;
+
+  padding: 2px 4px;
+}
+
+
+.qc-calendar-footer button:hover {
+  text-decoration: underline;
 }
 
 
@@ -147,7 +445,7 @@
 
   flex-shrink: 0;
 
-  margin-bottom: 1px;
+  margin-top: 23px;
 
   border: none;
 
@@ -369,7 +667,12 @@
 
   .qc-field,
   .qc-field select,
-  .qc-field input {
+  .qc-field input,
+  .qc-date-input-wrapper {
+    width: 200px;
+  }
+
+  .qc-date-input-wrapper input {
     width: 200px;
   }
 
@@ -384,7 +687,12 @@
 
   .qc-field,
   .qc-field select,
-  .qc-field input {
+  .qc-field input,
+  .qc-date-input-wrapper {
+    width: 180px;
+  }
+
+  .qc-date-input-wrapper input {
     width: 180px;
   }
 
@@ -403,7 +711,12 @@
 
   .qc-field,
   .qc-field select,
-  .qc-field input {
+  .qc-field input,
+  .qc-date-input-wrapper {
+    width: 200px;
+  }
+
+  .qc-date-input-wrapper input {
     width: 200px;
   }
 
