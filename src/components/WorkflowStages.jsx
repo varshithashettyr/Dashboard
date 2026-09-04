@@ -17,7 +17,7 @@ export const functionalities = [
     modules: [
       { name: "QC Form" },
       { name: "Task Allocation" },
-      { name: "QA Form" },
+      { name: "QC View" },
       { name: "Query" },
       { name: "Working Queue" },
     ],

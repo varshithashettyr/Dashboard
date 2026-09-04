@@ -16,7 +16,7 @@ export const functionalityData = [
     modules: [
       "QC Form",
       "Task Allocation",
-      "QA Form",
+      "QC View",
       "Query",
       "Working Queue",
     ],
