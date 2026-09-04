@@ -16,6 +16,7 @@ import QCForm from "./QCForm";
 import QCView from "./QCView";
 import WorkingQueue from "./WorkingQueue";
 import TaskAllocation from "./TaskAllocation";
+import QCTransfer from "./QCTransfer";
 
 
 /* =========================================================
@@ -23,27 +24,15 @@ import TaskAllocation from "./TaskAllocation";
 ========================================================= */
 
 function FunctionalityContent({ team, functionality }) {
-
   const [selectedModule, setSelectedModule] = useState(null);
 
 
   /* =======================================================
      RESET SELECTED MODULE WHEN MAIN FUNCTIONALITY CHANGES
-
-     Example:
-
-     Working Queue
-          ↓
-     QC View
-
-     The previously selected module from Working Queue
-     should NOT remain selected inside QC View.
   ======================================================= */
 
   useEffect(() => {
-
     setSelectedModule(null);
-
   }, [functionality?.id]);
 
 
@@ -61,7 +50,6 @@ function FunctionalityContent({ team, functionality }) {
   ======================================================= */
 
   if (functionality.id === "master") {
-
     return (
       <main className="functionality-content">
 
@@ -145,7 +133,6 @@ function FunctionalityContent({ team, functionality }) {
   ======================================================= */
 
   return (
-
     <main className="functionality-content">
 
       <section className="modules-section">
@@ -202,11 +189,6 @@ function FunctionalityContent({ team, functionality }) {
 
         {/* =================================================
             SELECTED MODULE CONTENT
-
-            KEY IS IMPORTANT.
-
-            It forces React to create a fresh component
-            whenever a different module is selected.
         ================================================= */}
 
         {selectedModule && (
@@ -263,6 +245,17 @@ function FunctionalityContent({ team, functionality }) {
 
 
             {/* =============================================
+                QC TRANSFER
+            ============================================= */}
+
+            {selectedModule === "QC Transfer" && (
+
+              <QCTransfer />
+
+            )}
+
+
+            {/* =============================================
                 OTHER MODULES
             ============================================= */}
 
@@ -270,7 +263,8 @@ function FunctionalityContent({ team, functionality }) {
               selectedModule !== "Task Allocation" &&
               selectedModule !== "QC Form" &&
               selectedModule !== "For QC" &&
-              selectedModule !== "QC View" && (
+              selectedModule !== "QC View" &&
+              selectedModule !== "QC Transfer" && (
 
                 <div className="selected-module-content">
 
@@ -287,7 +281,6 @@ function FunctionalityContent({ team, functionality }) {
                       </h3>
 
                     </div>
-
 
                     <ChevronDown size={18} />
 
@@ -313,7 +306,6 @@ function FunctionalityContent({ team, functionality }) {
       </section>
 
     </main>
-
   );
 }
 
@@ -392,6 +384,7 @@ function ModuleCard({
   const getIcon = () => {
 
     switch (functionalityId) {
+
 
       /* -----------------------------------------------
          WORKING QUEUE
@@ -491,10 +484,14 @@ function ModuleCard({
       className={`module-card ${
         selected ? "active" : ""
       }`}
+
       type="button"
+
       onClick={onClick}
+
       aria-pressed={selected}
     >
+
 
       {/* MODULE NUMBER */}
 
