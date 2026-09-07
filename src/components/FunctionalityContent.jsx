@@ -20,6 +20,7 @@ import QCTransfer from "./QCTransfer";
 import MenuAssign from "./MenuAssign";
 import AllocationReport from "./AllocationReport";
 import FeedbackReport from "./FeedbackReport";
+import LoginReport from "./LoginReport";
 
 /* =========================================================
    PERMISSION MENU DATA
@@ -558,6 +559,14 @@ function FunctionalityContent({ team, functionality }) {
 
               if (moduleName === "feedback report") {
                 return <FeedbackReport />;
+              }
+
+              /* =============================================
+                  LOGIN REPORT
+              ============================================= */
+
+              if (moduleName === "login report") {
+                return <LoginReport />;
               }
 
               /* =============================================

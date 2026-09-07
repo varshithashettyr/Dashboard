@@ -1,0 +1,116 @@
+.login-report-wrapper {
+  padding: 24px;
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  color: #333333;
+}
+
+.login-report-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0 0 24px 0;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+}
+
+/* CONTAINER FOR FILTERS WITH GENEROUS BOTTOM MARGIN FOR DROPDOWNS */
+.login-report-filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+/* COLUMNS FOR LABELS ABOVE INPUTS */
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-item label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.filter-item select {
+  height: 38px;
+  padding: 6px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-size: 14px;
+  min-width: 180px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.filter-item select:focus {
+  border-color: #0066b2;
+}
+
+/* ALIGN BUTTONS WITH INPUT FIELDS */
+.filter-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn {
+  height: 38px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #0066b2;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #004d85;
+}
+
+/* TABLE STYLING */
+.login-report-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+.login-report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.login-report-table th {
+  background-color: #0066b2;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid #00528e;
+  white-space: nowrap;
+}
+
+.login-report-table td {
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.login-report-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.login-report-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
