@@ -1,103 +1,334 @@
+/* =========================================================
+   MENU ASSIGN
+========================================================= */
+
 .menu-assign {
-  font-family: Arial, sans-serif;
-  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 15px 10px 20px 10px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #000;
+
   background-color: #fff;
 }
 
+
+/* =========================================================
+   TITLE
+========================================================= */
+
 .menu-assign-title {
   font-size: 16px;
+  font-weight: 600;
+
   color: #333;
+
   padding-bottom: 8px;
+
   border-bottom: 1px solid #e0e0e0;
+
   margin-bottom: 15px;
 }
 
+
+/* =========================================================
+   FILTER ROW
+   Everything stays in ONE horizontal row.
+========================================================= */
+
 .menu-filter-row {
+  width: 100%;
+
   display: flex;
+
+  flex-direction: row;
+
   align-items: center;
-  gap: 20px;
+
+  flex-wrap: nowrap;
+
+  gap: 25px;
+
   margin-bottom: 15px;
+
+  white-space: nowrap;
 }
+
+
+/* =========================================================
+   FILTER GROUP
+========================================================= */
 
 .menu-filter-group {
   display: flex;
+
+  flex-direction: row;
+
   align-items: center;
+
   gap: 8px;
+
+  flex-shrink: 0;
+
+  white-space: nowrap;
 }
 
+
+/* =========================================================
+   LABEL
+========================================================= */
+
 .menu-filter-group label {
+  white-space: nowrap;
+
   font-size: 14px;
+
+  font-weight: 500;
+
   color: #333;
 }
 
+
+/* =========================================================
+   SELECT
+========================================================= */
+
 .menu-filter-group select {
-  padding: 4px 8px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  min-width: 160px;
+  width: 180px;
+
+  min-width: 180px;
+
   height: 30px;
+
+  box-sizing: border-box;
+
+  padding: 4px 8px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 2px;
+
+  background-color: #fff;
+
+  color: #333;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+
   outline: none;
+
+  cursor: pointer;
 }
 
-.menu-submit-btn {
-  background-color: #2b78c4;
-  color: #fff;
-  border: none;
-  padding: 5px 15px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 13px;
-  height: 30px;
+
+/* SELECT FOCUS */
+
+.menu-filter-group select:focus {
+  border-color: #2b78c4;
 }
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.menu-submit-btn {
+  height: 30px;
+
+  padding: 5px 16px;
+
+  background-color: #2b78c4;
+
+  color: #fff;
+
+  border: none;
+
+  border-radius: 3px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  white-space: nowrap;
+}
+
+
+/* HOVER */
 
 .menu-submit-btn:hover {
   background-color: #205e9b;
 }
 
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
 .menu-table-wrapper {
   width: 100%;
+
   overflow-x: auto;
+
+  box-sizing: border-box;
 }
+
+
+/* =========================================================
+   TABLE
+========================================================= */
 
 .menu-table {
   width: 100%;
+
+  min-width: 700px;
+
   border-collapse: collapse;
+
   text-align: left;
+
+  table-layout: fixed;
 }
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
 
 .menu-table th {
   background-color: #0056b3;
+
   color: #fff;
+
   padding: 8px;
+
   font-size: 13px;
+
   font-weight: bold;
+
   border-right: 1px solid #004494;
+
+  border-bottom: 1px solid #004494;
+
+  box-sizing: border-box;
 }
+
+
+/* LAST HEADER */
 
 .menu-table th:last-child {
   border-right: none;
 }
 
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
 .menu-table td {
   padding: 8px;
+
   border: 1px solid #e0e0e0;
+
   font-size: 13px;
+
+  color: #333;
+
+  box-sizing: border-box;
 }
+
+
+/* =========================================================
+   TABLE ROW
+========================================================= */
+
+.menu-table tbody tr {
+  background-color: #fff;
+}
+
+
+/* ROW HOVER */
+
+.menu-table tbody tr:hover {
+  background-color: #f7f9fc;
+}
+
+
+/* =========================================================
+   COLUMNS
+========================================================= */
 
 .sl-column {
   width: 8%;
+
   text-align: center;
 }
+
 
 .main-menu-column {
   width: 42%;
 }
 
+
 .sub-menu-column {
   width: 42%;
 }
 
+
 .checkbox-column {
   width: 8%;
+
   text-align: center;
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.menu-table input[type="checkbox"] {
+  width: 14px;
+
+  height: 14px;
+
+  margin: 0;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .menu-filter-row {
+    gap: 15px;
+  }
+
+  .menu-filter-group select {
+    width: 160px;
+
+    min-width: 160px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .menu-filter-row {
+    overflow-x: auto;
+
+    padding-bottom: 5px;
+  }
+
 }

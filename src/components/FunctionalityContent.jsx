@@ -17,6 +17,7 @@ import QCView from "./QCView";
 import WorkingQueue from "./WorkingQueue";
 import TaskAllocation from "./TaskAllocation";
 import QCTransfer from "./QCTransfer";
+import MenuAssign from "./MenuAssign";
 
 
 /* =========================================================
@@ -500,41 +501,11 @@ function FunctionalityContent({ team, functionality }) {
 
         <section className="modules-section">
 
-          <div className="modules-row">
+          <div className="module-content-wrapper">
 
-            <ModuleCard
-              name="Menu Assign"
-              index={0}
-              functionalityId="permission"
-              selected={
-                selectedModule === "Menu Assign"
-              }
-              onClick={() => {
-
-                setSelectedModule(
-                  selectedModule === "Menu Assign"
-                    ? null
-                    : "Menu Assign"
-                );
-
-              }}
-            />
+            <MenuAssign />
 
           </div>
-
-
-          {selectedModule === "Menu Assign" && (
-
-            <div
-              className="module-content-wrapper"
-              key="permission-menu-assign"
-            >
-
-              <PermissionMenuAssign />
-
-            </div>
-
-          )}
 
         </section>
 
@@ -1301,7 +1272,7 @@ function DatabaseIcon() {
       />
 
       <path
-        d="M4 12v7c0 1.66 3.58 3 8 3s8-1.34 8-3v-7"
+        d="M4 12v7c0 1.66 3 3s8-1.34 8-3v-7"
       />
 
     </svg>

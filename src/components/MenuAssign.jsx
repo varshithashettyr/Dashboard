@@ -79,15 +79,27 @@ function MenuAssign() {
     [69, "KRA Report", "Backup KRA"],
   ];
 
+  /* =========================================================
+     SELECT ALL
+  ========================================================= */
+
   const handleSelectAll = (e) => {
     const checked = e.target.checked;
+
     setSelectAll(checked);
+
     if (checked) {
-      setSelectedMenus(menuData.map((item) => item[0]));
+      setSelectedMenus(
+        menuData.map((item) => item[0])
+      );
     } else {
       setSelectedMenus([]);
     }
   };
+
+  /* =========================================================
+     INDIVIDUAL MENU CHECKBOX
+  ========================================================= */
 
   const handleMenuCheckbox = (sl) => {
     setSelectedMenus((previous) => {
@@ -95,10 +107,17 @@ function MenuAssign() {
         ? previous.filter((item) => item !== sl)
         : [...previous, sl];
 
-      setSelectAll(updated.length === menuData.length);
+      setSelectAll(
+        updated.length === menuData.length
+      );
+
       return updated;
     });
   };
+
+  /* =========================================================
+     SUBMIT
+  ========================================================= */
 
   const handleSubmit = () => {
     console.log("Menu Assign:", {
@@ -110,36 +129,93 @@ function MenuAssign() {
 
   return (
     <div className="menu-assign">
-      <div className="menu-assign-title">Menu Assign</div>
+
+      {/* =====================================================
+          TITLE
+      ===================================================== */}
+
+      <div className="menu-assign-title">
+        Menu Assign
+      </div>
+
+
+      {/* =====================================================
+          FILTER ROW
+      ===================================================== */}
 
       <div className="menu-filter-row">
+
+        {/* SUB TEAM */}
+
         <div className="menu-filter-group">
-          <label htmlFor="subTeam">Sub-Team:</label>
+
+          <label htmlFor="subTeam">
+            Sub-Team:
+          </label>
+
           <select
             id="subTeam"
             value={subTeam}
-            onChange={(e) => setSubTeam(e.target.value)}
+            onChange={(e) =>
+              setSubTeam(e.target.value)
+            }
           >
-            <option value="BWI TEAM">BWI TEAM</option>
-            <option value="MIS TEAM">MIS TEAM</option>
-            <option value="P-Team UK">P-Team UK</option>
-            <option value="P-Team US">P-Team US</option>
-            <option value="PW-TEAM">PW-TEAM</option>
-            <option value="QC TEAM">QC TEAM</option>
+            <option value="BWI TEAM">
+              BWI TEAM
+            </option>
+
+            <option value="MIS TEAM">
+              MIS TEAM
+            </option>
+
+            <option value="P-Team UK">
+              P-Team UK
+            </option>
+
+            <option value="P-Team US">
+              P-Team US
+            </option>
+
+            <option value="PW-TEAM">
+              PW-TEAM
+            </option>
+
+            <option value="QC TEAM">
+              QC TEAM
+            </option>
           </select>
+
         </div>
 
+
+        {/* EMPLOYEE */}
+
         <div className="menu-filter-group">
-          <label htmlFor="employee">Employee:</label>
+
+          <label htmlFor="employee">
+            Employee:
+          </label>
+
           <select
             id="employee"
             value={employee}
-            onChange={(e) => setEmployee(e.target.value)}
+            onChange={(e) =>
+              setEmployee(e.target.value)
+            }
           >
-            <option value="Select employee">Select employee</option>
-            <option value="Ssathish Padmanaban">Ssathish Padmanaban</option>
+            <option value="Select employee">
+              Select employee
+            </option>
+
+            <option value="Ssathish Padmanaban">
+              Ssathish Padmanaban
+            </option>
           </select>
+
         </div>
+
+
+        {/* SUBMIT */}
 
         <button
           type="button"
@@ -148,44 +224,93 @@ function MenuAssign() {
         >
           submit
         </button>
+
       </div>
 
+
+      {/* =====================================================
+          MENU TABLE
+      ===================================================== */}
+
       <div className="menu-table-wrapper">
+
         <table className="menu-table">
+
           <thead>
+
             <tr>
-              <th className="sl-column">SL</th>
-              <th className="main-menu-column">Main menu</th>
-              <th className="sub-menu-column">Sub menu</th>
+
+              <th className="sl-column">
+                SL
+              </th>
+
+              <th className="main-menu-column">
+                Main menu
+              </th>
+
+              <th className="sub-menu-column">
+                Sub menu
+              </th>
+
               <th className="checkbox-column">
+
                 <input
                   type="checkbox"
                   checked={selectAll}
                   onChange={handleSelectAll}
                   aria-label="Select all"
                 />
+
               </th>
+
             </tr>
+
           </thead>
+
+
           <tbody>
-            {menuData.map(([sl, mainMenu, subMenu]) => (
-              <tr key={sl}>
-                <td className="sl-column">{sl}</td>
-                <td className="main-menu-column">{mainMenu}</td>
-                <td className="sub-menu-column">{subMenu}</td>
-                <td className="checkbox-column">
-                  <input
-                    type="checkbox"
-                    checked={selectedMenus.includes(sl)}
-                    onChange={() => handleMenuCheckbox(sl)}
-                    aria-label={`Select ${subMenu}`}
-                  />
-                </td>
-              </tr>
-            ))}
+
+            {menuData.map(
+              ([sl, mainMenu, subMenu]) => (
+
+                <tr key={sl}>
+
+                  <td className="sl-column">
+                    {sl}
+                  </td>
+
+                  <td className="main-menu-column">
+                    {mainMenu}
+                  </td>
+
+                  <td className="sub-menu-column">
+                    {subMenu}
+                  </td>
+
+                  <td className="checkbox-column">
+
+                    <input
+                      type="checkbox"
+                      checked={selectedMenus.includes(sl)}
+                      onChange={() =>
+                        handleMenuCheckbox(sl)
+                      }
+                      aria-label={`Select ${subMenu}`}
+                    />
+
+                  </td>
+
+                </tr>
+
+              )
+            )}
+
           </tbody>
+
         </table>
+
       </div>
+
     </div>
   );
 }
