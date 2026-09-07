@@ -1,6 +1,53 @@
-import { useState } from "react";
-import { Search, ChevronLeft, ChevronRight, CalendarDays } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Search, ChevronLeft, ChevronRight, CalendarDays, ChevronDown } from "lucide-react";
 import "./AllocationReport.css";
+
+// Custom Dropdown Component to strictly enforce downward opening behavior
+function CustomDropdown({ label, id, options, value, onChange }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="allocation-filter-group" ref={dropdownRef}>
+      {label && <label htmlFor={id}>{label}</label>}
+      <div 
+        id={id}
+        className="custom-dropdown-header" 
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span>{value}</span>
+        <ChevronDown size={16} />
+      </div>
+
+      {isOpen && (
+        <ul className="custom-dropdown-menu">
+          {options.map((option) => (
+            <li
+              key={option}
+              className={`custom-dropdown-item ${option === value ? "active" : ""}`}
+              onClick={() => {
+                onChange(option);
+                setIsOpen(false);
+              }}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 function AllocationReport() {
   const [type, setType] = useState("Self Allocation");
@@ -11,6 +58,7 @@ function AllocationReport() {
   const [toDate, setToDate] = useState("2026-09-07");
 
   const [search, setSearch] = useState("");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const [openCalendar, setOpenCalendar] = useState(null);
 
@@ -18,8 +66,46 @@ function AllocationReport() {
     new Date(2026, 8, 1)
   );
 
+  const typeList = [
+    "Self Allocation",
+    "Bulk Allocation",
+    "Recurring Allocation"
+  ];
+
+  const subTeamList = [
+    "Select",
+    "BWI TEAM",
+    "MIS TEAM",
+    "P-Team UK",
+    "P-Team US",
+    "PW-TEAM",
+    "QC TEAM"
+  ];
+
+  const employeeList = [
+    "Select",
+    "Aishwarya A R",
+    "Anjan Ghosh",
+    "Arathi G K",
+    "Arindam Chatterjee",
+    "Bayli Manjunath Basappa",
+    "Binusha V A",
+    "Chaitra D M",
+    "Chandrakala K G",
+    "Deepa K",
+    "Dileep K",
+    "Goutam Narasimhan",
+    "Imran Mody",
+    "K Deepthi Katkar",
+    "Khaja Nizamuddin",
+    "Krithi .",
+    "Lohith J",
+    "Madesh Manickam"
+  ];
+
   const handleSubmit = () => {
-    console.log("Allocation Report:", {
+    setHasSubmitted(true);
+    console.log("Allocation Report Submitted:", {
       type,
       subTeam,
       employee,
@@ -247,49 +333,32 @@ function AllocationReport() {
 
       {/* FILTER ROW */}
       <div className="allocation-filter-row">
-        {/* TYPE */}
-        <div className="allocation-filter-group">
-          <label htmlFor="allocation-type">Type:</label>
-          <select
-            id="allocation-type"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          >
-            <option value="Self Allocation">Self Allocation</option>
-            <option value="Team Allocation">Team Allocation</option>
-          </select>
-        </div>
+        {/* TYPE DROPDOWN */}
+        <CustomDropdown
+          label="Type:"
+          id="allocation-type"
+          options={typeList}
+          value={type}
+          onChange={setType}
+        />
 
-        {/* SUB TEAM */}
-        <div className="allocation-filter-group">
-          <label htmlFor="allocation-subteam">SubTeam:</label>
-          <select
-            id="allocation-subteam"
-            value={subTeam}
-            onChange={(e) => setSubTeam(e.target.value)}
-          >
-            <option value="Select">Select</option>
-            <option value="BWI TEAM">BWI TEAM</option>
-            <option value="MIS TEAM">MIS TEAM</option>
-            <option value="P-Team UK">P-Team UK</option>
-            <option value="P-Team US">P-Team US</option>
-            <option value="PW-TEAM">PW-TEAM</option>
-            <option value="QC TEAM">QC TEAM</option>
-          </select>
-        </div>
+        {/* SUBTEAM DROPDOWN */}
+        <CustomDropdown
+          label="SubTeam:"
+          id="allocation-subteam"
+          options={subTeamList}
+          value={subTeam}
+          onChange={setSubTeam}
+        />
 
-        {/* EMPLOYEE */}
-        <div className="allocation-filter-group">
-          <label htmlFor="allocation-employee">Employee:</label>
-          <select
-            id="allocation-employee"
-            value={employee}
-            onChange={(e) => setEmployee(e.target.value)}
-          >
-            <option value="Select">Select</option>
-            <option value="Ssathish Padmanaban">Ssathish Padmanaban</option>
-          </select>
-        </div>
+        {/* EMPLOYEE DROPDOWN */}
+        <CustomDropdown
+          label="Employee:"
+          id="allocation-employee"
+          options={employeeList}
+          value={employee}
+          onChange={setEmployee}
+        />
 
         {/* FROM */}
         <div className="allocation-filter-group allocation-date-group">
@@ -382,6 +451,31 @@ function AllocationReport() {
           </button>
         </div>
       </div>
+
+      {/* RESULTS DISPLAY AREA */}
+      {hasSubmitted && (
+        <div className="allocation-table-container">
+          <table className="allocation-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>SubTeam</th>
+                <th>Employee</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colSpan="6" className="no-data-cell">
+                  No data found
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 /* =========================================================
-   ALLOCATION REPORT
+   ALLOCATION REPORT MAIN CONTAINER
 ========================================================= */
 
 .allocation-report {
@@ -10,7 +10,7 @@
   color: #000;
   background-color: #fff;
   overflow: visible !important;
-  min-height: 420px; /* Ensures vertical space for popups */
+  min-height: 500px;
 }
 
 
@@ -47,7 +47,7 @@
 
 
 /* =========================================================
-   FILTER GROUP
+   FILTER GROUP & LABELS
 ========================================================= */
 
 .allocation-filter-group {
@@ -59,12 +59,8 @@
   gap: 5px;
   box-sizing: border-box;
   position: relative;
+  overflow: visible !important;
 }
-
-
-/* =========================================================
-   LABEL
-========================================================= */
 
 .allocation-filter-group label {
   font-size: 14px;
@@ -75,28 +71,61 @@
 
 
 /* =========================================================
-   SELECT
+   CUSTOM DOWNWARD DROPDOWN
 ========================================================= */
 
-.allocation-filter-group select {
+.custom-dropdown-header {
   width: 100%;
-  min-width: 0;
   height: 51px;
   box-sizing: border-box;
   padding: 8px 12px;
   border: 1px solid #ccc;
-  border-radius: 0;
   background-color: #fff;
   color: #555;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
+  user-select: none;
+}
+
+.custom-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 10000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.custom-dropdown-item {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.custom-dropdown-item:hover {
+  background-color: #f2f2f2;
+}
+
+.custom-dropdown-item.active {
+  background-color: #777;
+  color: #fff;
 }
 
 
 /* =========================================================
-   DATE GROUP & WRAPPER
+   DATE GROUP & INPUTS
 ========================================================= */
 
 .allocation-date-group {
@@ -111,11 +140,6 @@
   align-items: center;
   box-sizing: border-box;
 }
-
-
-/* =========================================================
-   DATE INPUT
-========================================================= */
 
 .allocation-date-wrapper input {
   width: 100%;
@@ -132,11 +156,6 @@
   outline: none;
   cursor: pointer;
 }
-
-
-/* =========================================================
-   DATE ICON
-========================================================= */
 
 .allocation-calendar-icon {
   position: absolute;
@@ -161,7 +180,7 @@
 
 
 /* =========================================================
-   CUSTOM CALENDAR
+   CUSTOM CALENDAR POPUP
 ========================================================= */
 
 .allocation-calendar {
@@ -176,7 +195,6 @@
   z-index: 99999;
 }
 
-/* Dynamic positioning classes */
 .allocation-calendar.align-left {
   left: 0;
   right: auto;
@@ -186,11 +204,6 @@
   right: 0;
   left: auto;
 }
-
-
-/* =========================================================
-   CALENDAR HEADER
-========================================================= */
 
 .allocation-calendar-header {
   width: 100%;
@@ -225,11 +238,6 @@
   background-color: #f2f2f2;
 }
 
-
-/* =========================================================
-   WEEKDAYS
-========================================================= */
-
 .allocation-calendar-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -243,11 +251,6 @@
   color: #777;
   padding: 5px 0;
 }
-
-
-/* =========================================================
-   CALENDAR DAYS
-========================================================= */
 
 .allocation-calendar-days {
   display: grid;
@@ -277,11 +280,6 @@
   color: #337ab7;
 }
 
-
-/* =========================================================
-   SELECTED DATE & TODAY
-========================================================= */
-
 .allocation-calendar-day.selected {
   background-color: #337ab7;
   color: #fff;
@@ -297,11 +295,6 @@
   height: 28px;
   margin: auto;
 }
-
-
-/* =========================================================
-   CALENDAR FOOTER
-========================================================= */
 
 .allocation-calendar-footer {
   border-top: 1px solid #eee;
@@ -357,7 +350,7 @@
 
 
 /* =========================================================
-   BOTTOM ROW
+   BOTTOM ROW & SEARCH
 ========================================================= */
 
 .allocation-report-bottom {
@@ -365,7 +358,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px; /* Increased vertical margin to leave room for popup */
+  margin-top: 30px;
   box-sizing: border-box;
 }
 
@@ -374,11 +367,6 @@
   font-weight: 600;
   color: green;
 }
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
 
 .allocation-search {
   display: flex;
@@ -425,7 +413,47 @@
 
 
 /* =========================================================
-   RESPONSIVE
+   RESULTS TABLE & NO DATA STATE
+========================================================= */
+
+.allocation-table-container {
+  width: 100%;
+  margin-top: 20px;
+  overflow-x: auto;
+  border: 1px solid #e0e0e0;
+}
+
+.allocation-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.allocation-table th {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.allocation-table td {
+  padding: 20px 16px;
+  color: #666;
+}
+
+.no-data-cell {
+  text-align: center !important;
+  font-size: 15px;
+  font-weight: 500;
+  color: #888 !important;
+  background-color: #fafafa;
+}
+
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
 ========================================================= */
 
 @media (max-width: 1300px) {
