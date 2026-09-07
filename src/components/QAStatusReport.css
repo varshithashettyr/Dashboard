@@ -1,436 +1,311 @@
-/* =========================================================
-   QC STATUS REPORT
-========================================================= */
+/* =========================================
+   QC REPORT CONTAINER
+   ========================================= */
 
 .qc-report-container {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 15px 20px 20px 20px;
-  background-color: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #222;
+  width: 100% !important;
+  padding: 0 15px !important;
+  box-sizing: border-box !important;
+  background: #fff !important;
 }
 
 
-/* =========================================================
+/* =========================================
    TITLE
-========================================================= */
+   ========================================= */
 
 .qc-report-header {
-  width: 100%;
-  box-sizing: border-box;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 7px;
-  margin-bottom: 14px;
+  display: block !important;
+  width: 100% !important;
+
+  margin: 30px 0 15px 0 !important;
+  padding: 0 0 8px 0 !important;
+
+  border-bottom: 1px solid #ddd !important;
 }
 
 .qc-report-header h2 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  color: #222;
+  display: block !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #0f2b5c !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
 }
 
 
-/* =========================================================
+/* =========================================
    FILTER ROW
-   EVERYTHING STAYS HORIZONTAL
-========================================================= */
+   ========================================= */
 
 .qc-filter-row {
-  width: 100% !important;
-
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
 
   align-items: flex-end !important;
 
-  gap: 20px;
+  gap: 30px !important;
 
-  box-sizing: border-box;
+  width: 100% !important;
 
-  margin-bottom: 20px;
-
-  overflow: visible !important;
+  margin: 0 0 30px 0 !important;
+  padding: 0 !important;
 }
 
 
-/* =========================================================
-   FIELD GROUP
-========================================================= */
+/* =========================================
+   FILTER GROUP
+   ========================================= */
 
-.qc-field-group {
+.qc-filter-group {
   display: flex !important;
   flex-direction: column !important;
+  align-items: flex-start !important;
 
-  flex: 0 0 auto !important;
+  gap: 6px !important;
+
   flex-shrink: 0 !important;
-
-  width: auto;
-
-  min-width: 0;
 }
 
 
-/* =========================================================
+/* =========================================
    LABEL
-========================================================= */
+   ========================================= */
 
-.qc-field-group label {
-  display: block;
+.qc-filter-group label {
+  display: block !important;
 
-  margin-bottom: 5px;
+  min-width: 0 !important;
+  width: auto !important;
 
-  font-size: 14px;
-  font-weight: 400;
+  margin: 0 !important;
+  padding: 0 !important;
 
-  color: #222;
+  color: #111 !important;
 
-  white-space: nowrap;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
 }
 
 
-/* =========================================================
-   SELECT
-========================================================= */
+/* =========================================
+   DROPDOWN
+   ========================================= */
 
-.qc-field-group select {
-  width: 180px !important;
-  min-width: 180px !important;
+.qc-filter-group select {
+  display: block !important;
 
-  height: 51px;
+  width: 200px !important;
+  min-width: 200px !important;
+  height: 51px !important;
 
-  box-sizing: border-box;
+  padding: 8px 12px !important;
 
-  padding: 8px 12px;
+  box-sizing: border-box !important;
 
-  border: 1px solid #ccc;
-  border-radius: 0;
+  background-color: #fff !important;
 
-  background-color: #fff;
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
 
-  color: #555;
+  color: #444 !important;
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 14px !important;
 
-  outline: none;
-
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 
-/* =========================================================
+/* =========================================
    DATE INPUT
-========================================================= */
+   ========================================= */
 
-.qc-field-group input[type="date"] {
-  width: 180px !important;
-  min-width: 180px !important;
+.qc-filter-group input[type="date"] {
+  display: block !important;
 
-  height: 51px;
+  width: 200px !important;
+  min-width: 200px !important;
+  height: 51px !important;
 
-  box-sizing: border-box;
+  padding: 8px 12px !important;
 
-  padding: 8px 12px;
+  box-sizing: border-box !important;
 
-  border: 1px solid #ccc;
-  border-radius: 0;
+  background-color: #fff !important;
 
-  background-color: #fff;
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
 
-  color: #555;
+  color: #444 !important;
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-
-  outline: none;
-
-  cursor: pointer;
+  font-size: 12px !important;
 }
 
 
-/* =========================================================
-   DATE CALENDAR ICON
-========================================================= */
+/* =========================================
+   SEARCH BUTTON
+   ========================================= */
 
-.qc-field-group input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-}
-
-
-/* =========================================================
-   FOCUS
-========================================================= */
-
-.qc-field-group select:focus,
-.qc-field-group input[type="date"]:focus {
-  border-color: #337ab7;
-  outline: none;
-}
-
-
-/* =========================================================
-   SEARCH / EXPORT BUTTONS
-========================================================= */
-
-.qc-btn {
-  height: 49px !important;
-
-  padding: 8px 17px;
-
-  box-sizing: border-box;
-
-  background-color: #337ab7;
-
-  color: #ffffff;
-
-  border: none;
-
-  border-radius: 4px;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 14px;
-
-  cursor: pointer;
-
-  flex: 0 0 auto !important;
+.qc-filter-search-btn {
   flex-shrink: 0 !important;
 
-  white-space: nowrap;
+  height: 40px !important;
 
-  margin-bottom: 1px;
+  padding: 0 20px !important;
+
+  background-color: #337ab7 !important;
+
+  border: 1px solid #286090 !important;
+  border-radius: 4px !important;
+
+  color: #fff !important;
+
+  font-size: 15px !important;
+
+  cursor: pointer !important;
+}
+
+.qc-filter-search-btn:hover {
+  background-color: #286090 !important;
 }
 
 
-/* =========================================================
-   BUTTON HOVER
-========================================================= */
+/* =========================================
+   EXPORT BUTTON
+   ========================================= */
 
-.qc-btn:hover {
-  background-color: #286090;
+.qc-export-btn {
+  flex-shrink: 0 !important;
+
+  height: 40px !important;
+
+  padding: 0 20px !important;
+
+  background-color: #337ab7 !important;
+
+  border: 1px solid #286090 !important;
+  border-radius: 4px !important;
+
+  color: #fff !important;
+
+  font-size: 15px !important;
+
+  cursor: pointer !important;
+}
+
+.qc-export-btn:hover {
+  background-color: #286090 !important;
 }
 
 
-/* =========================================================
-   SUMMARY BAR
-========================================================= */
+/* =========================================
+   TOTAL CASE
+   ========================================= */
 
-.qc-summary-bar {
-  width: 100%;
+.qc-total {
+  margin: 0 0 15px 0 !important;
+  padding: 0 !important;
+
+  color: green !important;
+
+  font-size: 15px !important;
+  font-weight: bold !important;
+}
+
+
+/* =========================================
+   TABLE SEARCH
+   ========================================= */
+
+.qc-table-toolbar {
+  display: flex !important;
+
+  justify-content: flex-end !important;
+  align-items: stretch !important;
+
+  width: 100% !important;
+
+  margin: 0 0 13px 0 !important;
+}
+
+
+/* SEARCH INPUT */
+
+.qc-table-toolbar input {
+  width: 225px !important;
+  height: 51px !important;
+
+  padding: 8px 15px !important;
+
+  box-sizing: border-box !important;
+
+  background: #fff !important;
+
+  border: 1px solid #ccc !important;
+  border-right: none !important;
+
+  border-radius: 0 !important;
+
+  color: #333 !important;
+
+  font-size: 12px !important;
+
+  outline: none !important;
+}
+
+.qc-table-toolbar input::placeholder {
+  color: #888 !important;
+}
+
+
+/* =========================================
+   TABLE SEARCH BUTTON
+   ========================================= */
+
+.qc-table-search-btn {
+  width: 60px !important;
+  height: 51px !important;
 
   display: flex !important;
-  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  justify-content: space-between;
-  align-items: center;
+  padding: 0 !important;
 
-  box-sizing: border-box;
+  background: #fff !important;
 
-  margin-top: 5px;
-  margin-bottom: 10px;
+  border: 1px solid #ccc !important;
+  border-radius: 0 4px 4px 0 !important;
+
+  cursor: pointer !important;
 }
 
 
-/* =========================================================
-   TOTAL
-========================================================= */
+/* =========================================
+   RESULTS CONTAINER
+   ========================================= */
 
-.qc-total-count {
-  color: green;
+.qc-results-container {
+  width: 100% !important;
+  min-height: 60px !important;
 
-  font-size: 14px;
-
-  font-weight: bold;
-
-  white-space: nowrap;
-}
-
-
-/* =========================================================
-   SEARCH WRAPPER
-========================================================= */
-
-.qc-search-wrapper {
   display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  flex-direction: row !important;
+  box-sizing: border-box !important;
 
-  align-items: center;
+  padding: 12px 10px !important;
 
-  flex-shrink: 0;
-}
+  background-color: #fff !important;
 
+  border: 1px solid #ddd !important;
 
-/* =========================================================
-   SEARCH INPUT
-========================================================= */
+  color: red !important;
 
-.qc-search-input {
-  width: 180px;
-
-  height: 41px;
-
-  box-sizing: border-box;
-
-  padding: 8px 14px;
-
-  border: 1px solid #ccc;
-
-  border-right: none;
-
-  border-radius: 0;
-
-  background-color: #fff;
-
-  color: #555;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 14px;
-
-  outline: none;
-}
-
-
-.qc-search-input::placeholder {
-  color: #999;
-}
-
-
-/* =========================================================
-   SEARCH BUTTON
-========================================================= */
-
-.qc-search-btn {
-  width: 50px;
-
-  height: 41px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  box-sizing: border-box;
-
-  background-color: #fff;
-
-  color: #111;
-
-  border: 1px solid #ccc;
-
-  border-radius: 0;
-
-  cursor: pointer;
-}
-
-
-.qc-search-btn:hover {
-  background-color: #f5f5f5;
-}
-
-
-/* =========================================================
-   TABLE / RESULT AREA
-========================================================= */
-
-.qc-table-container {
-  width: 100%;
-
-  min-height: 60px;
-
-  box-sizing: border-box;
-
-  border: 1px solid #ddd;
-
-  background-color: #fff;
-}
-
-
-/* =========================================================
-   NO RECORDS
-========================================================= */
-
-.qc-no-records {
-  width: 100%;
-
-  box-sizing: border-box;
-
-  padding: 20px;
-
-  text-align: center;
-
-  color: red;
-
-  font-size: 14px;
-
-  font-weight: 400;
-}
-
-
-/* =========================================================
-   IMPORTANT:
-   DO NOT ADD HORIZONTAL SCROLLING
-========================================================= */
-
-.qc-filter-row {
-  overflow-x: visible !important;
-  overflow-y: visible !important;
-}
-
-
-/* =========================================================
-   LARGE / NORMAL DESKTOP
-========================================================= */
-
-@media (min-width: 1200px) {
-
-  .qc-field-group select,
-  .qc-field-group input[type="date"] {
-    width: 180px !important;
-    min-width: 180px !important;
-  }
-
-}
-
-
-/* =========================================================
-   MEDIUM SCREEN
-========================================================= */
-
-@media (min-width: 901px) and (max-width: 1199px) {
-
-  .qc-filter-row {
-    gap: 12px;
-  }
-
-  .qc-field-group select,
-  .qc-field-group input[type="date"] {
-    width: 150px !important;
-    min-width: 150px !important;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL SCREEN
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .qc-filter-row {
-    gap: 10px;
-  }
-
-  .qc-field-group select,
-  .qc-field-group input[type="date"] {
-    width: 140px !important;
-    min-width: 140px !important;
-  }
-
+  font-size: 12px !important;
 }

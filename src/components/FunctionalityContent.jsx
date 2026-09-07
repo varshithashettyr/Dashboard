@@ -21,6 +21,8 @@ import AllocationReport from "./AllocationReport";
 import FeedbackReport from "./FeedbackReport";
 import LoginReport from "./LoginReport";
 import TaskReport from "./TaskReport";
+import "./QAStatusReport.css";
+
 
 /* =========================================================
    QA STATUS REPORT SUB-COMPONENT
@@ -44,141 +46,235 @@ function QAStatusReport() {
   };
 
   return (
-    <div className="qc-report-container">
-      <div className="qc-report-header">
-        <h2 style={{ color: "#0F2B5C", fontWeight: "bold", fontSize: "20px" }}>
-          QC Status Report
-        </h2>
-      </div>
+    // <div className="qc-report-container">
+    //   <div className="qc-report-header">
+    //     <h2 style={{ color: "#0F2B5C", fontWeight: "bold", fontSize: "20px" }}>
+    //       QC Status Report2
+    //     </h2>
+    //   </div>
 
-      <div
-        className="qc-filter-row"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "8px",
-          alignItems: "flex-start",
-          marginBottom: "15px",
-        }}
+    //   <div
+    //     className="qc-filter-row"
+    //     style={{
+    //       display: "flex",
+    //       flexDirection: "row",
+    //       gap: "8px",
+    //       alignItems: "flex-start",
+    //       marginBottom: "15px",
+    //     }}
+    //   >
+    //     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+    //       <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-team">
+    //         Team:
+    //       </label>
+    //       <select
+    //         id="qa-team"
+    //         value={team}
+    //         onChange={(e) => setTeam(e.target.value)}
+    //         style={{ padding: "2px 5px", width: "130px" }}
+    //       >
+    //         <option value="">--Select--</option>
+    //         <option value="BWI">BWI</option>
+    //         <option value="MIS">MIS</option>
+    //       </select>
+    //     </div>
+
+    //     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+    //       <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-subteam">
+    //         Sub Team:
+    //       </label>
+    //       <select
+    //         id="qa-subteam"
+    //         value={subTeam}
+    //         onChange={(e) => setSubTeam(e.target.value)}
+    //         style={{ padding: "2px 5px", width: "130px" }}
+    //       >
+    //         <option value="">--Select--</option>
+    //         <option value="BWI TEAM">BWI TEAM</option>
+    //         <option value="QC TEAM">QC TEAM</option>
+    //       </select>
+    //     </div>
+
+    //     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+    //       <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-fromdate">
+    //         From Date:
+    //       </label>
+    //       <input
+    //         id="qa-fromdate"
+    //         type="date"
+    //         value={fromDate}
+    //         onChange={(e) => setFromDate(e.target.value)}
+    //         style={{ padding: "2px 5px" }}
+    //       />
+    //     </div>
+
+    //     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+    //       <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-todate">
+    //         To Date:
+    //       </label>
+    //       <input
+    //         id="qa-todate"
+    //         type="date"
+    //         value={toDate}
+    //         onChange={(e) => setToDate(e.target.value)}
+    //         style={{ padding: "2px 5px" }}
+    //       />
+    //     </div>
+
+    //     <button
+    //       type="button"
+    //       onClick={handleSearch}
+    //       style={{
+    //         marginTop: "5px",
+    //         padding: "3px 12px",
+    //         cursor: "pointer",
+    //         backgroundColor: "#0066b2",
+    //         border: "1px solid #767676",
+    //         borderRadius: "2px",
+    //         color: "#fff",
+    //       }}
+    //     >
+    //       Search
+    //     </button>
+    //   </div>
+
+    //   <div style={{ marginBottom: "8px", fontWeight: "bold", color: "#1A365D", fontSize: "14px" }}>
+    //     TOTAL CASE: 0
+    //   </div>
+
+    //   <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+    //     <input
+    //       type="text"
+    //       placeholder="Search..."
+    //       value={searchTerm}
+    //       onChange={(e) => setSearchTerm(e.target.value)}
+    //       style={{
+    //         padding: "3px 6px",
+    //         border: "1px solid #ccc",
+    //         borderRight: "none",
+    //         outline: "none",
+    //         width: "160px",
+    //       }}
+    //     />
+    //     <button
+    //       type="button"
+    //       style={{
+    //         border: "1px solid #ccc",
+    //         background: "#fff",
+    //         padding: "3px 6px",
+    //         cursor: "pointer",
+    //         display: "flex",
+    //         alignItems: "center",
+    //       }}
+    //     >
+    //       <Search size={14} color="#555" />
+    //     </button>
+    //   </div>
+
+    //   <div
+    //     style={{
+    //       border: "1px solid #000",
+    //       padding: "12px 10px",
+    //       fontSize: "13px",
+    //       backgroundColor: "#fff",
+    //     }}
+    //   >
+    //     No records found
+    //   </div>
+    // </div>
+<div className="qc-report-container">
+
+  <div className="qc-report-header">
+    <h2>QC Status Report</h2>
+  </div>
+
+  <div className="qc-filter-row">
+
+    <div className="qc-filter-group">
+      <label htmlFor="qa-team">Team:</label>
+      <select
+        id="qa-team"
+        value={team}
+        onChange={(e) => setTeam(e.target.value)}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-team">
-            Team:
-          </label>
-          <select
-            id="qa-team"
-            value={team}
-            onChange={(e) => setTeam(e.target.value)}
-            style={{ padding: "2px 5px", width: "130px" }}
-          >
-            <option value="">--Select--</option>
-            <option value="BWI">BWI</option>
-            <option value="MIS">MIS</option>
-          </select>
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-subteam">
-            Sub Team:
-          </label>
-          <select
-            id="qa-subteam"
-            value={subTeam}
-            onChange={(e) => setSubTeam(e.target.value)}
-            style={{ padding: "2px 5px", width: "130px" }}
-          >
-            <option value="">--Select--</option>
-            <option value="BWI TEAM">BWI TEAM</option>
-            <option value="QC TEAM">QC TEAM</option>
-          </select>
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-fromdate">
-            From Date:
-          </label>
-          <input
-            id="qa-fromdate"
-            type="date"
-            value={fromDate}
-            onChange={(e) => setFromDate(e.target.value)}
-            style={{ padding: "2px 5px" }}
-          />
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-todate">
-            To Date:
-          </label>
-          <input
-            id="qa-todate"
-            type="date"
-            value={toDate}
-            onChange={(e) => setToDate(e.target.value)}
-            style={{ padding: "2px 5px" }}
-          />
-        </div>
-
-        <button
-          type="button"
-          onClick={handleSearch}
-          style={{
-            marginTop: "5px",
-            padding: "3px 12px",
-            cursor: "pointer",
-            backgroundColor: "#f0f0f0",
-            border: "1px solid #767676",
-            borderRadius: "2px",
-          }}
-        >
-          Search
-        </button>
-      </div>
-
-      <div style={{ marginBottom: "8px", fontWeight: "bold", color: "#1A365D", fontSize: "14px" }}>
-        TOTAL CASE: 0
-      </div>
-
-      <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            padding: "3px 6px",
-            border: "1px solid #ccc",
-            borderRight: "none",
-            outline: "none",
-            width: "160px",
-          }}
-        />
-        <button
-          type="button"
-          style={{
-            border: "1px solid #ccc",
-            background: "#fff",
-            padding: "3px 6px",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <Search size={14} color="#555" />
-        </button>
-      </div>
-
-      <div
-        style={{
-          border: "1px solid #000",
-          padding: "12px 10px",
-          fontSize: "13px",
-          backgroundColor: "#fff",
-        }}
-      >
-        No records found
-      </div>
+        <option value="">--Select--</option>
+        <option value="BWI">BWI</option>
+        <option value="MIS">MIS</option>
+      </select>
     </div>
+
+    <div className="qc-filter-group">
+      <label htmlFor="qa-subteam">Sub Team:</label>
+      <select
+        id="qa-subteam"
+        value={subTeam}
+        onChange={(e) => setSubTeam(e.target.value)}
+      >
+        <option value="">--Select--</option>
+        <option value="BWI TEAM">BWI TEAM</option>
+        <option value="QC TEAM">QC TEAM</option>
+      </select>
+    </div>
+
+    <div className="qc-filter-group">
+      <label htmlFor="qa-fromdate">From Date:</label>
+      <input
+        id="qa-fromdate"
+        type="date"
+        value={fromDate}
+        onChange={(e) => setFromDate(e.target.value)}
+      />
+    </div>
+
+    <div className="qc-filter-group">
+      <label htmlFor="qa-todate">To Date:</label>
+      <input
+        id="qa-todate"
+        type="date"
+        value={toDate}
+        onChange={(e) => setToDate(e.target.value)}
+      />
+    </div>
+
+    <button
+      type="button"
+      className="qc-filter-search-btn"
+      onClick={handleSearch}
+    >
+      Search
+    </button>
+
+    <button
+      type="button"
+      className="qc-export-btn"
+    >
+      Export
+    </button>
+
+  </div>
+
+  <div className="qc-total">
+    TOTAL CASE: 0
+  </div>
+
+  <div className="qc-table-toolbar">
+    <input
+      type="text"
+      placeholder="Search"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+
+    <button type="button" className="qc-table-search-btn">
+      <Search size={20} color="#111" />
+    </button>
+  </div>
+
+  <div className="qc-results-container">
+    No records found
+  </div>
+
+</div>
   );
 }
 
