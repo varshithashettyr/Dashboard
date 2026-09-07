@@ -1,0 +1,153 @@
+.task-report-wrapper {
+  padding: 24px;
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  color: #333333;
+}
+
+.task-report-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #222222;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.task-report-filters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.filter-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+  white-space: nowrap;
+}
+
+.custom-select-container {
+  position: relative;
+  width: 150px;
+}
+
+.custom-select-trigger {
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333333;
+}
+
+.custom-select-trigger .arrow {
+  font-size: 10px;
+  color: #555555;
+}
+
+.custom-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 2px 0 0 0;
+  padding: 0;
+  list-style: none;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-select-options li {
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333333;
+}
+
+.custom-select-options li:hover {
+  background-color: #707070;
+  color: #ffffff;
+}
+
+.custom-select-options li.selected {
+  background-color: #0066b2;
+  color: #ffffff;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.btn {
+  height: 32px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #2b78b8;
+}
+
+.btn:hover {
+  background-color: #1f5d91;
+}
+
+.task-report-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #cccccc;
+}
+
+.task-report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.task-report-table th {
+  background-color: #0066b2;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 10px;
+  border: 1px solid #00528e;
+  white-space: nowrap;
+}
+
+.task-report-table td {
+  padding: 8px 10px;
+  border: 1px solid #cccccc;
+  color: #222222;
+  white-space: nowrap;
+}
+
+.task-report-table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.task-report-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
