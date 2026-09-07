@@ -1,0 +1,455 @@
+/* =========================================================
+   ALLOCATION REPORT
+========================================================= */
+
+.allocation-report {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px 20px 20px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  background-color: #fff;
+  overflow: visible !important;
+  min-height: 420px; /* Ensures vertical space for popups */
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.allocation-report-title {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 400;
+  color: #222;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   FILTER ROW
+========================================================= */
+
+.allocation-filter-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  gap: 20px;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+
+
+/* =========================================================
+   FILTER GROUP
+========================================================= */
+
+.allocation-filter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 0;
+  min-width: 0;
+  gap: 5px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.allocation-filter-group label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #111;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.allocation-filter-group select {
+  width: 100%;
+  min-width: 0;
+  height: 51px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  background-color: #fff;
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   DATE GROUP & WRAPPER
+========================================================= */
+
+.allocation-date-group {
+  position: relative;
+  overflow: visible !important;
+}
+
+.allocation-date-wrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   DATE INPUT
+========================================================= */
+
+.allocation-date-wrapper input {
+  width: 100%;
+  min-width: 0;
+  height: 51px;
+  box-sizing: border-box;
+  padding: 8px 40px 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  background-color: #fff;
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   DATE ICON
+========================================================= */
+
+.allocation-calendar-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+  padding: 0;
+}
+
+.allocation-calendar-icon:hover {
+  color: #337ab7;
+}
+
+
+/* =========================================================
+   CUSTOM CALENDAR
+========================================================= */
+
+.allocation-calendar {
+  position: absolute;
+  top: calc(100% + 5px);
+  width: 250px;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 99999;
+}
+
+/* Dynamic positioning classes */
+.allocation-calendar.align-left {
+  left: 0;
+  right: auto;
+}
+
+.allocation-calendar.align-right {
+  right: 0;
+  left: auto;
+}
+
+
+/* =========================================================
+   CALENDAR HEADER
+========================================================= */
+
+.allocation-calendar-header {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+.allocation-calendar-header strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.allocation-calendar-header button {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+  padding: 0;
+}
+
+.allocation-calendar-header button:hover {
+  background-color: #f2f2f2;
+}
+
+
+/* =========================================================
+   WEEKDAYS
+========================================================= */
+
+.allocation-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.allocation-calendar-weekdays span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #777;
+  padding: 5px 0;
+}
+
+
+/* =========================================================
+   CALENDAR DAYS
+========================================================= */
+
+.allocation-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 2px;
+}
+
+.allocation-calendar-day {
+  width: 28px;
+  height: 28px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 2px;
+  background: transparent;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.allocation-calendar-day:hover {
+  background-color: #eaf2f8;
+  color: #337ab7;
+}
+
+
+/* =========================================================
+   SELECTED DATE & TODAY
+========================================================= */
+
+.allocation-calendar-day.selected {
+  background-color: #337ab7;
+  color: #fff;
+  font-weight: 600;
+}
+
+.allocation-calendar-day.today {
+  border: 1px solid #337ab7;
+}
+
+.allocation-calendar-empty {
+  width: 28px;
+  height: 28px;
+  margin: auto;
+}
+
+
+/* =========================================================
+   CALENDAR FOOTER
+========================================================= */
+
+.allocation-calendar-footer {
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+  padding-top: 7px;
+  text-align: center;
+}
+
+.allocation-calendar-footer button {
+  border: none;
+  background: transparent;
+  color: #337ab7;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 3px 5px;
+}
+
+.allocation-calendar-footer button:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   SUBMIT & EXPORT BUTTONS
+========================================================= */
+
+.allocation-submit-btn,
+.allocation-export-btn {
+  height: 49px;
+  padding: 8px 17px;
+  box-sizing: border-box;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-bottom: 1px;
+  white-space: nowrap;
+}
+
+.allocation-export-btn {
+  margin-left: -10px;
+}
+
+.allocation-submit-btn:hover,
+.allocation-export-btn:hover {
+  background-color: #286090;
+}
+
+
+/* =========================================================
+   BOTTOM ROW
+========================================================= */
+
+.allocation-report-bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px; /* Increased vertical margin to leave room for popup */
+  box-sizing: border-box;
+}
+
+.allocation-total {
+  font-size: 14px;
+  font-weight: 600;
+  color: green;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.allocation-search {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.allocation-search input {
+  width: 180px;
+  height: 41px;
+  box-sizing: border-box;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 0;
+  background-color: #fff;
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.allocation-search input::placeholder {
+  color: #999;
+}
+
+.allocation-search button {
+  width: 50px;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.allocation-search button:hover {
+  background-color: #f5f5f5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1300px) {
+  .allocation-filter-row {
+    gap: 15px;
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-width: 900px) {
+  .allocation-report {
+    padding: 10px;
+  }
+
+  .allocation-filter-row {
+    gap: 15px;
+  }
+
+  .allocation-filter-group {
+    flex: 0 0 190px;
+    min-width: 190px;
+  }
+
+  .allocation-report-bottom {
+    min-width: 900px;
+  }
+}

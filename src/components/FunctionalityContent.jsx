@@ -18,6 +18,7 @@ import WorkingQueue from "./WorkingQueue";
 import TaskAllocation from "./TaskAllocation";
 import QCTransfer from "./QCTransfer";
 import MenuAssign from "./MenuAssign";
+import AllocationReport from "./AllocationReport";
 
 
 /* =========================================================
@@ -669,6 +670,20 @@ function FunctionalityContent({ team, functionality }) {
               ) {
 
                 return <QCTransfer />;
+
+              }
+
+
+              /* =============================================
+                  ALLOCATION REPORT
+              ============================================= */
+
+              if (
+                moduleName ===
+                "allocation report"
+              ) {
+
+                return <AllocationReport />;
 
               }
 
