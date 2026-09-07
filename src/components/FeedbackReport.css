@@ -1,0 +1,278 @@
+/* =========================================================
+   CONTAINER & LAYOUT
+========================================================= */
+
+.feedback-report-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px 28px; /* Generous breathing room inside the panel */
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  background-color: #fff;
+  margin-top: 20px; /* Space separating cards above and the report title */
+}
+
+.feedback-report-title {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  color: #070808;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 24px; /* Space between title underline and filter controls */
+}
+
+
+/* =========================================================
+   FILTER & CONTROLS ROW
+========================================================= */
+
+.feedback-filter-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allows controls to wrap cleanly on narrower screens */
+  gap: 18px; /* Balanced spacing between form elements */
+  margin-bottom: 24px; /* Space between filter row and table/results box */
+}
+
+.feedback-total {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.feedback-date-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedback-date-control label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+}
+
+.feedback-input-wrapper {
+  position: relative;
+}
+
+.feedback-input-wrapper input {
+  width: 125px;
+  height: 36px;
+  box-sizing: border-box;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-input-wrapper input:focus {
+  border-color: #317db8;
+  box-shadow: 0 0 0 2px rgba(49, 125, 184, 0.15);
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.feedback-btn {
+  height: 36px;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.submit-btn {
+  background-color: #2b618f;
+}
+
+.submit-btn:hover {
+  background-color: #1e476b;
+}
+
+.export-btn,
+.export-all-btn {
+  background-color: #317db8;
+}
+
+.export-btn:hover,
+.export-all-btn:hover {
+  background-color: #246293;
+}
+
+
+/* =========================================================
+   SEARCH CONTROL
+========================================================= */
+
+.feedback-search-box {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Pushes search to the far right */
+}
+
+.feedback-search-box input {
+  width: 280px;
+  height: 36px;
+  box-sizing: border-box;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+}
+
+.feedback-search-box input::placeholder {
+  color: #999;
+}
+
+.feedback-search-box button {
+  width: 40px;
+  height: 36px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.feedback-search-box button:hover {
+  background-color: #e9ecef;
+  color: #000;
+}
+
+
+/* =========================================================
+   NO RECORDS DISPLAY BOX
+========================================================= */
+
+.feedback-records-box {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #333;
+  border-radius: 2px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #000;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   CALENDAR POPUP
+========================================================= */
+
+.feedback-calendar {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  z-index: 1000;
+}
+
+.feedback-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.feedback-calendar-header strong {
+  font-size: 13px;
+}
+
+.feedback-calendar-header button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.feedback-calendar-header button:hover {
+  background-color: #f0f0f0;
+}
+
+.feedback-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.feedback-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.feedback-calendar-day {
+  height: 28px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.feedback-calendar-day:hover {
+  background-color: #eef5fc;
+}
+
+.feedback-calendar-day.selected {
+  background-color: #2b618f;
+  color: #fff;
+}
+
+.feedback-calendar-empty {
+  height: 28px;
+}
+
+.feedback-calendar-footer {
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+  padding-top: 6px;
+  text-align: center;
+}
+
+.feedback-calendar-footer button {
+  border: none;
+  background: transparent;
+  color: #2b618f;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
