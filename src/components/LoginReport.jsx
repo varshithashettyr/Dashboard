@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./LoginReport.css";
 
 const employeeList = [
@@ -48,7 +48,7 @@ const monthsList = [
 const initialTableData = [
   {
     slNo: 1,
-    employee: "xxx",
+    employee: "Arindam Chatterjee",
     ipAddress: "192.168.2.250",
     loginDate: "07-Sep-2026",
     loginTime: "12:14:11",
@@ -59,7 +59,7 @@ const initialTableData = [
   },
   {
     slNo: 2,
-    employee: "xxx",
+    employee: "Arindam Chatterjee",
     ipAddress: "10.81.234.197",
     loginDate: "04-Sep-2026",
     loginTime: "11:15:06",
@@ -70,7 +70,7 @@ const initialTableData = [
   },
   {
     slNo: 3,
-    employee: "xxx",
+    employee: "Arindam Chatterjee",
     ipAddress: "192.168.2.250",
     loginDate: "03-Sep-2026",
     loginTime: "13:31:12",
@@ -81,99 +81,130 @@ const initialTableData = [
   },
 ];
 
+// Single Custom Select Component controlled by activeSelectId
+function CustomSelect({ id, label, options, value, onChange, activeSelectId, setActiveSelectId }) {
+  const isOpen = activeSelectId === id;
+
+  const toggleDropdown = (e) => {
+    e.stopPropagation();
+    // Toggle active state: if open, close it; otherwise open this one and close others
+    setActiveSelectId(isOpen ? null : id);
+  };
+
+  return (
+    <div className="filter-item">
+      <span className="filter-label">{label}</span>
+      <div className="custom-select-container">
+        <div className="custom-select-trigger" onClick={toggleDropdown}>
+          <span>{value || "Select"}</span>
+          <span className="arrow">{isOpen ? "▲" : "▼"}</span>
+        </div>
+
+        {isOpen && (
+          <ul className="custom-select-options">
+            <li
+              onClick={() => {
+                onChange("");
+                setActiveSelectId(null);
+              }}
+            >
+              Select
+            </li>
+            {options.map((opt, idx) => (
+              <li
+                key={idx}
+                className={value === opt ? "selected" : ""}
+                onClick={() => {
+                  onChange(opt);
+                  setActiveSelectId(null);
+                }}
+              >
+                {opt}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function LoginReport() {
   const [subTeam, setSubTeam] = useState("");
   const [employee, setEmployee] = useState("");
   const [year, setYear] = useState("2026");
   const [month, setMonth] = useState("September");
-  const [tableData, setTableData] = useState(initialTableData);
+  
+  // Track which dropdown is currently active (null means all are closed)
+  const [activeSelectId, setActiveSelectId] = useState(null);
+  const filterRef = useRef(null);
 
-  const handleSearch = () => {
-    console.log("Searching with:", { subTeam, employee, year, month });
-  };
-
-  const handleExport = () => {
-    console.log("Exporting data...");
-  };
+  // Close open dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (filterRef.current && !filterRef.current.contains(event.target)) {
+        setActiveSelectId(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="login-report-wrapper">
       <h2 className="login-report-title">Login Reports</h2>
 
-      {/* FILTER CONTROLS BAR WITH LABELS ON TOP */}
-      <div className="login-report-filters">
-        <div className="filter-item">
-          <label htmlFor="subteam-select">SubTeam:</label>
-          <select
-            id="subteam-select"
-            value={subTeam}
-            onChange={(e) => setSubTeam(e.target.value)}
-          >
-            <option value="">Select</option>
-            {subTeamList.map((team, idx) => (
-              <option key={idx} value={team}>
-                {team}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="login-report-filters" ref={filterRef}>
+        <CustomSelect
+          id="subTeam"
+          label="SubTeam:"
+          options={subTeamList}
+          value={subTeam}
+          onChange={setSubTeam}
+          activeSelectId={activeSelectId}
+          setActiveSelectId={setActiveSelectId}
+        />
 
-        <div className="filter-item">
-          <label htmlFor="employee-select">Employee:</label>
-          <select
-            id="employee-select"
-            value={employee}
-            onChange={(e) => setEmployee(e.target.value)}
-          >
-            <option value="">Select</option>
-            {employeeList.map((emp, idx) => (
-              <option key={idx} value={emp}>
-                {emp}
-              </option>
-            ))}
-          </select>
-        </div>
+        <CustomSelect
+          id="employee"
+          label="Employee:"
+          options={employeeList}
+          value={employee}
+          onChange={setEmployee}
+          activeSelectId={activeSelectId}
+          setActiveSelectId={setActiveSelectId}
+        />
 
-        <div className="filter-item">
-          <label htmlFor="year-select">Year:</label>
-          <select
-            id="year-select"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-          >
-            <option value="2026">2026</option>
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
-          </select>
-        </div>
+        <CustomSelect
+          id="year"
+          label="Year:"
+          options={["2026", "2025", "2024"]}
+          value={year}
+          onChange={setYear}
+          activeSelectId={activeSelectId}
+          setActiveSelectId={setActiveSelectId}
+        />
 
-        <div className="filter-item">
-          <label htmlFor="month-select">Month:</label>
-          <select
-            id="month-select"
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-          >
-            <option value="">Select</option>
-            {monthsList.map((m, idx) => (
-              <option key={idx} value={m}>
-                {m}
-              </option>
-            ))}
-          </select>
-        </div>
+        <CustomSelect
+          id="month"
+          label="Month:"
+          options={monthsList}
+          value={month}
+          onChange={setMonth}
+          activeSelectId={activeSelectId}
+          setActiveSelectId={setActiveSelectId}
+        />
 
         <div className="filter-buttons">
-          <button className="btn btn-search" type="button" onClick={handleSearch}>
+          <button className="btn btn-search" type="button">
             Search
           </button>
-          <button className="btn btn-export" type="button" onClick={handleExport}>
+          <button className="btn btn-export" type="button">
             Export
           </button>
         </div>
       </div>
 
-      {/* DATA TABLE */}
       <div className="login-report-table-container">
         <table className="login-report-table">
           <thead>
@@ -190,7 +221,7 @@ export default function LoginReport() {
             </tr>
           </thead>
           <tbody>
-            {tableData.map((row) => (
+            {initialTableData.map((row) => (
               <tr key={row.slNo}>
                 <td>{row.slNo}</td>
                 <td>{row.employee}</td>
