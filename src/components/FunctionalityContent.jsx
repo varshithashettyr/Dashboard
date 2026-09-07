@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChevronRight,
   ChevronDown,
@@ -9,6 +9,7 @@ import {
   Users,
   ShieldCheck,
   BarChart3,
+  Search,
 } from "lucide-react";
 
 import QCForm from "./QCForm";
@@ -22,6 +23,166 @@ import LoginReport from "./LoginReport";
 import TaskReport from "./TaskReport";
 
 /* =========================================================
+   QA STATUS REPORT SUB-COMPONENT
+========================================================= */
+
+function QAStatusReport() {
+  const [team, setTeam] = useState("");
+  const [subTeam, setSubTeam] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = () => {
+    console.log("Searching QA Status with filters:", {
+      team,
+      subTeam,
+      fromDate,
+      toDate,
+      searchTerm,
+    });
+  };
+
+  return (
+    <div className="qc-report-container">
+      <div className="qc-report-header">
+        <h2 style={{ color: "#0F2B5C", fontWeight: "bold", fontSize: "20px" }}>
+          QC Status Report
+        </h2>
+      </div>
+
+      <div
+        className="qc-filter-row"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "8px",
+          alignItems: "flex-start",
+          marginBottom: "15px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-team">
+            Team:
+          </label>
+          <select
+            id="qa-team"
+            value={team}
+            onChange={(e) => setTeam(e.target.value)}
+            style={{ padding: "2px 5px", width: "130px" }}
+          >
+            <option value="">--Select--</option>
+            <option value="BWI">BWI</option>
+            <option value="MIS">MIS</option>
+          </select>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-subteam">
+            Sub Team:
+          </label>
+          <select
+            id="qa-subteam"
+            value={subTeam}
+            onChange={(e) => setSubTeam(e.target.value)}
+            style={{ padding: "2px 5px", width: "130px" }}
+          >
+            <option value="">--Select--</option>
+            <option value="BWI TEAM">BWI TEAM</option>
+            <option value="QC TEAM">QC TEAM</option>
+          </select>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-fromdate">
+            From Date:
+          </label>
+          <input
+            id="qa-fromdate"
+            type="date"
+            value={fromDate}
+            onChange={(e) => setFromDate(e.target.value)}
+            style={{ padding: "2px 5px" }}
+          />
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <label style={{ minWidth: "80px", fontSize: "14px" }} htmlFor="qa-todate">
+            To Date:
+          </label>
+          <input
+            id="qa-todate"
+            type="date"
+            value={toDate}
+            onChange={(e) => setToDate(e.target.value)}
+            style={{ padding: "2px 5px" }}
+          />
+        </div>
+
+        <button
+          type="button"
+          onClick={handleSearch}
+          style={{
+            marginTop: "5px",
+            padding: "3px 12px",
+            cursor: "pointer",
+            backgroundColor: "#f0f0f0",
+            border: "1px solid #767676",
+            borderRadius: "2px",
+          }}
+        >
+          Search
+        </button>
+      </div>
+
+      <div style={{ marginBottom: "8px", fontWeight: "bold", color: "#1A365D", fontSize: "14px" }}>
+        TOTAL CASE: 0
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{
+            padding: "3px 6px",
+            border: "1px solid #ccc",
+            borderRight: "none",
+            outline: "none",
+            width: "160px",
+          }}
+        />
+        <button
+          type="button"
+          style={{
+            border: "1px solid #ccc",
+            background: "#fff",
+            padding: "3px 6px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Search size={14} color="#555" />
+        </button>
+      </div>
+
+      <div
+        style={{
+          border: "1px solid #000",
+          padding: "12px 10px",
+          fontSize: "13px",
+          backgroundColor: "#fff",
+        }}
+      >
+        No records found
+      </div>
+    </div>
+  );
+}
+
+/* =========================================================
    PERMISSION MENU DATA
 ========================================================= */
 
@@ -30,331 +191,71 @@ const permissionMenuData = [
   { id: 2, mainMenu: "Home", subMenu: "Announcement" },
   { id: 3, mainMenu: "Home", subMenu: "Setting" },
   { id: 4, mainMenu: "Home", subMenu: "Utilization" },
-  {
-    id: 5,
-    mainMenu: "Allocation",
-    subMenu: "Add Internal Utilization",
-  },
-  {
-    id: 6,
-    mainMenu: "Working Queue",
-    subMenu: "Internal Task",
-  },
-  {
-    id: 7,
-    mainMenu: "Working Queue",
-    subMenu: "QC View",
-  },
-  {
-    id: 8,
-    mainMenu: "Working Queue",
-    subMenu: "QC View New",
-  },
-  {
-    id: 9,
-    mainMenu: "Working Queue",
-    subMenu: "QC Form",
-  },
-  {
-    id: 10,
-    mainMenu: "Working Queue",
-    subMenu: "Working Queue",
-  },
-  {
-    id: 11,
-    mainMenu: "Reports",
-    subMenu: "Status Report",
-  },
-  {
-    id: 12,
-    mainMenu: "Reports",
-    subMenu: "QA Status Report",
-  },
-  {
-    id: 13,
-    mainMenu: "Reports",
-    subMenu: "Task Consolidated Report",
-  },
-  {
-    id: 14,
-    mainMenu: "Reports",
-    subMenu: "QC Pending",
-  },
-  {
-    id: 15,
-    mainMenu: "Reports",
-    subMenu: "Pending cases",
-  },
-  {
-    id: 16,
-    mainMenu: "Reports",
-    subMenu: "Allocation Report",
-  },
-  {
-    id: 17,
-    mainMenu: "Reports",
-    subMenu: "Update Time",
-  },
-  {
-    id: 18,
-    mainMenu: "Reports",
-    subMenu: "Login Report",
-  },
-  {
-    id: 19,
-    mainMenu: "Reports",
-    subMenu: "Utilization Report",
-  },
-  {
-    id: 20,
-    mainMenu: "Reports",
-    subMenu: "TAT Report",
-  },
-  {
-    id: 21,
-    mainMenu: "Reports",
-    subMenu: "Query Report",
-  },
-  {
-    id: 22,
-    mainMenu: "Reports",
-    subMenu: "QC Score",
-  },
-  {
-    id: 23,
-    mainMenu: "Reports",
-    subMenu: "Feedback Report",
-  },
-  {
-    id: 24,
-    mainMenu: "Transfer",
-    subMenu: "QC Transfer",
-  },
-  {
-    id: 25,
-    mainMenu: "Transfer",
-    subMenu: "Transfer to REA",
-  },
-  {
-    id: 26,
-    mainMenu: "Master",
-    subMenu: "Client",
-  },
-  {
-    id: 27,
-    mainMenu: "Master",
-    subMenu: "Service Master",
-  },
-  {
-    id: 28,
-    mainMenu: "Master",
-    subMenu: "Permissions",
-  },
-  {
-    id: 29,
-    mainMenu: "Master",
-    subMenu: "Process Master",
-  },
-  {
-    id: 30,
-    mainMenu: "Master",
-    subMenu: "Location Master",
-  },
-  {
-    id: 31,
-    mainMenu: "Master",
-    subMenu: "Work Queue Master",
-  },
-  {
-    id: 32,
-    mainMenu: "Master",
-    subMenu: "Client Master",
-  },
-  {
-    id: 33,
-    mainMenu: "Master",
-    subMenu: "Certification",
-  },
-  {
-    id: 34,
-    mainMenu: "Master",
-    subMenu: "Employee",
-  },
-  {
-    id: 35,
-    mainMenu: "Ticket",
-    subMenu: "New Ticket Request",
-  },
-  {
-    id: 36,
-    mainMenu: "Ticket",
-    subMenu: "Manage Ticket",
-  },
-  {
-    id: 37,
-    mainMenu: "Business Excellence",
-    subMenu: "Billing and Forecast Report",
-  },
-  {
-    id: 38,
-    mainMenu: "Business Excellence",
-    subMenu: "Billing & Forecast Consolidated",
-  },
-  {
-    id: 39,
-    mainMenu: "Business Excellence",
-    subMenu: "Team - Billed Vs Unbilled",
-  },
-  {
-    id: 40,
-    mainMenu: "Compliance Excellence",
-    subMenu: "Billing Compliance VA",
-  },
-  {
-    id: 41,
-    mainMenu: "Compliance Excellence",
-    subMenu: "Billing Compliance Primary Client",
-  },
-  {
-    id: 42,
-    mainMenu: "Project Excellence",
-    subMenu: "Processing Efficiency",
-  },
-  {
-    id: 43,
-    mainMenu: "Project Excellence",
-    subMenu: "Processing EfficiencyL2",
-  },
-  {
-    id: 44,
-    mainMenu: "Project Excellence",
-    subMenu: "TAT Report",
-  },
-  {
-    id: 45,
-    mainMenu: "Quality Excellence",
-    subMenu: "Quality Audit Report",
-  },
-  {
-    id: 46,
-    mainMenu: "Program Excellence",
-    subMenu: "CSAT Online Feedback Report",
-  },
-  {
-    id: 47,
-    mainMenu: "Program Excellence",
-    subMenu: "CSAT Customer Report",
-  },
-  {
-    id: 48,
-    mainMenu: "Program Excellence",
-    subMenu: "Utilization",
-  },
-  {
-    id: 49,
-    mainMenu: "Program Excellence",
-    subMenu: "CSAT Response Rate",
-  },
-  {
-    id: 50,
-    mainMenu: "Program Excellence",
-    subMenu: "CSAT Response Unique",
-  },
-  {
-    id: 51,
-    mainMenu: "Program Excellence",
-    subMenu: "CSAT VA",
-  },
-  {
-    id: 52,
-    mainMenu: "Program Excellence",
-    subMenu: "Service Usage L2",
-  },
-  {
-    id: 53,
-    mainMenu: "Program Excellence",
-    subMenu: "Service Usage L3",
-  },
-  {
-    id: 54,
-    mainMenu: "Program Excellence",
-    subMenu: "CSAT Department",
-  },
-  {
-    id: 55,
-    mainMenu: "Program Excellence",
-    subMenu: "Program Utilization",
-  },
-  {
-    id: 56,
-    mainMenu: "Program Excellence",
-    subMenu: "Feedback Summary",
-  },
-  {
-    id: 57,
-    mainMenu: "Customer Excellence",
-    subMenu: "Seamless Backup Report (KRA)",
-  },
-  {
-    id: 58,
-    mainMenu: "BSE Excellence",
-    subMenu: "VA Excellence",
-  },
-  {
-    id: 59,
-    mainMenu: "BSE Excellence",
-    subMenu: "VA Excellence Supervisor",
-  },
-  {
-    id: 60,
-    mainMenu: "BSE Excellence",
-    subMenu: "VA Excellence Report",
-  },
-  {
-    id: 61,
-    mainMenu: "Team Onboarding",
-    subMenu: "VA",
-  },
-  {
-    id: 62,
-    mainMenu: "Customer Onboarding",
-    subMenu: "Customer",
-  },
-  {
-    id: 63,
-    mainMenu: "Customer Onboarding",
-    subMenu: "Customer Connect",
-  },
-  {
-    id: 64,
-    mainMenu: "Customer Onboarding",
-    subMenu: "Customer EWS",
-  },
-  {
-    id: 65,
-    mainMenu: "KRA Report",
-    subMenu: "Utilization_KRA",
-  },
-  {
-    id: 66,
-    mainMenu: "KRA Report",
-    subMenu: "Efficiency_KRA",
-  },
-  {
-    id: 67,
-    mainMenu: "KRA Report",
-    subMenu: "CSAT_KRA",
-  },
-  {
-    id: 68,
-    mainMenu: "KRA Report",
-    subMenu: "QA_KRA",
-  },
-  {
-    id: 69,
-    mainMenu: "KRA Report",
-    subMenu: "Backup KRA",
-  },
+  { id: 5, mainMenu: "Allocation", subMenu: "Add Internal Utilization" },
+  { id: 6, mainMenu: "Working Queue", subMenu: "Internal Task" },
+  { id: 7, mainMenu: "Working Queue", subMenu: "QC View" },
+  { id: 8, mainMenu: "Working Queue", subMenu: "QC View New" },
+  { id: 9, mainMenu: "Working Queue", subMenu: "QC Form" },
+  { id: 10, mainMenu: "Working Queue", subMenu: "Working Queue" },
+  { id: 11, mainMenu: "Reports", subMenu: "Status Report" },
+  { id: 12, mainMenu: "Reports", subMenu: "QA Status Report" },
+  { id: 13, mainMenu: "Reports", subMenu: "Task Consolidated Report" },
+  { id: 14, mainMenu: "Reports", subMenu: "QC Pending" },
+  { id: 15, mainMenu: "Reports", subMenu: "Pending cases" },
+  { id: 16, mainMenu: "Reports", subMenu: "Allocation Report" },
+  { id: 17, mainMenu: "Reports", subMenu: "Update Time" },
+  { id: 18, mainMenu: "Reports", subMenu: "Login Report" },
+  { id: 19, mainMenu: "Reports", subMenu: "Utilization Report" },
+  { id: 20, mainMenu: "Reports", subMenu: "TAT Report" },
+  { id: 21, mainMenu: "Reports", subMenu: "Query Report" },
+  { id: 22, mainMenu: "Reports", subMenu: "QC Score" },
+  { id: 23, mainMenu: "Reports", subMenu: "Feedback Report" },
+  { id: 24, mainMenu: "Transfer", subMenu: "QC Transfer" },
+  { id: 25, mainMenu: "Transfer", subMenu: "Transfer to REA" },
+  { id: 26, mainMenu: "Master", subMenu: "Client" },
+  { id: 27, mainMenu: "Master", subMenu: "Service Master" },
+  { id: 28, mainMenu: "Master", subMenu: "Permissions" },
+  { id: 29, mainMenu: "Master", subMenu: "Process Master" },
+  { id: 30, mainMenu: "Master", subMenu: "Location Master" },
+  { id: 31, mainMenu: "Master", subMenu: "Work Queue Master" },
+  { id: 32, mainMenu: "Master", subMenu: "Client Master" },
+  { id: 33, mainMenu: "Master", subMenu: "Certification" },
+  { id: 34, mainMenu: "Master", subMenu: "Employee" },
+  { id: 35, mainMenu: "Ticket", subMenu: "New Ticket Request" },
+  { id: 36, mainMenu: "Ticket", subMenu: "Manage Ticket" },
+  { id: 37, mainMenu: "Business Excellence", subMenu: "Billing and Forecast Report" },
+  { id: 38, mainMenu: "Business Excellence", subMenu: "Billing & Forecast Consolidated" },
+  { id: 39, mainMenu: "Business Excellence", subMenu: "Team - Billed Vs Unbilled" },
+  { id: 40, mainMenu: "Compliance Excellence", subMenu: "Billing Compliance VA" },
+  { id: 41, mainMenu: "Compliance Excellence", subMenu: "Billing Compliance Primary Client" },
+  { id: 42, mainMenu: "Project Excellence", subMenu: "Processing Efficiency" },
+  { id: 43, mainMenu: "Project Excellence", subMenu: "Processing EfficiencyL2" },
+  { id: 44, mainMenu: "Project Excellence", subMenu: "TAT Report" },
+  { id: 45, mainMenu: "Quality Excellence", subMenu: "Quality Audit Report" },
+  { id: 46, mainMenu: "Program Excellence", subMenu: "CSAT Online Feedback Report" },
+  { id: 47, mainMenu: "Program Excellence", subMenu: "CSAT Customer Report" },
+  { id: 48, mainMenu: "Program Excellence", subMenu: "Utilization" },
+  { id: 49, mainMenu: "Program Excellence", subMenu: "CSAT Response Rate" },
+  { id: 50, mainMenu: "Program Excellence", subMenu: "CSAT Response Unique" },
+  { id: 51, mainMenu: "Program Excellence", subMenu: "CSAT VA" },
+  { id: 52, mainMenu: "Program Excellence", subMenu: "Service Usage L2" },
+  { id: 53, mainMenu: "Program Excellence", subMenu: "Service Usage L3" },
+  { id: 54, mainMenu: "Program Excellence", subMenu: "CSAT Department" },
+  { id: 55, mainMenu: "Program Excellence", subMenu: "Program Utilization" },
+  { id: 56, mainMenu: "Program Excellence", subMenu: "Feedback Summary" },
+  { id: 57, mainMenu: "Customer Excellence", subMenu: "Seamless Backup Report (KRA)" },
+  { id: 58, mainMenu: "BSE Excellence", subMenu: "VA Excellence" },
+  { id: 59, mainMenu: "BSE Excellence", subMenu: "VA Excellence Supervisor" },
+  { id: 60, mainMenu: "BSE Excellence", subMenu: "VA Excellence Report" },
+  { id: 61, mainMenu: "Team Onboarding", subMenu: "VA" },
+  { id: 62, mainMenu: "Customer Onboarding", subMenu: "Customer" },
+  { id: 63, mainMenu: "Customer Onboarding", subMenu: "Customer Connect" },
+  { id: 64, mainMenu: "Customer Onboarding", subMenu: "Customer EWS" },
+  { id: 65, mainMenu: "KRA Report", subMenu: "Utilization_KRA" },
+  { id: 66, mainMenu: "KRA Report", subMenu: "Efficiency_KRA" },
+  { id: 67, mainMenu: "KRA Report", subMenu: "CSAT_KRA" },
+  { id: 68, mainMenu: "KRA Report", subMenu: "QA_KRA" },
+  { id: 69, mainMenu: "KRA Report", subMenu: "Backup KRA" },
 ];
 
 /* =========================================================
@@ -629,17 +530,18 @@ function FunctionalityContent({ team, functionality }) {
         {functionality.modules?.length > 0 ? (
           <div className="modules-row">
             {functionality.modules.map((module, index) => {
-              const isSelected = selectedModule === module;
+              const moduleNameStr = typeof module === "object" ? module.name : module;
+              const isSelected = selectedModule === moduleNameStr;
 
               return (
                 <ModuleCard
-                  key={`${functionality.id}-${module}-${index}`}
-                  name={module}
+                  key={`${functionality.id}-${moduleNameStr}-${index}`}
+                  name={moduleNameStr}
                   index={index}
                   functionalityId={functionality.id}
                   selected={isSelected}
                   onClick={() => {
-                    setSelectedModule(isSelected ? null : module);
+                    setSelectedModule(isSelected ? null : moduleNameStr);
                   }}
                 />
               );
@@ -691,6 +593,15 @@ function FunctionalityContent({ team, functionality }) {
 
               if (moduleName === "pending cases") {
                 return <TaskReport />;
+              }
+
+              // Checks both "status report" and "qa status report"
+              if (
+                moduleName === "status report" ||
+                moduleName === "qa status report" ||
+                moduleName === "qa status"
+              ) {
+                return <QAStatusReport />;
               }
 
               return (
