@@ -48,7 +48,7 @@ const monthsList = [
 const initialTableData = [
   {
     slNo: 1,
-    employee: "Arindam Chatterjee",
+    employee: "xyz",
     ipAddress: "192.168.2.250",
     loginDate: "07-Sep-2026",
     loginTime: "12:14:11",
@@ -59,7 +59,7 @@ const initialTableData = [
   },
   {
     slNo: 2,
-    employee: "Arindam Chatterjee",
+    employee: "xyz",
     ipAddress: "10.81.234.197",
     loginDate: "04-Sep-2026",
     loginTime: "11:15:06",
@@ -70,7 +70,7 @@ const initialTableData = [
   },
   {
     slNo: 3,
-    employee: "Arindam Chatterjee",
+    employee: "xyz",
     ipAddress: "192.168.2.250",
     loginDate: "03-Sep-2026",
     loginTime: "13:31:12",
