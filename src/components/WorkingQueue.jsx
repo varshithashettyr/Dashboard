@@ -35,25 +35,6 @@ function WorkingQueue() {
     "Cancel",
   ];
 
-  const overviewRows = [
-    { status: "New", type: "normal" },
-    { status: "Transfer", type: "light" },
-    { status: "WIP", type: "light" },
-    { status: "Hold", type: "light" },
-    { status: "Reopen", type: "light" },
-    { status: "Rework", type: "light" },
-    { status: "Audit Complete", type: "light" },
-    { status: "Workable", type: "blue" },
-    { status: "Stand by", type: "cyan" },
-    { status: "Query", type: "cyan" },
-    { status: "To be QC'd", type: "cyan" },
-    { status: "Non-Workable", type: "blue" },
-    { status: "Complete", type: "green" },
-    { status: "Cancel", type: "green" },
-    { status: "Execution completed", type: "blue" },
-    { status: "Grand Total", type: "total" },
-  ];
-
   const handleChange = (field, value) => {
     setFormData((previous) => ({
       ...previous,
@@ -62,7 +43,6 @@ function WorkingQueue() {
   };
 
   const handleNewTask = () => {
-    // Placeholder for future API integration.
     console.log("New Task Request", formData);
   };
 
@@ -169,7 +149,6 @@ function WorkingQueue() {
                 onChange={(event) =>
                   handleChange("targetDate", event.target.value)
                 }
-                placeholder=""
               />
             </div>
 
@@ -217,8 +196,7 @@ function WorkingQueue() {
 
             {/* SUBJECT */}
 
-            <div className="wq-full-field">
-
+            <div className="wq-full-field wq-subject-field">
               <label>Subject:</label>
 
               <textarea
@@ -227,7 +205,6 @@ function WorkingQueue() {
                   handleChange("subject", event.target.value)
                 }
               />
-
             </div>
 
 
@@ -247,7 +224,6 @@ function WorkingQueue() {
 
 
             <div className="wq-field">
-
               <label>
                 Status<span className="wq-required">*</span> :
               </label>
@@ -258,36 +234,14 @@ function WorkingQueue() {
                   handleChange("status", event.target.value)
                 }
               >
-
-                <option value="">
-                </option>
-
-                <option value="New">
-                  New
-                </option>
-
-                <option value="Transfer">
-                  Transfer
-                </option>
-
-                <option value="WIP">
-                  WIP
-                </option>
-
-                <option value="Hold">
-                  Hold
-                </option>
-
-                <option value="Query">
-                  Query
-                </option>
-
-                <option value="Complete">
-                  Complete
-                </option>
-
+                <option value=""></option>
+                <option value="New">New</option>
+                <option value="Transfer">Transfer</option>
+                <option value="WIP">WIP</option>
+                <option value="Hold">Hold</option>
+                <option value="Query">Query</option>
+                <option value="Complete">Complete</option>
               </select>
-
             </div>
 
 
@@ -309,7 +263,6 @@ function WorkingQueue() {
             {/* COMMENTS */}
 
             <div className="wq-full-field wq-comments-field">
-
               <label>Comments:</label>
 
               <textarea
@@ -318,7 +271,6 @@ function WorkingQueue() {
                   handleChange("comments", event.target.value)
                 }
               />
-
             </div>
 
 
@@ -332,7 +284,6 @@ function WorkingQueue() {
             {/* NEW TASK BUTTON */}
 
             <div className="wq-new-task-wrapper">
-
               <button
                 type="button"
                 className="wq-new-task-button"
@@ -340,7 +291,6 @@ function WorkingQueue() {
               >
                 New Task Request
               </button>
-
             </div>
 
           </div>
@@ -349,7 +299,7 @@ function WorkingQueue() {
 
 
         {/* =================================================
-            RIGHT OVERVIEW
+            RIGHT OVERVIEW / QUEUE PULSE
         ================================================= */}
 
         <section className="wq-overview-panel">
@@ -359,57 +309,309 @@ function WorkingQueue() {
           </div>
 
 
-          <table className="wq-overview-table">
+          <div className="wq-queue-pulse">
 
-            <thead>
+            {/* =================================================
+                TOTAL TASKS
+            ================================================= */}
 
-              <tr>
+            <div className="wq-total-card">
 
-                <th>
-                  Status
-                </th>
+              <div className="wq-total-number">
+                0
+              </div>
 
-                <th>
-                  No. of tasks
-                </th>
+              <div className="wq-total-label">
+                TOTAL TASKS
+              </div>
 
-                <th>
-                  HH:MM
-                </th>
+              <div className="wq-total-subtext">
+                In Work Queue
+              </div>
 
-              </tr>
-
-            </thead>
+            </div>
 
 
-            <tbody>
+            {/* =================================================
+                QUEUE FLOW
+            ================================================= */}
 
-              {overviewRows.map((row) => (
+            <div className="wq-flow-title">
+              Queue Flow
+            </div>
 
-                <tr
-                  key={row.status}
-                  className={`overview-${row.type}`}
-                >
 
-                  <td>
-                    {row.status}
-                  </td>
+            <div className="wq-flow">
 
-                  <td>
+              <div className="wq-flow-item">
+
+                <span className="wq-flow-dot wq-dot-new"></span>
+
+                <div>
+                  <span className="wq-flow-name">
+                    New
+                  </span>
+
+                  <strong>
                     0
-                  </td>
+                  </strong>
+                </div>
 
-                  <td>
-                    00:00
-                  </td>
+              </div>
 
-                </tr>
 
-              ))}
+              <span className="wq-flow-arrow">
+                →
+              </span>
 
-            </tbody>
 
-          </table>
+              <div className="wq-flow-item">
+
+                <span className="wq-flow-dot wq-dot-wip"></span>
+
+                <div>
+                  <span className="wq-flow-name">
+                    WIP
+                  </span>
+
+                  <strong>
+                    0
+                  </strong>
+                </div>
+
+              </div>
+
+
+              <span className="wq-flow-arrow">
+                →
+              </span>
+
+
+              <div className="wq-flow-item">
+
+                <span className="wq-flow-dot wq-dot-qc"></span>
+
+                <div>
+                  <span className="wq-flow-name">
+                    QC
+                  </span>
+
+                  <strong>
+                    0
+                  </strong>
+                </div>
+
+              </div>
+
+
+              <span className="wq-flow-arrow">
+                →
+              </span>
+
+
+              <div className="wq-flow-item">
+
+                <span className="wq-flow-dot wq-dot-complete"></span>
+
+                <div>
+                  <span className="wq-flow-name">
+                    Done
+                  </span>
+
+                  <strong>
+                    0
+                  </strong>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                QUEUE DISTRIBUTION
+            ================================================= */}
+
+            <div className="wq-flow-title">
+              Queue Distribution
+            </div>
+
+
+            <div className="wq-status-bars">
+
+              <div className="wq-status-row">
+
+                <span>
+                  New
+                </span>
+
+                <div className="wq-status-track">
+                  <div
+                    className="wq-status-fill wq-fill-new"
+                    style={{ width: "0%" }}
+                  ></div>
+                </div>
+
+                <strong>
+                  0
+                </strong>
+
+              </div>
+
+
+              <div className="wq-status-row">
+
+                <span>
+                  WIP
+                </span>
+
+                <div className="wq-status-track">
+                  <div
+                    className="wq-status-fill wq-fill-wip"
+                    style={{ width: "0%" }}
+                  ></div>
+                </div>
+
+                <strong>
+                  0
+                </strong>
+
+              </div>
+
+
+              <div className="wq-status-row">
+
+                <span>
+                  Hold
+                </span>
+
+                <div className="wq-status-track">
+                  <div
+                    className="wq-status-fill wq-fill-hold"
+                    style={{ width: "0%" }}
+                  ></div>
+                </div>
+
+                <strong>
+                  0
+                </strong>
+
+              </div>
+
+
+              <div className="wq-status-row">
+
+                <span>
+                  Rework
+                </span>
+
+                <div className="wq-status-track">
+                  <div
+                    className="wq-status-fill wq-fill-rework"
+                    style={{ width: "0%" }}
+                  ></div>
+                </div>
+
+                <strong>
+                  0
+                </strong>
+
+              </div>
+
+
+              <div className="wq-status-row">
+
+                <span>
+                  Complete
+                </span>
+
+                <div className="wq-status-track">
+                  <div
+                    className="wq-status-fill wq-fill-complete"
+                    style={{ width: "0%" }}
+                  ></div>
+                </div>
+
+                <strong>
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                QUEUE HEALTH
+            ================================================= */}
+
+            <div className="wq-health-card">
+
+              <div className="wq-health-left">
+
+                <span className="wq-health-dot"></span>
+
+                <div>
+                  <strong>
+                    Queue Health
+                  </strong>
+
+                  <span>
+                    Currently stable
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div className="wq-health-value">
+                100%
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                TIME SUMMARY
+            ================================================= */}
+
+            <div className="wq-time-summary">
+
+              <div>
+                <span>
+                  Active
+                </span>
+
+                <strong>
+                  00:00
+                </strong>
+              </div>
+
+
+              <div>
+                <span>
+                  Pending
+                </span>
+
+                <strong>
+                  00:00
+                </strong>
+              </div>
+
+
+              <div>
+                <span>
+                  Completed
+                </span>
+
+                <strong>
+                  00:00
+                </strong>
+              </div>
+
+            </div>
+
+          </div>
 
         </section>
 
@@ -423,7 +625,6 @@ function WorkingQueue() {
       <div className="wq-tabs-container">
 
         {statusTabs.map((tab) => (
-
           <button
             key={tab}
             type="button"
@@ -432,11 +633,8 @@ function WorkingQueue() {
             }`}
             onClick={() => setActiveTab(tab)}
           >
-
             {tab} (0)
-
           </button>
-
         ))}
 
       </div>
@@ -470,11 +668,9 @@ function WorkingQueue() {
       ================================================= */}
 
       <div className="wq-record-area">
-
         <span>
           No record available
         </span>
-
       </div>
 
     </div>

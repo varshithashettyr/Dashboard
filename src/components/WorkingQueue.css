@@ -28,6 +28,7 @@
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   gap: 5px;
@@ -57,11 +58,13 @@
 
 .wq-check-icon {
   width: 21px;
+
   height: 21px;
 
   display: inline-flex;
 
   align-items: center;
+
   justify-content: center;
 
   flex-shrink: 0;
@@ -75,6 +78,8 @@
   font-size: 14px;
 
   font-weight: 700;
+
+  animation: wq-check-pulse 2.5s ease-in-out infinite;
 }
 
 
@@ -249,6 +254,8 @@
 
 .wq-field input:focus {
   border-color: #0068b5;
+
+  box-shadow: 0 0 0 2px rgba(0, 104, 181, 0.08);
 }
 
 
@@ -282,6 +289,8 @@
 
 .wq-field select:focus {
   border-color: #0068b5;
+
+  box-shadow: 0 0 0 2px rgba(0, 104, 181, 0.08);
 }
 
 
@@ -344,6 +353,8 @@
 
 .wq-full-field textarea:focus {
   border-color: #0068b5;
+
+  box-shadow: 0 0 0 2px rgba(0, 104, 181, 0.08);
 }
 
 
@@ -351,7 +362,7 @@
    SUBJECT FIELD
 ========================================================= */
 
-.wq-form-area > .wq-full-field:nth-of-type(5) textarea {
+.wq-subject-field textarea {
   height: 43px;
 
   min-height: 43px;
@@ -442,10 +453,19 @@
   font-weight: 600;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .wq-new-task-button:hover {
   background: #286090;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 4px 10px rgba(51, 122, 183, 0.18);
 }
 
 
@@ -473,142 +493,616 @@
 
   margin-right: 6px;
 
-  margin-bottom: 9px;
+  margin-bottom: 12px;
 
   font-size: 17px;
 }
 
 
 /* =========================================================
-   OVERVIEW TABLE
+   QUEUE PULSE
 ========================================================= */
 
-.wq-overview-table {
+.wq-queue-pulse {
   width: 100%;
 
-  border-collapse: collapse;
-
-  table-layout: fixed;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 10px;
+  box-sizing: border-box;
 }
 
 
 /* =========================================================
-   OVERVIEW HEADER
+   TOTAL TASK CARD
 ========================================================= */
 
-.wq-overview-table th {
-  height: 23px;
+.wq-total-card {
+  position: relative;
 
-  padding: 3px 4px;
+  overflow: hidden;
 
-  box-sizing: border-box;
+  border: 1px solid #d8d8d8;
 
-  background: #0068b5;
+  background: #ffffff;
 
-  color: #ffffff;
-
-  border-right: 1px solid #ffffff;
-
-  border-bottom: 1px solid #ffffff;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 10px;
-
-  font-weight: 600;
+  padding: 12px 8px 10px;
 
   text-align: center;
 
-  white-space: nowrap;
-}
-
-.wq-overview-table th:nth-child(1) {
-  width: 43%;
-}
-
-.wq-overview-table th:nth-child(2) {
-  width: 29%;
-}
-
-.wq-overview-table th:nth-child(3) {
-  width: 28%;
-}
-
-
-/* =========================================================
-   OVERVIEW DATA
-========================================================= */
-
-.wq-overview-table td {
-  height: 21px;
-
-  padding: 2px 4px;
-
   box-sizing: border-box;
 
-  border-right: 1px solid #ffffff;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
 
-  border-bottom: 1px solid #ffffff;
+.wq-total-card::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -100%;
+
+  width: 70%;
+
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 104, 181, 0.06),
+    transparent
+  );
+
+  animation: wq-card-shine 4s ease-in-out infinite;
+}
+
+.wq-total-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 5px 15px rgba(0, 104, 181, 0.08);
+}
+
+.wq-total-number {
+  color: #0068b5;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  line-height: 32px;
+
+  animation: wq-number-pulse 3s ease-in-out infinite;
+}
+
+.wq-total-label {
+  margin-top: 2px;
 
   color: #111111;
 
-  font-family: Arial, Helvetica, sans-serif;
-
   font-size: 10px;
 
-  line-height: 15px;
+  font-weight: 700;
 
-  text-align: center;
-
-  white-space: nowrap;
+  letter-spacing: 0.4px;
 }
 
-.wq-overview-table td:first-child {
-  text-align: left;
+.wq-total-subtext {
+  margin-top: 2px;
+
+  color: #777777;
+
+  font-size: 9px;
 }
 
 
 /* =========================================================
-   OVERVIEW ROW COLORS
+   SECTION TITLE
 ========================================================= */
 
-.overview-normal {
-  background: #ffffff;
+.wq-flow-title {
+  position: relative;
+
+  margin: 12px 0 7px;
+
+  padding-bottom: 4px;
+
+  color: #111111;
+
+  font-size: 11px;
+
+  font-weight: 700;
 }
 
-.overview-light {
+.wq-flow-title::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: 0;
+
+  width: 34px;
+
+  height: 2px;
+
+  background: #0068b5;
+
+  transform-origin: left;
+
+  animation: wq-title-line 2.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   QUEUE FLOW
+========================================================= */
+
+.wq-flow {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 3px;
+
+  padding: 9px 5px;
+
+  border: 1px solid #d8d8d8;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* moving flow line */
+
+.wq-flow::before {
+  content: "";
+
+  position: absolute;
+
+  left: 10px;
+
+  right: 10px;
+
+  top: 50%;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 104, 181, 0.25),
+    transparent
+  );
+
+  background-size: 120px 100%;
+
+  animation: wq-flow-line 3s linear infinite;
+}
+
+
+/* flow item */
+
+.wq-flow-item {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  min-width: 0;
+
+  padding: 2px 3px;
+
+  border-radius: 5px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.wq-flow-item:hover {
+  transform: translateY(-2px);
+
+  background: rgba(0, 104, 181, 0.035);
+}
+
+
+/* dots */
+
+.wq-flow-dot {
+  width: 8px;
+
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  animation: wq-dot-pulse 2.2s ease-in-out infinite;
+}
+
+.wq-flow-dot::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -4px;
+
+  border-radius: 50%;
+
+  border: 1px solid currentColor;
+
+  opacity: 0;
+
+  animation: wq-dot-ring 2.2s ease-out infinite;
+}
+
+.wq-dot-new {
+  background: #0068b5;
+
+  color: #0068b5;
+}
+
+.wq-dot-wip {
+  background: #d7f5a8;
+
+  border: 1px solid #9ac45b;
+
+  color: #9ac45b;
+}
+
+.wq-dot-qc {
+  background: #20bce8;
+
+  color: #20bce8;
+}
+
+.wq-dot-complete {
+  background: #82eea1;
+
+  color: #27ae60;
+}
+
+
+/* flow text */
+
+.wq-flow-item > div {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.wq-flow-name {
+  color: #555555;
+
+  font-size: 8px;
+
+  line-height: 10px;
+}
+
+.wq-flow-item strong {
+  color: #111111;
+
+  font-size: 11px;
+
+  line-height: 12px;
+}
+
+
+/* arrows */
+
+.wq-flow-arrow {
+  position: relative;
+
+  z-index: 2;
+
+  color: #72aee0;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  animation: wq-arrow-flow 2s ease-in-out infinite;
+}
+
+.wq-flow-arrow:nth-of-type(2) {
+  animation-delay: 0.35s;
+}
+
+.wq-flow-arrow:nth-of-type(3) {
+  animation-delay: 0.7s;
+}
+
+
+/* =========================================================
+   STATUS DISTRIBUTION
+========================================================= */
+
+.wq-status-bars {
+  padding: 9px 8px;
+
+  border: 1px solid #d8d8d8;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+.wq-status-row {
+  display: grid;
+
+  grid-template-columns:
+    48px
+    minmax(0, 1fr)
+    18px;
+
+  align-items: center;
+
+  gap: 5px;
+
+  height: 21px;
+}
+
+
+/* labels */
+
+.wq-status-row > span {
+  color: #111111;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+}
+
+.wq-status-row > strong {
+  color: #111111;
+
+  font-size: 9px;
+
+  text-align: right;
+}
+
+
+/* track */
+
+.wq-status-track {
+  position: relative;
+
+  height: 7px;
+
+  overflow: hidden;
+
+  border-radius: 5px;
+
+  background: #eeeeee;
+}
+
+
+/*
+   Even when value = 0%, keep a subtle animated scanner
+   so the graph doesn't look dead while there are no tasks.
+*/
+
+.wq-status-track::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -45px;
+
+  width: 45px;
+
+  height: 100%;
+
+  border-radius: 5px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.85),
+    transparent
+  );
+
+  animation: wq-bar-scanner 3.5s linear infinite;
+}
+
+
+/* actual fills */
+
+.wq-status-fill {
+  position: relative;
+
+  z-index: 2;
+
+  height: 100%;
+
+  border-radius: 5px;
+
+  transition:
+    width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wq-fill-new {
+  background: #0068b5;
+}
+
+.wq-fill-wip {
   background: #d7f5a8;
 }
 
-.overview-blue {
-  background: #0068b5;
-
-  color: #ffffff;
-}
-
-.overview-cyan {
+.wq-fill-hold {
   background: #20bce8;
 }
 
-.overview-green {
+.wq-fill-rework {
+  background: #0068b5;
+}
+
+.wq-fill-complete {
   background: #82eea1;
 }
 
-.overview-total {
-  background: #008000;
 
-  color: #ffffff;
+/* =========================================================
+   QUEUE HEALTH
+========================================================= */
 
-  font-weight: 600;
+.wq-health-card {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 10px;
+
+  padding: 9px 8px;
+
+  border: 1px solid #d8d8d8;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
-.overview-blue td,
-.overview-total td {
-  color: #ffffff;
+.wq-health-card:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 4px 12px rgba(47, 196, 155, 0.1);
+}
+
+.wq-health-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+.wq-health-dot {
+  width: 9px;
+
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #2fc49b;
+
+  box-shadow:
+    0 0 0 3px #e2f7ef,
+    0 0 10px rgba(47, 196, 155, 0.3);
+
+  animation: wq-health-pulse 2s ease-in-out infinite;
+}
+
+.wq-health-left div {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.wq-health-left strong {
+  color: #111111;
+
+  font-size: 10px;
+}
+
+.wq-health-left span {
+  margin-top: 1px;
+
+  color: #777777;
+
+  font-size: 8px;
+}
+
+.wq-health-value {
+  color: #008000;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  animation: wq-health-value 2.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   TIME SUMMARY
+========================================================= */
+
+.wq-time-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  margin-top: 8px;
+
+  border: 1px solid #d8d8d8;
+
+  background: #ffffff;
+}
+
+.wq-time-summary > div {
+  padding: 7px 3px;
+
+  text-align: center;
+
+  border-right: 1px solid #eeeeee;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.wq-time-summary > div:last-child {
+  border-right: none;
+}
+
+.wq-time-summary > div:hover {
+  background: rgba(0, 104, 181, 0.025);
+
+  transform: translateY(-1px);
+}
+
+.wq-time-summary span {
+  display: block;
+
+  color: #777777;
+
+  font-size: 8px;
+}
+
+.wq-time-summary strong {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #0068b5;
+
+  font-size: 10px;
 }
 
 
@@ -669,10 +1163,16 @@
   white-space: nowrap;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .wq-tab:hover {
   background: #005a9d;
+
+  transform: translateY(-1px);
 }
 
 
@@ -779,10 +1279,16 @@
   font-size: 12px;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .wq-search-button:hover {
   background: #286090;
+
+  transform: scale(1.02);
 }
 
 
@@ -818,6 +1324,152 @@
 
 
 /* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes wq-check-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+
+@keyframes wq-card-shine {
+  0% {
+    left: -100%;
+  }
+
+  45%,
+  100% {
+    left: 140%;
+  }
+}
+
+
+@keyframes wq-number-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+
+@keyframes wq-title-line {
+  0%,
+  100% {
+    width: 28px;
+  }
+
+  50% {
+    width: 48px;
+  }
+}
+
+
+@keyframes wq-flow-line {
+  0% {
+    background-position: -120px 0;
+  }
+
+  100% {
+    background-position: 120px 0;
+  }
+}
+
+
+@keyframes wq-dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.22);
+  }
+}
+
+
+@keyframes wq-dot-ring {
+  0% {
+    transform: scale(0.5);
+
+    opacity: 0.55;
+  }
+
+  70%,
+  100% {
+    transform: scale(1.8);
+
+    opacity: 0;
+  }
+}
+
+
+@keyframes wq-arrow-flow {
+  0%,
+  100% {
+    transform: translateX(0);
+
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: translateX(4px);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes wq-bar-scanner {
+  0% {
+    left: -45px;
+  }
+
+  100% {
+    left: calc(100% + 45px);
+  }
+}
+
+
+@keyframes wq-health-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px #e2f7ef,
+      0 0 6px rgba(47, 196, 155, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 5px #e2f7ef,
+      0 0 14px rgba(47, 196, 155, 0.35);
+  }
+}
+
+
+@keyframes wq-health-value {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+
+/* =========================================================
    RESPONSIVE
 ========================================================= */
 
@@ -833,6 +1485,7 @@
 
   .wq-form-area {
     padding-left: 10px;
+
     padding-right: 10px;
   }
 
@@ -892,6 +1545,7 @@
     width: calc(100% - 16px);
 
     margin-left: 8px;
+
     margin-right: 8px;
 
     font-size: 16px;
@@ -901,6 +1555,7 @@
     grid-template-columns: 1fr;
 
     padding-left: 5px;
+
     padding-right: 5px;
   }
 
@@ -931,5 +1586,27 @@
 
   .wq-overview-panel {
     max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .wq-check-icon,
+  .wq-total-card::after,
+  .wq-total-number,
+  .wq-flow-title::after,
+  .wq-flow::before,
+  .wq-flow-dot,
+  .wq-flow-dot::after,
+  .wq-flow-arrow,
+  .wq-status-track::after,
+  .wq-health-dot,
+  .wq-health-value {
+    animation: none !important;
   }
 }
